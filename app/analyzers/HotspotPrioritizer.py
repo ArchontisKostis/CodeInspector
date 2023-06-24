@@ -1,48 +1,40 @@
-from app.exceptions import NoCommitsException
+from app.analyzers.OutlierEliminator import OutlierEliminator
+from app.models.PriorityType import PriorityType
 
 
-class HotspotPrioritizer:
-    def __init__(self, files):
-        self.files_list = files
-        self.max_metrics = {'CC': -1, 'CHURN': -1}
+class HotspotPriorityCalculator:
+    def __init__(self, analysis):
+        self.files = []
+        self.analysis = analysis
+        self.outlier_eliminator = OutlierEliminator(analysis)
+        self.CC_THRESHOLD = 10
+        self.CHURN_THRESHOLD = 100
+        self.CC_PRIORITY_THRESHOLD = self.CC_THRESHOLD / 2
+        self.CHURN_PRIORITY_THRESHOLD = self.CHURN_THRESHOLD / 2
 
-    def find_max_metric(self, metric: str):
-        try:
-            max_metric = self.files_list[0].get_metric(metric)
-            for file in self.files_list:
-                curr_metric = file.get_metric(metric)
-                if curr_metric > max_metric:
-                    max_metric = curr_metric
-
-            key = str.upper(metric)
-            self.max_metrics.update({key: max_metric})
-        except IndexError:
-            raise NoCommitsException
-
-    def find_hotspot_priority(self, file_cc, file_churn):
-        max_churn = self.max_metrics.get('CHURN')
-        max_complexity = self.max_metrics.get('CC')
-        threshold_churn = max_churn / 2
-        threshold_cc = max_complexity / 2
-
-        if file_cc <= threshold_cc:
-            if file_churn <= threshold_churn:
-                return 'LOW'
-            if file_churn >= threshold_churn:
-                return 'NORMAL'
-        if file_cc >= threshold_cc:
-            if file_churn <= threshold_churn:
-                return 'MEDIUM'
-            if file_churn >= threshold_churn:
-                return 'HIGH'
-        else:
-            return 'NOT SET'
-
-    def prioritize_hotspots(self):
-        self.find_max_metric('CC')
-        self.find_max_metric('CHURN')
-        for file in self.files_list:
-            file_cc = file.get_metric('CC')
-            file_churn = file.get_metric('CHURN')
-            priority = self.find_hotspot_priority(file_cc, file_churn)
+    def calculate_hotspot_priority(self):
+        repo_files = self.analysis.project.files
+        
+        for file in self.analysis.project.files:
+            cc = self.normalize_value(file.get_metric('CC'), 0, self.CC_THRESHOLD)
+            churn = self.normalize_value(file.get_metric('CHURN'), 0, self.CHURN_THRESHOLD)
+            priority = self.calculate_priority(cc, churn)
             file.set_priority(priority)
+            file.set_metric('CC', cc)
+            file.set_metric('CHURN', churn)
+
+    def calculate_priority(self, cc, churn):
+        if (cc >= self.CC_PRIORITY_THRESHOLD):
+            if (churn >= self.CHURN_PRIORITY_THRESHOLD):
+                return PriorityType.HIGH
+            else:
+                return PriorityType.MEDIUM
+
+        else:
+            if (churn >= self.CHURN_PRIORITY_THRESHOLD):
+                return PriorityType.NORMAL
+            else:
+                return PriorityType.LOW
+
+    def normalize_value(self, value, min_value, max_value):
+        return (value - min_value) / (max_value - min_value)
