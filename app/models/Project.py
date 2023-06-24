@@ -1,58 +1,37 @@
-from pydriller import Repository
+from app.models import RepoFile
 
 
 class Project:
-    def __init__(self, pydriller_repo: Repository):
-        self.repository = pydriller_repo
-        self.commits = []
-        self.modified_files = []
-        self.first_commit = None
-        self.last_commit = None
+    def __init__(self, repository_url: str):
+        self.repository_url = repository_url
+        self.files = []
 
-    def get_commits(self):
-        return self.commits
+    def add_file(self, file: RepoFile):
+        if self.file_is_not_already_added(file):
+            self.files.append(file)
+            file.file_changed()
+        else:
+            repo_file = self.get_file(file.name)
+            repo_file.file_changed()
 
-    def set_commits(self, commit_list: list):
-        self.commits = commit_list
+    def file_is_not_already_added(self, file):
+        for curr_file in self.files:
+            if file.name == curr_file.name:
+                return False
+        return True
 
-    def get_number_of_commits(self):
-        return len(self.commits)
-
-    def has_commits(self):
-        number_of_commits = len(self.commits)
-        return number_of_commits > 0
-
-    def set_modified_files(self, modified_files_list: list):
-        self.modified_files = modified_files_list
-
-    def get_modified_files(self) -> list:
-        return self.modified_files
-
-    def add_modified_file(self, file):
-        self.modified_files.append(file)
-
-    def get_file(self, name):
-        for file in self.modified_files:
-            if file.filename == name:
+    def get_file(self, file_name: str) -> RepoFile:
+        for file in self.files:
+            if file.name == file_name:
                 return file
         return None
 
-    def set_first_commit(self, commit):
-        self.first_commit = commit
+    def get_files(self):
+        return self.files
 
-    def set_last_commit(self, commit):
-        self.last_commit = commit
-
-    def get_first_commit(self):
-        return self.first_commit
-
-    def get_last_commit(self):
-        return self.last_commit
-
+    # To dict method to return a dictionary representation of the project for the response
     def to_dict(self):
         return {
-            'commits': [commit.hash for commit in self.commits],
-            'modified_files': [file.to_dict() for file in self.modified_files],
-            'first_commit': self.first_commit.hash if self.first_commit else None,
-            'last_commit': self.last_commit.hash if self.last_commit else None
+            'repository_url': self.repository_url,
+            'files': [file.to_dict() for file in self.files]
         }
