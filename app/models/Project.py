@@ -9,7 +9,6 @@ class Project:
 
     def add_file(self, file: RepoFile):
         if self.file_is_not_already_added(file):
-            print("Adding file: " + file.name)
             file.set_metric('CHURN', 0)
             self.files.append(file)
         else:
