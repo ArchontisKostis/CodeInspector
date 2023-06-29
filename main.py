@@ -10,7 +10,7 @@ app = FastAPI()
 # Include routers
 app.include_router(routers.router)
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 configure_cors(app)
 
 if __name__ == "__main__":
