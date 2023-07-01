@@ -28,7 +28,10 @@ async def perform_analysis(repo_url: str, from_date: str = None, to_date: str = 
 
         commit_processor = CommitProcessor(project)
         project_commits = []
+        project_name = "Undefined Project Name"
         for commit in reps.traverse_commits():
+            project_name = commit.project_name
+
             project_commit_builder = ProjectCommitBuilder()
 
             project_commit = project_commit_builder \
@@ -61,6 +64,7 @@ async def perform_analysis(repo_url: str, from_date: str = None, to_date: str = 
 
         analysis = analyzer.get_analysis()
         analysis.project_commits = project_commits
+        analysis.project.project_name = project_name
 
         hotspot_calculator = HotspotPriorityCalculator(analysis)
         hotspot_calculator.calculate_hotspot_priority()
