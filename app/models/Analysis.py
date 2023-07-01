@@ -1,7 +1,5 @@
 from app.models import RepoFile
 from app.models.Project import Project
-from app.models.project_commit.ProjectCommit import ProjectCommit
-
 
 class Analysis:
     def __init__(self, project: Project):
@@ -33,10 +31,6 @@ class Analysis:
 
     def set_max_churn_file(self, file: RepoFile):
         self.max_churn_file = file
-
-    def add_project_commit(self, commit: ProjectCommit):
-        self.project_commits.append(commit)
-        self.total_commits += 1
     def to_dict(self):
         return {
             'project': self.project.to_dict(),

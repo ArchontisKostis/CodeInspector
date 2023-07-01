@@ -1,3 +1,5 @@
+import traceback
+
 from fastapi import APIRouter, HTTPException
 from pydriller import Repository
 
@@ -5,15 +7,10 @@ from app import logger
 from app.analyzers.Analyzer import Analyser
 from app.analyzers.CommitProcessor import CommitProcessor
 from app.analyzers.HotspotPrioritizer import HotspotPriorityCalculator
-import traceback
 from app.models.Project import Project
-from app.models.RepoFile import RepoFile
-from app.models.project_commit.ProjectCommitBuilder import ProjectCommitBuilder
-from app.routers import is_github_url, validate_repo_url
+from app.routers import validate_repo_url
 
 router = APIRouter()
-filetypes = ['.java']
-
 
 @router.get("/analysis")
 async def perform_analysis(repo_url: str, from_date: str = None, to_date: str = None):
@@ -27,31 +24,10 @@ async def perform_analysis(repo_url: str, from_date: str = None, to_date: str = 
         project = Project(repo_url)
 
         commit_processor = CommitProcessor(project)
-        project_commits = []
         project_name = "Undefined Project Name"
+
         for commit in reps.traverse_commits():
             project_name = commit.project_name
-
-            project_commit_builder = ProjectCommitBuilder()
-
-            project_commit = project_commit_builder \
-                .set_hash(commit.hash) \
-                .set_committer(commit.committer.name) \
-                .set_author(commit.author.name) \
-                .set_committer_date(commit.committer_date) \
-                .set_author_date(commit.author_date) \
-                .set_number_of_added_lines(commit.insertions) \
-                .set_number_of_deleted_lines(commit.deletions) \
-                .set_number_of_files_changed(commit.files) \
-                .set_author_email(commit.author.email) \
-                .set_committer_email(commit.committer.email) \
-                .build()
-
-            project_commit.dmm_unit_complexity = commit.dmm_unit_complexity
-            project_commit.dmm_unit_interfacing = commit.dmm_unit_interfacing
-            project_commit.dmm_unit_size = commit.dmm_unit_size
-
-            project_commits.append(project_commit)
 
             commit_processor.process_commit(commit)
 
@@ -63,7 +39,6 @@ async def perform_analysis(repo_url: str, from_date: str = None, to_date: str = 
         analyzer.calculate_average_metrics()
 
         analysis = analyzer.get_analysis()
-        analysis.project_commits = project_commits
         analysis.project.project_name = project_name
 
         hotspot_calculator = HotspotPriorityCalculator(analysis)
