@@ -13,8 +13,6 @@ class Analysis:
         self.avg_churn = -1
         self.total_commits = 0
         self.total_nloc = 0
-        self.project_commits = []
-
 
     def set_max_complexity_file(self, file: RepoFile):
         self.max_complexity_file = file
