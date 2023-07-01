@@ -15,9 +15,12 @@ class CommitProcessor:
         for modified_file in commit.modified_files:
             file_to_add = RepoFile(modified_file.filename)
 
-            if modified_file.filename.endswith(".java"):
+            if modified_file.language_supported:
                 file_to_add.set_metric('CC', modified_file.complexity)
                 file_to_add.set_metric('NLOC', modified_file.nloc)
+                file_to_add.language_supported = True
+
+                file_to_add.methods = modified_file.methods
 
                 self.project.add_file(file_to_add)
 
