@@ -7,9 +7,10 @@ from app import logger
 from app.analyzers.Analyzer import Analyser
 from app.analyzers.CommitProcessor import CommitProcessor
 from app.analyzers.HotspotPrioritizer import HotspotPriorityCalculator
+from app.analyzers.OutlierEliminator import OutlierEliminator
 from app.models.Project import Project
 from app.models.project_commit.ProjectCommitBuilder import ProjectCommitBuilder
-from app.routers import validate_repo_url
+from app.routers import validate_repo_url, start_timer, end_timer
 
 router = APIRouter()
 filetypes = ['.java']
@@ -17,8 +18,9 @@ filetypes = ['.java']
 
 @router.get("/analysis")
 async def perform_analysis(repo_url: str, from_date: str = None, to_date: str = None):
-    try:
+    start_time = start_timer()
 
+    try:
         validate_repo_url(repo_url)
 
         logger.info(f"Performing analysis on {repo_url}")
@@ -48,13 +50,31 @@ async def perform_analysis(repo_url: str, from_date: str = None, to_date: str = 
         analysis.project_commits = project_commits
         analysis.project.project_name = project_name
 
+        outlier_eliminator = OutlierEliminator(analysis)
+        inliers = outlier_eliminator.eliminate_outliers_based_on_cc_and_churn()
+
+
         hotspot_calculator = HotspotPriorityCalculator(analysis)
         hotspot_calculator.calculate_hotspot_priority()
 
-        return {"analysis": analysis.to_dict()}
+        end_timer(start_time)
+
+        # print size of all files and inliers
+        print("Size of all files: " + str(len(analysis.project.files)))
+        print("Size of inliers: " + str(len(inliers)))
+
+        return {"analysis": analysis.to_dict(), "inliers": inliers}
     except Exception as e:
+        end_timer(start_time)
+
+        # if we have an HTTPException, we want to return the status code and the detail
+        if isinstance(e, HTTPException):
+            raise HTTPException(status_code=e.status_code, detail=e.detail)
+
         traceback.print_exc()
-        raise HTTPException(status_code=400, detail=str(e))
+
+        msg = traceback.format_exc() or "An error occurred while processing the request"
+        raise HTTPException(status_code=400, detail=msg)
 
 
 @router.get("/analysis/commits")
@@ -88,6 +108,8 @@ def analyze_commits(repo_url: str, from_date: str = None, to_date: str = None):
             project_commit.dmm_unit_complexity = commit.dmm_unit_complexity
             project_commit.dmm_unit_interfacing = commit.dmm_unit_interfacing
             project_commit.dmm_unit_size = commit.dmm_unit_size
+
+            project_commit.categorize()
 
             project_commits.append(project_commit)
 
