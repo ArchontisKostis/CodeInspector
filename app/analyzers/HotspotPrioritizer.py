@@ -7,7 +7,6 @@ class HotspotPriorityCalculator:
         self.files = []
         self.analysis = analysis
         self.outlier_eliminator = OutlierEliminator(analysis)
-        self.CC_THRESHOLD = 0
 
     def calculate_hotspot_priority(self):
         repo_files = self.analysis.project.files
@@ -52,7 +51,3 @@ class HotspotPriorityCalculator:
         # Else return not set
         else:
             return PriorityType.NOT_SET
-
-
-    def normalize_value(self, value, min_value, max_value):
-        return (value - min_value) / (max_value - min_value)
