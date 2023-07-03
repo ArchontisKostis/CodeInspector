@@ -6,8 +6,7 @@ from pydriller import Repository
 from app import logger
 from app.analyzers.Analyzer import Analyser
 from app.analyzers.CommitProcessor import CommitProcessor
-from app.analyzers.HotspotPrioritizer import HotspotPriorityCalculator
-from app.analyzers.OutlierEliminator import OutlierEliminator
+from app import handle_exception_on_endpoint
 from app.models.Project import Project
 from app.models.project_commit.ProjectCommitBuilder import ProjectCommitBuilder
 from app.routers import validate_repo_url, start_timer, end_timer
@@ -16,7 +15,7 @@ router = APIRouter()
 filetypes = ['.java']
 
 
-@router.get("/analysis")
+@router.get("/api/analysis/prioritize_hotspots")
 async def perform_analysis(repo_url: str, from_date: str = None, to_date: str = None):
     start_time = start_timer()
 
@@ -29,7 +28,6 @@ async def perform_analysis(repo_url: str, from_date: str = None, to_date: str = 
         project = Project(repo_url)
 
         commit_processor = CommitProcessor(project)
-        project_commits = []
         project_name = "Undefined Project Name"
 
         for commit in reps.traverse_commits():
@@ -55,21 +53,14 @@ async def perform_analysis(repo_url: str, from_date: str = None, to_date: str = 
         return {"analysis": analysis.to_dict()}
     except Exception as e:
         end_timer(start_time)
-
-        # if we have an HTTPException, we want to return the status code and the detail
-        if isinstance(e, HTTPException):
-            raise HTTPException(status_code=e.status_code, detail=e.detail)
-
-        traceback.print_exc()
-
-        msg = traceback.format_exc() or "An error occurred while processing the request"
-        raise HTTPException(status_code=400, detail=msg)
+        handle_exception_on_endpoint(e)
 
 
-@router.get("/analysis/commits")
+@router.get("/api/analysis/commits")
 def analyze_commits(repo_url: str, from_date: str = None, to_date: str = None):
-    try:
+    start_time = start_timer()
 
+    try:
         validate_repo_url(repo_url)
 
         logger.info(f"Performing analysis on {repo_url}")
@@ -78,6 +69,7 @@ def analyze_commits(repo_url: str, from_date: str = None, to_date: str = None):
 
         project_commits = []
         project_name = "Undefined Project Name"
+
         for commit in reps.traverse_commits():
             project_commit_builder = ProjectCommitBuilder()
 
@@ -102,11 +94,14 @@ def analyze_commits(repo_url: str, from_date: str = None, to_date: str = None):
 
             project_commits.append(project_commit)
 
+        end_timer(start_time)
+
         return {
             "project_name": project_name,
             "repo_url": repo_url,
             "project_commits": [project_commit.to_dict() for project_commit in project_commits],
+            "total_commits": len(project_commits),
         }
     except Exception as e:
-        traceback.print_exc()
-        raise HTTPException(status_code=400, detail=str(e))
+        end_timer(start_time)
+        handle_exception_on_endpoint(e)
