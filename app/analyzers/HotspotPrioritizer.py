@@ -1,17 +1,18 @@
 from app.analyzers.OutlierEliminator import OutlierEliminator
+from app.models.Analysis import Analysis
 from app.models.PriorityType import PriorityType
 
 
 class HotspotPriorityCalculator:
-    def __init__(self, analysis):
-        self.files = []
+    def __init__(self, analysis: Analysis):
         self.analysis = analysis
-        self.outlier_eliminator = OutlierEliminator(analysis)
+        self.files_to_prioritize = []
+        self.all_files = analysis.project.files
 
     def calculate_hotspot_priority(self):
-        repo_files = self.analysis.project.files
+        self.eliminate_outliers()
 
-        for file in self.analysis.project.files:
+        for file in self.files_to_prioritize:
             cc = file.get_metric('CC')
             churn = file.get_metric('CHURN')
 
@@ -20,11 +21,10 @@ class HotspotPriorityCalculator:
             file.set_priority(priority)
 
     def calculate_priority(self, cc, churn):
-        # We nedd to find the max CC and CHURN values
         max_cc = self.analysis.max_complexity_file.get_metric('CC')
         max_churn = self.analysis.max_churn_file.get_metric('CHURN')
 
-        # We need to find the middle point between the cc and the middle point between the churn
+        # We find the middle point between the cc and the middle point between the churn
         cc_middle_point = max_cc / 2
         churn_middle_point = max_churn / 2
 
@@ -50,4 +50,13 @@ class HotspotPriorityCalculator:
 
         # Else return not set
         else:
-            return PriorityType.NOT_SET
+            return PriorityType.UNKNOWN
+
+    def eliminate_outliers(self):
+        outlier_eliminator = OutlierEliminator(
+            self.all_files,
+            self.analysis.avg_cc,
+            self.analysis.avg_churn
+        )
+
+        self.files_to_prioritize = outlier_eliminator.eliminate_outliers()
