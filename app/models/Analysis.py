@@ -1,6 +1,5 @@
 from app.models import RepoFile
 from app.models.Project import Project
-from app.models.project_commit.ProjectCommit import ProjectCommit
 
 
 class Analysis:
