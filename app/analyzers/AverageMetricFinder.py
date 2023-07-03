@@ -3,7 +3,7 @@ from app.models.Project import Project
 
 class AverageMetricFinder:
     def __init__(self, project: Project):
-        self.project_files = project.get_files()
+        self.project_files = project.files
 
     def calculate_avg_cc(self):
         total_cc = 0
