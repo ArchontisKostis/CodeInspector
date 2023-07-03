@@ -1,4 +1,5 @@
 import re
+import time
 
 from fastapi import HTTPException
 
@@ -13,4 +14,12 @@ def validate_repo_url(repo_url):
         raise HTTPException(status_code=400, detail="Repo URL is required")
 
     if not is_github_url(repo_url):
-        raise HTTPException(status_code=400, detail="Repo URL is invalid")
+        raise HTTPException(status_code=400, detail="Repo URL is invalid. Url Must be a GitHub URL.")
+
+def start_timer():
+    return time.time()
+
+def end_timer(start_time):
+    time_passed = (time.time() - start_time) / 60
+    print(f"Time passed: {time_passed} minutes")
+    return time_passed

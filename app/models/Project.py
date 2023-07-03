@@ -27,9 +27,6 @@ class Project:
                 return file
         return None
 
-    def get_files(self):
-        return self.files
-
     # To dict method to return a dictionary representation of the project for the response
     def to_dict(self):
         return {
