@@ -1,4 +1,5 @@
 from app.analyzers.AverageMetricFinder import AverageMetricFinder
+from app.analyzers.HotspotPrioritizer import HotspotPriorityCalculator
 from app.models.Analysis import Analysis
 from app.models.Project import Project
 
@@ -8,6 +9,7 @@ class Analyser:
         self.project = project
         self.analysis = Analysis(self.project)
         self.average_metric_finder = None
+        self.hotspot_prioritizer = None
 
 
     def find_max_metric_file(self, metric_key: str):
@@ -49,6 +51,11 @@ class Analyser:
             total_loc += file.get_metric('NLOC')
 
         self.analysis.total_nloc = total_loc
+
+    def prioritize_hotspots(self):
+        self.hotspot_prioritizer = HotspotPriorityCalculator(self.analysis)
+        self.hotspot_prioritizer.calculate_hotspot_priority()
+
 
     def get_analysis(self):
         return self.analysis
