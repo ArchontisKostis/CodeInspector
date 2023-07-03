@@ -11,7 +11,6 @@ class Analyser:
         self.average_metric_finder = None
         self.hotspot_prioritizer = None
 
-
     def find_max_metric_file(self, metric_key: str):
         max_metric_file = None
 
@@ -55,7 +54,6 @@ class Analyser:
     def prioritize_hotspots(self):
         self.hotspot_prioritizer = HotspotPriorityCalculator(self.analysis)
         self.hotspot_prioritizer.calculate_hotspot_priority()
-
 
     def get_analysis(self):
         return self.analysis
