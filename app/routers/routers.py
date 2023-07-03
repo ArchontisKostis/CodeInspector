@@ -43,27 +43,16 @@ async def perform_analysis(repo_url: str, from_date: str = None, to_date: str = 
         analyzer.calculate_total_lines_of_code()
         analyzer.find_max_churn_file()
         analyzer.find_max_complexity_file()
-
         analyzer.calculate_average_metrics()
+        analyzer.prioritize_hotspots()
 
         analysis = analyzer.get_analysis()
-        analysis.project_commits = project_commits
+
         analysis.project.project_name = project_name
-
-        outlier_eliminator = OutlierEliminator(analysis)
-        inliers = outlier_eliminator.eliminate_outliers_based_on_cc_and_churn()
-
-
-        hotspot_calculator = HotspotPriorityCalculator(analysis)
-        hotspot_calculator.calculate_hotspot_priority()
 
         end_timer(start_time)
 
-        # print size of all files and inliers
-        print("Size of all files: " + str(len(analysis.project.files)))
-        print("Size of inliers: " + str(len(inliers)))
-
-        return {"analysis": analysis.to_dict(), "inliers": inliers}
+        return {"analysis": analysis.to_dict()}
     except Exception as e:
         end_timer(start_time)
 
@@ -88,7 +77,7 @@ def analyze_commits(repo_url: str, from_date: str = None, to_date: str = None):
         reps = Repository(repo_url, since=from_date, to=to_date)
 
         project_commits = []
-        project_name = "Unknown"
+        project_name = "Undefined Project Name"
         for commit in reps.traverse_commits():
             project_commit_builder = ProjectCommitBuilder()
 
