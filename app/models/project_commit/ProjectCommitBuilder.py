@@ -1,12 +1,13 @@
 from app.models.project_commit.ProjectCommit import ProjectCommit
 
 
+# A simple builder for ProjectCommit
 class ProjectCommitBuilder:
     def __init__(self):
         self.commit = ProjectCommit()
 
-    def set_hash(self, hash):
-        self.commit.hash = hash
+    def set_hash(self, commit_hash):
+        self.commit.hash = commit_hash
         return self
 
     def set_author(self, author):
