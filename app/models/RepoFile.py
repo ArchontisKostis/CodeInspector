@@ -11,21 +11,12 @@ class RepoFile:
         key = str.upper(metric_key)
         self.metrics[key] = metric_value
 
-    def get_name(self):
-        return self.name
-
     def get_metric(self, metric_key: str) -> int:
         key = str.upper(metric_key)
         return self.metrics[key]
 
-    def get_all_metrics(self) -> dict:
-        return self.metrics
-
     def set_priority(self, priority: PriorityType):
         self.priority = priority
-
-    def get_priority(self) -> PriorityType:
-        return self.priority
 
     def to_dict(self):
         return {
