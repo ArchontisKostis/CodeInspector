@@ -20,8 +20,6 @@ class CommitProcessor:
                 file_to_add.set_metric('NLOC', modified_file.nloc)
                 file_to_add.language_supported = True
 
-                file_to_add.methods = modified_file.methods
-
                 self.project.add_file(file_to_add)
 
 
