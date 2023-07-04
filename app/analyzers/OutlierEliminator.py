@@ -10,7 +10,8 @@ class OutlierEliminator:
     def eliminate_outliers(self):
         no_outliers = []
         for file in self.items_list:
-            if file.get_metric('CC') > self.avg_cc or file.get_metric('Churn') > self.avg_churn:
-                no_outliers.append(file)
+            if file.get_metric('CC') is not None and file.get_metric('Churn') is not None:
+                if file.get_metric('CC') > self.avg_cc or file.get_metric('Churn') > self.avg_churn:
+                    no_outliers.append(file)
 
         return no_outliers

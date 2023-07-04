@@ -17,8 +17,12 @@ class Analyser:
         for file in self.project.files:
             if max_metric_file is None:
                 max_metric_file = file
-            elif file.get_metric(metric_key) > max_metric_file.get_metric(metric_key):
-                max_metric_file = file
+
+            print(max_metric_file.to_dict())
+
+            if file.get_metric(metric_key) is not None and max_metric_file.get_metric(metric_key) is not None:
+                if file.get_metric(metric_key) > max_metric_file.get_metric(metric_key):
+                    max_metric_file = file
 
         return max_metric_file
 
@@ -47,7 +51,8 @@ class Analyser:
         total_loc = 0
 
         for file in self.project.files:
-            total_loc += file.get_metric('NLOC')
+            if file.get_metric('NLOC') is not None:
+                total_loc += file.get_metric('NLOC')
 
         self.analysis.total_nloc = total_loc
 
