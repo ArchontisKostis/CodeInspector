@@ -11,6 +11,7 @@ class Analysis:
         self.avg_cc = -1
         self.avg_churn = -1
         self.total_nloc = 0
+        self.date_range = {"from": None, "to": None}
 
     def set_max_complexity_file(self, file: RepoFile):
         self.max_complexity_file = file
@@ -36,4 +37,5 @@ class Analysis:
             'avg_cc': self.avg_cc,
             'avg_churn': self.avg_churn,
             'total_nloc': self.total_nloc,
+            'date_range': self.date_range
         }
