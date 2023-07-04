@@ -1,22 +1,20 @@
-import traceback
-
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter
 from pydriller import Repository
 
+from app import handle_exception_on_endpoint
 from app import logger
 from app.analyzers.Analyzer import Analyser
 from app.analyzers.CommitProcessor import CommitProcessor
-from app import handle_exception_on_endpoint
 from app.models.Project import Project
 from app.models.project_commit.ProjectCommitBuilder import ProjectCommitBuilder
-from app.routers import validate_repo_url, start_timer, end_timer
+from app.routers import validate_repo_url, start_timer, end_timer, calculate_past_year_date_range
 
 router = APIRouter()
 filetypes = ['.java']
 
 
 @router.get("/api/analysis/prioritize_hotspots")
-async def perform_analysis(repo_url: str, from_date: str = None, to_date: str = None):
+async def prioritize_hotspots(repo_url: str, from_date: str = None, to_date: str = None):
     start_time = start_timer()
 
     try:
@@ -24,7 +22,10 @@ async def perform_analysis(repo_url: str, from_date: str = None, to_date: str = 
 
         logger.info(f"Performing analysis on {repo_url}")
 
-        reps = Repository(repo_url, since=from_date, to=to_date)
+        if from_date is None or to_date is None:
+            from_date, to_date = calculate_past_year_date_range(from_date, to_date)
+
+        reps = Repository(repo_url, since=from_date, to=to_date, only_modifications_with_file_types=filetypes)
         project = Project(repo_url)
 
         commit_processor = CommitProcessor(project)
@@ -47,6 +48,7 @@ async def perform_analysis(repo_url: str, from_date: str = None, to_date: str = 
         analysis = analyzer.get_analysis()
 
         analysis.project.project_name = project_name
+        analysis.date_range = {"from": from_date, "to": to_date}
 
         end_timer(start_time)
 
@@ -64,6 +66,9 @@ def analyze_commits(repo_url: str, from_date: str = None, to_date: str = None):
         validate_repo_url(repo_url)
 
         logger.info(f"Performing analysis on {repo_url}")
+
+        if from_date is None or to_date is None:
+            from_date, to_date = calculate_past_year_date_range(from_date, to_date)
 
         reps = Repository(repo_url, since=from_date, to=to_date)
 
@@ -101,6 +106,7 @@ def analyze_commits(repo_url: str, from_date: str = None, to_date: str = None):
             "repo_url": repo_url,
             "project_commits": [project_commit.to_dict() for project_commit in project_commits],
             "total_commits": len(project_commits),
+            "date_range": {"from": from_date, "to": to_date}
         }
     except Exception as e:
         end_timer(start_time)
