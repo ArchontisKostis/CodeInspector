@@ -37,7 +37,6 @@ def analyze_commits(repo_url: str, from_date: str = None, to_date: str = None):
         validate_repo_url(repo_url)
 
         logger.info(f"Performing analysis on {repo_url}")
-
         commit_analysis = analysis_service.analyze_commits(repo_url, from_date, to_date)
 
         end_timer(start_time)
