@@ -31,7 +31,7 @@ git clone https://github.com/ArchontisKostis/CodeInspectorREST.git
 ```
 
 ### ⚙️ Install Dependencies
-This Flask web app requires certain dependencies to be installed. The list of dependencies, along with their versions, are listed in the `requirements.txt` file. Follow the steps below to install the dependencies:
+The project requires certain dependencies to be installed. The list of dependencies, along with their versions, are listed in the `requirements.txt` file. Follow the steps below to install the dependencies:
 
 1. Navigate to the cloned repository's directory in your terminal.
 2. Create a virtual environment (optional but recommended) using the following command:
