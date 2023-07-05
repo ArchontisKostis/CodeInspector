@@ -7,7 +7,7 @@ from app.analyzers.CommitProcessor import CommitProcessor
 from app.models.Project import Project
 from app.models.analysis.CommitAnalysis import CommitAnalysis
 from app.models.project_commit.ProjectCommitBuilder import ProjectCommitBuilder
-from app.services import calculate_past_year_date_range
+from app.services import calculate_past_year_date_range, try_to_parse_date
 
 
 class AnalysisService():
@@ -76,12 +76,13 @@ class AnalysisService():
         return commit_analysis
 
     def validate_date(self, from_date: str, to_date: str):
+        # If from_date or to_date is None, calculate past year date range
         if from_date is None or to_date is None:
             from_date, to_date = calculate_past_year_date_range(from_date, to_date)
         else:
-            # Convert date from string to datetime (Date will be like 2020-01-01, YYYY-MM-DD)
-            from_date = datetime.strptime(from_date, '%Y-%m-%d')
-            to_date = datetime.strptime(to_date, '%Y-%m-%d')
+            from_date = try_to_parse_date(from_date)
+            to_date = try_to_parse_date(to_date)
 
         return from_date, to_date
+
 
