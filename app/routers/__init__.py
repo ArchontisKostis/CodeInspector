@@ -32,6 +32,8 @@ def handle_exception_on_endpoint(exception):
     # if we have an HTTPException, we want to return the status code and the detail
     if isinstance(exception, HTTPException):
         raise HTTPException(status_code=exception.status_code, detail=exception.detail)
+    elif isinstance(exception, ValueError):
+        raise HTTPException(status_code=400, detail=exception.args[0])
 
     traceback.print_exc()
 
