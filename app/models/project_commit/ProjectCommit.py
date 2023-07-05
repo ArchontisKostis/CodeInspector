@@ -1,6 +1,6 @@
 from app.models.project_commit import MIN_THRESHOLD_EXCELLENT, MIN_THRESHOLD_GOOD, MIN_THRESHOLD_FAIR, \
     MIN_THRESHOLD_POOR, MAX_THRESHOLD_GOOD, MAX_THRESHOLD_POOR, MAX_THRESHOLD_FAIR, MAX_THRESHOLD_EXCELLENT
-from app.models.project_commit.ChangeCategory import ChangeCategory
+from app.models.project_commit.CommitRating import CommitRating
 
 
 class ProjectCommit:
@@ -18,20 +18,20 @@ class ProjectCommit:
         self.dmm_unit_size = None
         self.dmm_unit_complexity = None
         self.dmm_unit_interfacing = None
-        self.change_category = ChangeCategory.UNKNOWN
+        self.change_category = CommitRating.UNKNOWN
 
     def categorize(self):
         if self.dmm_unit_complexity is not None:
             if MIN_THRESHOLD_EXCELLENT <= self.dmm_unit_complexity <= MAX_THRESHOLD_EXCELLENT:
-                self.change_category = ChangeCategory.EXCELLENT
+                self.change_category = CommitRating.EXCELLENT
             elif MIN_THRESHOLD_GOOD <= self.dmm_unit_complexity <= MAX_THRESHOLD_GOOD:
-                self.change_category = ChangeCategory.GOOD
+                self.change_category = CommitRating.GOOD
             elif MIN_THRESHOLD_FAIR <= self.dmm_unit_complexity <= MAX_THRESHOLD_FAIR:
-                self.change_category = ChangeCategory.FAIR
+                self.change_category = CommitRating.FAIR
             elif MIN_THRESHOLD_POOR <= self.dmm_unit_complexity <= MAX_THRESHOLD_POOR:
-                self.change_category = ChangeCategory.POOR
+                self.change_category = CommitRating.POOR
             else:
-                self.change_category = ChangeCategory.UNKNOWN
+                self.change_category = CommitRating.UNKNOWN
 
     def to_dict(self):
         return {

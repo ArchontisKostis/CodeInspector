@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class ChangeCategory(Enum):
+class CommitRating(Enum):
     EXCELLENT = "EXCELLENT"
     GOOD = "GOOD"
     FAIR = "FAIR"
