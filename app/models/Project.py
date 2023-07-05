@@ -1,4 +1,4 @@
-from app.models import RepoFile
+from app.models.project_file.ProjectFile import RepoFile
 
 
 class Project:

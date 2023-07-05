@@ -1,15 +1,21 @@
 from app.analyzers.AverageMetricFinder import AverageMetricFinder
 from app.analyzers.HotspotPrioritizer import HotspotPriorityCalculator
-from app.models.Analysis import Analysis
 from app.models.Project import Project
+from app.models.analysis.PriorityAnalysis import PriorityAnalysis
 
 
 class Analyser:
-    def __init__(self, project: Project):
+    project: Project
+
+    project_analysis: PriorityAnalysis
+    average_metric_finder: AverageMetricFinder
+    hotspot_prioritizer: HotspotPriorityCalculator
+
+    def __init__(self, project: Project, repo_url: str, from_date: str, to_date: str):
         self.project = project
-        self.analysis = Analysis(self.project)
-        self.average_metric_finder = None
-        self.hotspot_prioritizer = None
+        self.project_analysis = PriorityAnalysis(repo_url, from_date, to_date)
+        self.project_analysis.total_files = len(self.project.files)
+
 
     def find_max_metric_file(self, metric_key: str):
         max_metric_file = None
@@ -27,25 +33,20 @@ class Analyser:
         return max_metric_file
 
     def find_max_complexity_file(self):
-        max_complexity_file = self.find_max_metric_file('cc')
+        self.project_analysis.max_complexity_file = self.find_max_metric_file('cc')
 
-        self.analysis.set_max_complexity_file(max_complexity_file)
 
     def find_max_churn_file(self):
-        max_churn_file = self.find_max_metric_file('churn')
+        self.project_analysis.max_churn_file = self.find_max_metric_file('churn')
 
-        self.analysis.set_max_churn_file(max_churn_file)
 
     def calculate_average_metrics(self):
         self.average_metric_finder = AverageMetricFinder(self.project)
 
-        avg_cc = self.average_metric_finder.calculate_avg_cc()
-        avg_nloc = self.average_metric_finder.calculate_avg_nloc()
-        avg_churn = self.average_metric_finder.calculate_avg_churn()
+        self.project_analysis.avg_complexity = self.average_metric_finder.calculate_avg_cc()
+        self.project_analysis.avg_nloc = self.average_metric_finder.calculate_avg_nloc()
+        self.project_analysis.avg_churn = self.average_metric_finder.calculate_avg_churn()
 
-        self.analysis.set_avg_cc(avg_cc)
-        self.analysis.set_avg_nloc(avg_nloc)
-        self.analysis.set_avg_churn(avg_churn)
 
     def calculate_total_lines_of_code(self):
         total_loc = 0
@@ -54,11 +55,8 @@ class Analyser:
             if file.get_metric('NLOC') is not None:
                 total_loc += file.get_metric('NLOC')
 
-        self.analysis.total_nloc = total_loc
+        self.project_analysis.total_nloc = total_loc
 
     def prioritize_hotspots(self):
-        self.hotspot_prioritizer = HotspotPriorityCalculator(self.analysis)
+        self.hotspot_prioritizer = HotspotPriorityCalculator(self.project, self.project_analysis)
         self.hotspot_prioritizer.calculate_hotspot_priority()
-
-    def get_analysis(self):
-        return self.analysis

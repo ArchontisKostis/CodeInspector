@@ -1,6 +1,6 @@
 from pydriller import Commit
 
-from app.models.RepoFile import RepoFile
+from app.models.project_file.ProjectFile import RepoFile
 
 
 class CommitProcessor:

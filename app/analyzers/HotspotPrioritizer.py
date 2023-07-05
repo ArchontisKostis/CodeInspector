@@ -1,13 +1,14 @@
 from app.analyzers.OutlierEliminator import OutlierEliminator
-from app.models.Analysis import Analysis
-from app.models.PriorityType import PriorityType
+from app.models.project_file.PriorityType import PriorityType
+from app.models.Project import Project
+from app.models.analysis.PriorityAnalysis import PriorityAnalysis
 
 
 class HotspotPriorityCalculator:
-    def __init__(self, analysis: Analysis):
+    def __init__(self, project: Project, analysis: PriorityAnalysis):
+        self.all_files = project.files
         self.analysis = analysis
         self.files_to_prioritize = []
-        self.all_files = analysis.project.files
 
     def calculate_hotspot_priority(self):
         self.eliminate_outliers()
@@ -19,6 +20,9 @@ class HotspotPriorityCalculator:
             priority = self.calculate_priority(cc, churn)
 
             file.set_priority(priority)
+
+        self.analysis.prioritized_files = self.files_to_prioritize
+        self.analysis.total_prioritized_files = len(self.files_to_prioritize)
 
     def calculate_priority(self, cc, churn):
         max_cc = self.analysis.max_complexity_file.get_metric('CC')
@@ -55,8 +59,16 @@ class HotspotPriorityCalculator:
     def eliminate_outliers(self):
         outlier_eliminator = OutlierEliminator(
             self.all_files,
-            self.analysis.avg_cc,
+            self.analysis.avg_complexity,
             self.analysis.avg_churn
         )
 
-        self.files_to_prioritize = outlier_eliminator.eliminate_outliers()
+        self.files_to_prioritize, self.analysis.outliers = outlier_eliminator.eliminate_outliers()
+        self.analysis.total_outliers = len(self.all_files) - len(self.files_to_prioritize)
+
+        outliers_list = []
+        for file in self.all_files:
+            if file not in self.files_to_prioritize:
+                outliers_list.append(file)
+
+        self.analysis.outliers = outliers_list

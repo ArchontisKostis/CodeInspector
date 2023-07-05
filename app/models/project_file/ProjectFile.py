@@ -1,4 +1,4 @@
-from app.models.PriorityType import PriorityType
+from app.models.project_file.PriorityType import PriorityType
 
 
 class RepoFile:
