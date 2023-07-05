@@ -1,5 +1,6 @@
 import re
 import time
+import traceback
 from datetime import datetime, timedelta
 
 from fastapi import HTTPException
@@ -27,13 +28,12 @@ def end_timer(start_time):
     print(f"Time passed: {time_passed} minutes")
     return time_passed
 
+def handle_exception_on_endpoint(exception):
+    # if we have an HTTPException, we want to return the status code and the detail
+    if isinstance(exception, HTTPException):
+        raise HTTPException(status_code=exception.status_code, detail=exception.detail)
 
-def calculate_past_year_date_range(from_date, to_date):
-    today = datetime.today()
-    one_year_ago = today - timedelta(days=365)
+    traceback.print_exc()
 
-    from_date = one_year_ago
-    to_date = today
-
-
-    return from_date, to_date
+    msg = traceback.format_exc() or "An error occurred while processing the request"
+    raise HTTPException(status_code=400, detail=msg)

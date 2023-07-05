@@ -4,10 +4,11 @@ from pydriller import Repository
 
 from app.analyzers.Analyzer import Analyser
 from app.analyzers.CommitProcessor import CommitProcessor
-from app.controllers import calculate_past_year_date_range
 from app.models.Project import Project
 from app.models.analysis.CommitAnalysis import CommitAnalysis
 from app.models.project_commit.ProjectCommitBuilder import ProjectCommitBuilder
+from app.services import calculate_past_year_date_range
+
 
 class AnalysisService():
     def __init__(self):
