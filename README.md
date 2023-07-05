@@ -9,7 +9,7 @@
 
 <p align="center">
   <em><b>Made with:</b></em> <br>
-  <img src="https://img.shields.io/badge/Flask-blue" alt="Made with FastAPI" />
+  <img src="https://img.shields.io/badge/FastAPI-blue" alt="Made with FastAPI" />
   <img src="https://img.shields.io/badge/PyDriller-green" alt="Made with PyDriller" />
 </p>
 
