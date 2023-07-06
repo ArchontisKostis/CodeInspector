@@ -10,7 +10,7 @@ from app.models.project_commit.ProjectCommitBuilder import ProjectCommitBuilder
 from app.services import calculate_past_year_date_range, try_to_parse_date
 
 
-class AnalysisService():
+class AnalysisService:
     def __init__(self):
         self.filetypes = ['.java']
 
