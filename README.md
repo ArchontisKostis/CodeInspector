@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://github.com/ArchontisKostis/CodeInspector/blob/master/static/assets/svg/logo_1.svg" width="48" height="48" />
+  <img src="https://github.com/ArchontisKostis/CodeInspectorFlask/blob/master/static/assets/svg/logo_1.svg" width="48" height="48" />
   CodeInspectorREST
 </h1>
 
