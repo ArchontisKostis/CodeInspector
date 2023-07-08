@@ -1,0 +1,26 @@
+.analysis-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-white-shade);
+}
+
+.analysis-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: 82vh;
+    background-color: var(--primary-dark);
+    position: relative;
+    padding: 2em 0 0 0;
+}
+
+.wave-light {
+    width: 100%;
+    height: 25%;
+    background-image: url("../../assets/svg/waves/wave-light-one.svg");
+    background-repeat: repeat;
+    position: absolute;
+    bottom: 0;
+}
