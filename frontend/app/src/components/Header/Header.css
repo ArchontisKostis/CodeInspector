@@ -1,0 +1,70 @@
+.header {
+    height: 10vh;
+    width: 100vw;
+    background-color: var(--secondary-red);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.header-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    padding: 0.5em;
+    text-decoration: none;
+}
+
+.header-logo h1 {
+    color: white;
+    font-weight: normal;
+}
+
+.header-logo img{
+    height: 6vh;
+    width: auto;
+}
+
+nav {
+    width: 20vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0.5em;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+nav .nav-item {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.hover-border {
+    position: relative;
+}
+
+.hover-border::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: width 0.5s;
+    transform: scaleX(0); /* Initially set to scale 0 */
+    transform-origin: right; /* Set transform origin to the right */
+}
+
+.hover-border:hover::after {
+    width: 100%; /* Expand width to 100% when hovered */
+    transform: scaleX(1); /* Scale to full width */
+}
