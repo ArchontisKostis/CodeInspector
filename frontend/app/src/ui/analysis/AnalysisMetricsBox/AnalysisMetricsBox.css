@@ -1,0 +1,38 @@
+.analysis-metrics-box-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.analysis-metrics-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+
+    color: white;
+    width: 95vw;
+    height: max-content;
+    background-color: var(--secondary-red);
+    padding: 1em;
+    border-radius: 25px;
+}
+
+.metric-item {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.metric-item-value {
+    margin: 0.5em;
+}
+
+.metric-item-header {
+    margin-right: 1vw;
+}
+
+.analysis-metrics-box h3 {
+    color: white;
+}
