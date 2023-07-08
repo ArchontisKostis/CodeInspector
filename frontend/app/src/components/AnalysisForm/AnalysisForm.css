@@ -14,11 +14,13 @@
 }
 
 form {
-    width: 60vw;
-    height: 50vh;
-    margin: 1em 1.5em 01.5em;
+    color: var(--primary-dark);
+    width: 55vw;
+    height: max-content;
+    margin: 0 1.5em 0 1.5em;
     display: flex;
     flex-direction: column;
+    padding: 1em 0 1em 0;
 }
 
 label {
@@ -34,6 +36,10 @@ input {
     padding: 0 1em 0 1em;
 }
 
+input:focus {
+    outline: var(--secondary-red) 2px solid;
+}
+
 input[type="date"] {
     cursor: pointer;
 }
@@ -44,6 +50,8 @@ input[type="url"] {
 
 input[type="radio"] {
     height: min-content;
+    outline: none;
+    accent-color: var(--secondary-red);
 }
 
 .analysis-form-group {
@@ -57,6 +65,7 @@ input[type="radio"] {
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+    height: 7vh
 }
 
 .analysis-form-submit-btn {
