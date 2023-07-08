@@ -1,0 +1,23 @@
+# Use a suitable base image for your frontend, such as Node.js
+FROM node:14 as development
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the package.json and package-lock.json files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the remaining frontend code
+COPY .. .
+
+# Build the frontend
+RUN npm run build
+
+# Expose the necessary port (if required)
+EXPOSE 3000
+
+# Start the frontend server
+CMD ["npm", "run", "dev"]
