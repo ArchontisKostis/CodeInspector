@@ -1,0 +1,81 @@
+.analysis-form-container {
+    background-color: var(--bg-white-shade);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Poppins', sans-serif;
+    border-radius: 25px;
+}
+
+.analysis-form-container h2 {
+    margin: 1em 0 0 0;
+}
+
+form {
+    width: 60vw;
+    height: 50vh;
+    margin: 1em 1.5em 01.5em;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 1.1em;
+    font-weight: 500;
+    padding: 0.5em 0 0.5em 0;
+}
+
+input {
+    height: 5vh;
+    border: none;
+    border-radius: 25px;
+    padding: 0 1em 0 1em;
+}
+
+input[type="date"] {
+    cursor: pointer;
+}
+
+input[type="url"] {
+    cursor: text;
+}
+
+input[type="radio"] {
+    height: min-content;
+}
+
+.analysis-form-group {
+    display: flex;
+    flex-direction: column;
+    padding: 0.25em 0 0.25em 0;
+}
+
+.analysis-form-radio-group{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.analysis-form-submit-btn {
+    color: white;
+    background-color: var(--primary-dark);
+    border: none;
+    border-radius: 50px;
+    width: 25vw;
+    height: 5vh;
+    font-size: 1em;
+    transition: background-color 0.25s ease-in-out;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    align-self: center;
+}
+
+.analysis-form-submit-btn:hover {
+    background-color: var(--secondary-red);
+}
+
+.analysis-form-submit-btn i { margin: 0 0.25em 0; }
+
