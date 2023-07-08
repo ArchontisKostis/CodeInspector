@@ -1,4 +1,4 @@
-# Use a suitable base image for your frontend, such as Node.js
+# Set a base image for frontend
 FROM node:14 as development
 
 # Set the working directory
@@ -16,7 +16,7 @@ COPY .. .
 # Build the frontend
 RUN npm run build
 
-# Expose the necessary port (if required)
+# Expose the necessary port
 EXPOSE 3000
 
 # Start the frontend server

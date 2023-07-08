@@ -1,5 +1,5 @@
-# Use a suitable base image for your FastAPI project
-FROM python:3.9
+# Set a base image for backend
+FROM python:3.9 as development
 
 # Set the working directory
 WORKDIR /app
@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the backend code
 COPY . /code
 
-# Expose the necessary port (if required)
+# Expose the necessary port
 EXPOSE 8000
 
 # Start the FastAPI server
