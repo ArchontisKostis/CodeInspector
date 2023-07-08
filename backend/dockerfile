@@ -5,13 +5,13 @@ FROM python:3.9 as development
 WORKDIR /app
 
 # Copy the requirements.txt file
-COPY requirements.txt /code/requirements.txt
+COPY requirements.txt /app/requirements.txt
 
 # Install the Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the backend code
-COPY . /code
+COPY . /app
 
 # Expose the necessary port
 EXPOSE 8000
