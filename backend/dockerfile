@@ -1,0 +1,20 @@
+# Use a suitable base image for your FastAPI project
+FROM python:3.9
+
+# Set the working directory
+WORKDIR /code
+
+# Copy the requirements.txt file
+COPY requirements.txt /code/requirements.txt
+
+# Install the Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the backend code
+COPY . /code
+
+# Expose the necessary port (if required)
+EXPOSE 8000
+
+# Start the FastAPI server
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

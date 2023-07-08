@@ -5,7 +5,7 @@ FROM python:3.8 as production
 WORKDIR /app
 
 # Copy the requirements file to the container
-COPY requirements.txt .
+COPY backend/requirements.txt .
 
 # Install the Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
