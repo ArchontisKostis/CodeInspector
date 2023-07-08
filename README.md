@@ -27,7 +27,7 @@ CodeInspector provides a Docker configuration for easy deployment. Make sure you
 
 1. Clone the repository:
    ```
-   git clone https://github.com/YourUsername/CodeInspector.git
+   git clone https://github.com/ArchontisKostis/CodeInspector.git
    ```
 2. Navigate to the project directory:
    ```
