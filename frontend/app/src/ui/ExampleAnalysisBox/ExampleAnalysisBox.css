@@ -1,0 +1,45 @@
+.example-analysis-box {
+    background-color: var(--secondary-red);
+    padding: 1em;
+    min-width: 25vw;
+    border-radius: 25px;
+    color: white;
+}
+
+.example-analysis-box i {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.example-analysis-box h3 {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: white;
+}
+
+.example-analysis-box p {
+    font-size: 1.1em;
+    color: white;
+    margin: 0.5em 0;
+}
+
+.example-analysis-box a {
+    color: white;
+    text-decoration: underline;
+    margin: 0.5em 0.5em 0.5em 0;
+}
+
+.tool-page-examples-container {
+    height: max-content;
+}
+
+.tool-page-examples {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.example-box {
+    width: 100%;
+}
