@@ -1,0 +1,32 @@
+.tool-page-form-container {
+    min-height: 50vh;
+    background-color: var(--primary-dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tool-page-form-container img {
+    height: 15vh;
+    padding: 1em;
+}
+
+.tool-page-form-container h1 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+}
+
+.tool-page-examples-container {
+    height: 100vh;
+    background-color: var(--bg-white-shade);
+}
+
+.tool-page-form-container .wave {
+    height: 20vh;
+    width: 100vw;
+    background-image: url("../../assets/svg/waves/wave-light-one.svg");
+}
