@@ -6,7 +6,9 @@ import React, {useState} from 'react';
 import './AnalysisForm.css'
 import "bootstrap-icons/font/bootstrap-icons.css";
 
-const AnalysisForm = () => {
+const AnalysisForm = (props) => {
+    const { formType } = props;
+
     const [formData, setFormData] = useState({
         repoUrl: '',
         fromDate: '',
@@ -28,7 +30,7 @@ const AnalysisForm = () => {
             <div className="analysis-form-container">
                 <h2>Analyze Repository</h2>
 
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className={formType}>
                     <div className="analysis-form-group">
                         <label>Repo URL:</label>
                         <input
