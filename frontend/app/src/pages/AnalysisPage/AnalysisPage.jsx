@@ -423,7 +423,9 @@ const AnalysisPage = (props) => {
                 <div className="analysis-container">
                     <div className="analysis-input-container">
 
-                        <AnalysisForm />
+                        <AnalysisForm
+                            formType="compact"
+                        />
 
                         <div className="wave-light"></div>
 
