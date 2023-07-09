@@ -58,9 +58,10 @@ const ToolPage = () => {
                         />
                     </div>
                 </div>
+                <div className="wave-dark"></div>
             </div>
 
-            <div className="wave-dark"></div>
+
         </div>
     );
 }

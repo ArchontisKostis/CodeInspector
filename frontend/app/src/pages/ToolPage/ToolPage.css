@@ -1,5 +1,5 @@
 .tool-page-container {
-    height: max-content;
+    min-height: max-content;
     background-color: var(--bg-white-shade);
 }
 
@@ -27,13 +27,12 @@
 
 
 .tool-page-form-container .wave {
-    height: 20vh;
+    height: 25vh !important;
     width: 100vw;
     background-image: url("../../assets/svg/waves/wave-light-one.svg");
 }
 
 .tool-page-examples-container {
-    padding: 1em 0;
     display: flex;
     flex-direction: column;
     align-items: center;
