@@ -1,3 +1,8 @@
+.tool-page-container {
+    height: max-content;
+    background-color: var(--bg-white-shade);
+}
+
 .tool-page-form-container {
     min-height: 50vh;
     background-color: var(--primary-dark);
@@ -20,13 +25,18 @@
     padding: 0;
 }
 
-.tool-page-examples-container {
-    height: 100vh;
-    background-color: var(--bg-white-shade);
-}
 
 .tool-page-form-container .wave {
     height: 20vh;
     width: 100vw;
     background-image: url("../../assets/svg/waves/wave-light-one.svg");
+}
+
+.tool-page-examples-container {
+    padding: 1em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 110vh;
+    background-color: var(--bg-white-shade);
 }
