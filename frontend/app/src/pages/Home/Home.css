@@ -1,5 +1,5 @@
 .home-container {
     width: 100vw;
-    height: 100vh;
+    height: min-content;
     background-color: var(--primary-dark);
 }

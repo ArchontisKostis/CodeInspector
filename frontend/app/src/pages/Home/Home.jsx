@@ -3,12 +3,28 @@
 
 import React from 'react';
 
+import './Home.css';
+import homeImg from '../../assets/svg/home/home-banner-1.svg';
+import {Link} from "react-router-dom";
+import TryTheToolBanner from "../../ui/home/TryToolSection/TryTheToolBanner.jsx";
+import FeaturesSection from "../../ui/home/FeaturesSection/FeaturesSection.jsx";
+import TechniquesSection from "../../ui/home/TechniquesSection/TechniquesSection.jsx";
+import CreditsSection from "../../ui/home/CreditsSection/CreditsSection.jsx";
+
+
 const Home = (props) => {
 
     return (
         <>
             <div className="home-container">
-                <h1>Home Page</h1>
+
+                <TryTheToolBanner />
+
+                <FeaturesSection />
+
+                <TechniquesSection />
+
+                <CreditsSection />
             </div>
         </>
     );
