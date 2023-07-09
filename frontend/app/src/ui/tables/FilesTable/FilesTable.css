@@ -1,0 +1,47 @@
+.priority-label {
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+}
+
+table {
+    width: 97vw;
+    border-collapse: collapse;
+    margin: 1em;
+}
+
+table th {
+    padding: 1em 0.7em 1em 0.7em;
+    text-align: left;
+    background-color: var(--primary-dark);
+    color: white;
+}
+
+td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+td {
+    background-color: white;
+}
+
+.table-item-filename {
+    font-family: 'Source Code Pro', monospace;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
