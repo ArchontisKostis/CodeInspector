@@ -1,0 +1,19 @@
+.credits-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secondary-red);
+    height: 70vh;
+}
+
+.credits-section h2 {
+    color: white;
+    padding-bottom: 1em;
+}
+
+.credits-section article {
+    color: white;
+    text-align: center;
+    padding: 2em;
+}
