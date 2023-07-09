@@ -6,11 +6,7 @@ import React from 'react';
 import './AnalysisPage.css';
 import AnalysisForm from "../../components/AnalysisForm/AnalysisForm.jsx";
 import HotspotAnalysis from "../../components/HotspotAnalysis/HotspotAnalysis.jsx";
-import AnalysisSectionHeader from "../../ui/analysis/AnalysisSectionHeader/AnalysisSectionHeader.jsx";
-import AnalysisInfoBox from "../../ui/analysis/AnalysisInfoBox/AnalysisInfoBox.jsx";
-import AnalysisMetricsBox from "../../ui/analysis/AnalysisMetricsBox/AnalysisMetricsBox.jsx";
-import ScatterPlot from "../../ui/charts/ScatterPlot/ScatterPlot.jsx";
-import AnalysisFileBox from "../../ui/analysis/AnalysisFileBox/AnalysisFileBox.jsx";
+
 
 const AnalysisPage = (props) => {
 
@@ -433,68 +429,14 @@ const AnalysisPage = (props) => {
 
                     </div>
 
-                    <HotspotAnalysis />
+                    <HotspotAnalysis data={data}/>
 
-                    <AnalysisSectionHeader
-                        title="Analysis Info"
-                        icon="bi bi-info-circle-fill" />
 
-                    <AnalysisInfoBox
-                        projectName={"Project Name"}
-                        totalCommits={"Total Commits"}
-                        fromDate={"From Date"}
-                        toDate={"To Date"}
-                        githubUrl={"GitHub URL"}
-                    />
 
-                    <AnalysisSectionHeader
-                        title="General Metrics"
-                        icon="bi bi-speedometer" />
-
-                    <AnalysisMetricsBox
-                        avgCC={10}
-                        avgChurn={2.34}
-                        avgNLOC={2.34}
-                        totalNLOC={2.34}
-                        totalFiles={2.34}
-                        totalHotspots={2.34}
-                    />
-
-                    <AnalysisSectionHeader
-                        title="Hotspot Prioritization Matrix"
-                        icon="bi bi-graph-up" />
-
-                    <ScatterPlot data={data} />
-
-                    <AnalysisSectionHeader
-                        title="Max Complexity File"
-                        icon="bi bi-file-earmark-code" />
-
-                    <AnalysisFileBox
-                        fileName={"filename.java"}
-                        cc={10}
-                        churn={7}
-                        nloc={34}
-                    />
-
-                    <AnalysisSectionHeader
-                        title="Max Churn File"
-                        icon="bi bi-file-earmark-code" />
-
-                    <AnalysisFileBox
-                        fileName={"filename.java"}
-                        cc={4}
-                        churn={32}
-                        nloc={34}
-                    />
-
-                    <div className="btn">
-
-                        <button className="export-to-csv-btn">
-                            <i className="bi bi-filetype-csv"></i>
-                            <p>Export to CSV</p>
-                        </button>
-                    </div>
+                    <button className="export-to-csv-btn">
+                        <i className="bi bi-filetype-csv"></i>
+                        <p>Export to CSV</p>
+                    </button>
 
                     <div className="wave-dark"></div>
                 </div>
