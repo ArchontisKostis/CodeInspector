@@ -10,7 +10,7 @@ const defaultOptions = {
 
 const AnalysisPage = (props) => {
     const { isLoading, error, response } = useFetch(
-        'http://localhost:8000/api/analysis/prioritize_hotspots?repo_url=https://github.com/facebook/react-native',
+        'http://localhost:8000/api/analysis/prioritize_hotspots?repo_url=https://github.com/GeorgeApos/pyassess',
         defaultOptions
     );
 
