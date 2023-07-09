@@ -1,11 +1,41 @@
 .analysis-container {
     width: 100vw;
+    min-height: 20vh;
     height: max-content;
     background-color: var(--bg-white-shade);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+progress {
+    min-width: 97vw;
+}
+
+.error-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20vh
+}
+
+.error-msg {
+    font-size: 1.2em;
+    color: var(--primary-dark);
+    background-color: var(--secondary-red);
+    padding: 1em;
+    border-radius: 10px;
+    color: white;
+}
+
+.progress-bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 20vh;
+    margin-bottom: 10em;
 }
 
 .analysis-input-container {
