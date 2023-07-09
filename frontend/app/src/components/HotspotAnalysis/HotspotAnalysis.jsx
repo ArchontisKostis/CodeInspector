@@ -14,6 +14,23 @@ import FilesTable from "../../ui/tables/FilesTable/FilesTable.jsx";
 const HotspotAnalysis = (props) => {
     const { data } = props;
 
+    const {
+        repo_url,
+        from_date,
+        to_date,
+        max_complexity_file,
+        max_churn_file,
+        avg_complexity,
+        avg_churn,
+        avg_nloc,
+        total_nloc,
+        total_files,
+        total_outliers,
+        total_prioritized_files,
+        prioritized_files,
+        outliers,
+    } = data;
+
     return (
         <>
             <div className="hotspot-analysis">
@@ -28,9 +45,9 @@ const HotspotAnalysis = (props) => {
                         <AnalysisInfoBox
                             projectName={"Project Name"}
                             totalCommits={"Total Commits"}
-                            fromDate={"From Date"}
-                            toDate={"To Date"}
-                            githubUrl={"GitHub URL"}
+                            fromDate={from_date}
+                            toDate={to_date}
+                            githubUrl={repo_url}
                         />
                     </section>
 
@@ -40,12 +57,12 @@ const HotspotAnalysis = (props) => {
                             icon="bi bi-speedometer" />
 
                         <AnalysisMetricsBox
-                            avgCC={10}
-                            avgChurn={2.34}
-                            avgNLOC={2.34}
-                            totalNLOC={2.34}
-                            totalFiles={2.34}
-                            totalHotspots={2.34}
+                            avgCC={avg_complexity.toFixed(2)}
+                            avgChurn={avg_churn.toFixed(2)}
+                            avgNLOC={avg_nloc.toFixed(2)}
+                            totalNLOC={total_nloc}
+                            totalFiles={total_files}
+                            totalHotspots={total_prioritized_files}
                         />
                     </section>
 
@@ -55,10 +72,10 @@ const HotspotAnalysis = (props) => {
                             icon="bi bi-file-earmark-code" />
 
                         <AnalysisFileBox
-                            fileName={"filename.java"}
-                            cc={10}
-                            churn={7}
-                            nloc={34}
+                            fileName={max_complexity_file.name}
+                            cc={max_complexity_file.metrics.CC}
+                            churn={max_complexity_file.metrics.CHURN}
+                            nloc={max_complexity_file.metrics.NLOC}
                         />
                     </section>
 
@@ -68,10 +85,10 @@ const HotspotAnalysis = (props) => {
                             icon="bi bi-file-earmark-code" />
 
                         <AnalysisFileBox
-                            fileName={"filename.java"}
-                            cc={4}
-                            churn={32}
-                            nloc={34}
+                            fileName={max_churn_file.name}
+                            cc={max_churn_file.metrics.CC}
+                            churn={max_churn_file.metrics.CHURN}
+                            nloc={max_churn_file.metrics.NLOC}
                         />
                     </section>
 
@@ -81,13 +98,13 @@ const HotspotAnalysis = (props) => {
                     title="Hotspot Prioritization Matrix"
                     icon="bi bi-graph-up" />
 
-                <ScatterPlot data={data} />
+                <ScatterPlot data={prioritized_files} />
 
                 <AnalysisSectionHeader
                     title="Modified Files"
                     icon="bi bi-file-earmark-binary" />
 
-                <FilesTable files={data} />
+                <FilesTable files={[...outliers, ...prioritized_files]} />
 
             </div>
         </>
