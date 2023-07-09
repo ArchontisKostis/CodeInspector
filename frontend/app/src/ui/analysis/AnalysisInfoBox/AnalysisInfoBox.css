@@ -1,13 +1,15 @@
 .analysis-info-box-container {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    padding: 1em 0 0 1em;
+    min-width: max-content;
 }
 
 .analysis-info-box {
     color: white;
-    width: 95vw;
-    height: max-content;
+    min-width: calc(100% - 5em);
+    min-height: 25vh;
     background-color: var(--secondary-red);
     padding: 1em;
     border-radius: 25px;
