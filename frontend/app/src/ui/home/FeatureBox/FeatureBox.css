@@ -11,6 +11,10 @@
     margin: 1em;
     color: white;
     transition: all 0.3s ease-in-out;
+
+    box-shadow: 5px 6px 5px 0px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 5px 6px 5px 0px rgba(0,0,0,0.45);
+    -moz-box-shadow: 5px 6px 5px 0px rgba(0,0,0,0.4);
 }
 
 .feature-box-container h2 {
@@ -29,8 +33,4 @@
 
 .feature-box-container p {
     text-align: center;
-}
-
-.feature-box-container:hover {
-    transform: scale(1.05);
 }
