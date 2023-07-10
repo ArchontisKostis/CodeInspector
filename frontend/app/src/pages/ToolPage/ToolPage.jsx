@@ -4,17 +4,18 @@ import logo from '../../assets/svg/logo_white.svg';
 import './ToolPage.css';
 import AnalysisForm from "../../components/AnalysisForm/AnalysisForm.jsx";
 import ExampleAnalysisBox from "../../ui/ExampleAnalysisBox/ExampleAnalysisBox.jsx";
+import Wave from "../../ui/Wave/Wave.jsx";
 
 const ToolPage = () => {
     return (
         <div className="tool-page-container">
             <div className="tool-page-form-container">
-                <img src={logo} />
+                <img src={logo} className="logo"/>
                 <h1>CodeInspector</h1>
 
                 <AnalysisForm />
 
-                <div className="wave"></div>
+                <Wave waveStyle="light" />
             </div>
 
             <div className="tool-page-examples-container">
@@ -58,7 +59,9 @@ const ToolPage = () => {
                         />
                     </div>
                 </div>
-                <div className="wave-dark"></div>
+
+                <Wave waveStyle="dark" />
+
             </div>
 
 

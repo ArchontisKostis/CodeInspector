@@ -12,7 +12,7 @@
     align-items: center;
 }
 
-.tool-page-form-container img {
+.tool-page-form-container .logo {
     height: 15vh;
     padding: 1em;
 }
