@@ -58,7 +58,7 @@ nav .nav-item {
     right: 0;
     width: 0;
     height: 2px;
-    background-color: white;
+    background-color: var(--bg-white-shade);
     transition: width 0.5s;
     transform: scaleX(0); /* Initially set to scale 0 */
     transform-origin: right; /* Set transform origin to the right */
