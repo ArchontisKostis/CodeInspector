@@ -1,13 +1,18 @@
 import React from "react";
 
 import './TechniquesSection.css';
-import TechniqueBox from "../TechniqueBox/TechniqueBox.jsx";
+import TechniqueBox from "../../ui/home/TechniqueBox/TechniqueBox.jsx";
+import Wave from "../../ui/Wave/Wave.jsx";
 
 const TechniquesSection = () => {
     return (
         <div className="techniques-section">
+            <Wave
+                waveStyle="dark"
+            />
+
             <h2>Sophisticated Analysis Techniques</h2>
-            <article>
+            <article className="techniques-section-desc">
                 At CodeInspector, we employ sophisticated analysis techniques to deliver
                 comprehensive insights into your codebase. Our app leverages the Delta Maintainability
                 Model (DMM) and the Eisenhower Matrix to help you make informed decisions and drive impactful

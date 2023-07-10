@@ -1,8 +1,9 @@
 import React from 'react';
-import homeImg from "../../../assets/svg/home/home-banner-1.svg";
+import homeImg from "../../assets/svg/home/home-banner-1.svg";
 import {Link} from "react-router-dom";
 
 import './TryTheToolBanner.css';
+import Wave from "../../ui/Wave/Wave.jsx";
 
 export default function TryTheToolBanner() {
     return (
@@ -30,7 +31,7 @@ export default function TryTheToolBanner() {
                 </section>
             </div>
 
-            <div className="home-wave-light"></div>
+
         </>
     );
 }
