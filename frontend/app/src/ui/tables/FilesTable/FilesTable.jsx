@@ -39,6 +39,7 @@ const FilesTable = (props) => {
     });
 
     return (
+        <>
         <table>
             <thead>
             <tr>
@@ -67,6 +68,12 @@ const FilesTable = (props) => {
             ))}
             </tbody>
         </table>
+
+        <button className="export-to-csv-btn">
+            <i className="bi bi-filetype-csv"></i>
+            <p>Export to CSV</p>
+        </button>
+        </>
     );
 };
 
