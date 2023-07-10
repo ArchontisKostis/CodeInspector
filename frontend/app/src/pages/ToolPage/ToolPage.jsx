@@ -31,32 +31,36 @@ const ToolPage = () => {
                         <ExampleAnalysisBox
                             project_name="PyAssess"
                             repo_url="https://github.com/GeorgeApos/pyassess"
-                            analysis_from_date="01/01/2021"
-                            analysis_to_date="01/02/2021"
+                            analysis_from_date="2010-10-10"
+                            analysis_to_date="2023-10-10"
+                            analysis_type="hotspot-prioritization"
                         />
                     </div>
                     <div className="example-box">
                         <ExampleAnalysisBox
-                            project_name="CodeInspector"
-                            repo_url="#"
-                            analysis_from_date="01/01/2021"
-                            analysis_to_date="01/02/2021"
+                            project_name="PhysioAssistant Android"
+                            repo_url="https://github.com/Android-Development-UoM/PhysioAssistant-FrontEnd"
+                            analysis_from_date="2010-10-10"
+                            analysis_to_date="2023-10-10"
+                            analysis_type="hotspot-prioritization"
                         />
                     </div>
                     <div className="example-box">
                         <ExampleAnalysisBox
-                            project_name="CodeInspector"
-                            repo_url="#"
-                            analysis_from_date="01/01/2021"
-                            analysis_to_date="01/02/2021"
+                            project_name="PyAssess"
+                            repo_url="https://github.com/GeorgeApos/pyassess"
+                            analysis_from_date="2010-10-10"
+                            analysis_to_date="2023-10-10"
+                            analysis_type="hotspot-prioritization"
                         />
                     </div>
                     <div className="example-box">
                         <ExampleAnalysisBox
-                            project_name="CodeInspector"
-                            repo_url="#"
-                            analysis_from_date="01/01/2021"
-                            analysis_to_date="01/02/2021"
+                            project_name="PyAssess"
+                            repo_url="https://github.com/GeorgeApos/pyassess"
+                            analysis_from_date="2010-10-10"
+                            analysis_to_date="2023-10-10"
+                            analysis_type="hotspot-prioritization"
                         />
                     </div>
                 </div>
