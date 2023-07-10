@@ -5,9 +5,12 @@ import React, {useState} from 'react';
 
 import './AnalysisForm.css'
 import "bootstrap-icons/font/bootstrap-icons.css";
+import {useNavigate} from "react-router-dom";
 
 const AnalysisForm = (props) => {
     const { formType } = props;
+
+    const navigate = useNavigate()
 
     const [formData, setFormData] = useState({
         repoUrl: '',
@@ -18,7 +21,11 @@ const AnalysisForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
+
+        const queryParams = new URLSearchParams(formData);
+        const queryString = queryParams.toString();
+
+        navigate(`/analysis?${queryString}`);
     };
 
     const handleChange = (e) => {
