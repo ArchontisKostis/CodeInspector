@@ -13,8 +13,8 @@ const Footer = () => {
                     <i className="bi bi-info-circle-fill hover-border"> How it works</i>
                 </a>
 
-                <a href="#" className="footer-link" id="link-3">
-                    <i className="bi bi-plugin hover-border"> API</i>
+                <a href="http://localhost:8000/redoc" className="footer-link" id="link-3">
+                    <i className="bi bi-plugin hover-border"> API Redoc</i>
                 </a>
 
                 <a href="#" className="footer-link" id="link-4">
