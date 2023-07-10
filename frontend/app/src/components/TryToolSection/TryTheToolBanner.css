@@ -32,6 +32,7 @@
 
 .try-the-tool-text article, .try-the-tool-text h2 {
     color: white;
+    text-align: left;
 }
 
 .try-the-tool-text {
