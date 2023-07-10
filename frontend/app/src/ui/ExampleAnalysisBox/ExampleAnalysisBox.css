@@ -5,21 +5,32 @@
     border-radius: 25px;
     color: white;
 
-    box-shadow: 5px 6px 5px 0px rgba(0,0,0,0.1);
-    -webkit-box-shadow: 5px 6px 5px 0px rgba(0,0,0,0.45);
-    -moz-box-shadow: 5px 6px 5px 0px rgba(0,0,0,0.4);
+    box-shadow: 5px 6px 5px 0 rgba(0,0,0,0.45);
+    -webkit-box-shadow: 5px 6px 5px 0 rgba(0,0,0,0.45);
+    -moz-box-shadow: 5px 6px 5px 0 rgba(0,0,0,0.45);
+
+    transition: all 0.34s ease-in-out;
+}
+
+.example-analysis-box:hover {
+    transform: scale(1.05);
+    cursor: pointer;
 }
 
 .example-analysis-box i {
     font-style: normal;
     font-weight: bold;
     font-size: 1.5em;
+    text-align: center;
+    display: block;
+    width: inherit;
 }
 
 .example-analysis-box h3 {
     font-weight: bold;
     font-size: 1.2em;
     color: white;
+    text-align: left;
 }
 
 .example-analysis-box p {
