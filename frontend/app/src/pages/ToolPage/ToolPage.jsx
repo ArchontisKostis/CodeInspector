@@ -7,6 +7,7 @@ import ExampleAnalysisBox from "../../ui/ExampleAnalysisBox/ExampleAnalysisBox.j
 import Wave from "../../ui/Wave/Wave.jsx";
 
 const ToolPage = () => {
+
     return (
         <div className="tool-page-container">
             <div className="tool-page-form-container">
