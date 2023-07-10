@@ -16,6 +16,10 @@
     background-color: var(--primary-dark)
 }
 
+.wave-container .red-bg {
+    background-color: var(--secondary-red);
+}
+
 .wave-svg {
     width: 100vw;
     max-height: 45vh;
@@ -36,3 +40,4 @@
 
     content: url("../../assets/svg/waves/wave-light-one.svg");
 }
+
