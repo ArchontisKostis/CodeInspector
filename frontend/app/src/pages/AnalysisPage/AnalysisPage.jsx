@@ -26,19 +26,32 @@ const AnalysisPage = (props) => {
         let constructedApiUrl = '';
 
         if (analysisType === 'hotspot-prioritization') {
-            constructedApiUrl = `http://localhost:8000/api/analysis/prioritize_hotspots?repo_url=${encodeURIComponent(repoUrl)}`;
+            constructedApiUrl = `http://localhost:8000/api/analysis/prioritize_hotspots`;
         } else if (analysisType === 'commit-analysis') {
-            constructedApiUrl = `http://localhost:8000/api/analysis/commits?repo_url=${encodeURIComponent(repoUrl)}`;
+            constructedApiUrl = `http://localhost:8000/api/analysis/commits`;
+        }
+
+        const queryParams = new URLSearchParams();
+
+        if (repoUrl) {
+            queryParams.set('repo_url', repoUrl);
         }
 
         if (fromDate && toDate) {
-            constructedApiUrl = `${constructedApiUrl}&from_date=${encodeURIComponent(fromDate)}&to_date=${encodeURIComponent(toDate)}`;
+            queryParams.set('from_date', fromDate);
+            queryParams.set('to_date', toDate);
         } else if (fromDate) {
-            constructedApiUrl = `${constructedApiUrl}&from_date=${encodeURIComponent(fromDate)}`;
+            queryParams.set('from_date', fromDate);
         } else if (toDate) {
-            constructedApiUrl = `${constructedApiUrl}&to_date=${encodeURIComponent(toDate)}`;
+            queryParams.set('to_date', toDate);
         }
 
+        const queryString = queryParams.toString();
+        if (queryString) {
+            constructedApiUrl += `?${queryString}`;
+        }
+
+        console.log('constructedApiUrl:', constructedApiUrl);
         setApiUrl(constructedApiUrl);
     }, [repoUrl, fromDate, toDate, analysisType]);
 
