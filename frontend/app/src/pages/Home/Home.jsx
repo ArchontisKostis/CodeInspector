@@ -6,10 +6,10 @@ import React from 'react';
 import './Home.css';
 import homeImg from '../../assets/svg/home/home-banner-1.svg';
 import {Link} from "react-router-dom";
-import TryTheToolBanner from "../../ui/home/TryToolSection/TryTheToolBanner.jsx";
-import FeaturesSection from "../../ui/home/FeaturesSection/FeaturesSection.jsx";
-import TechniquesSection from "../../ui/home/TechniquesSection/TechniquesSection.jsx";
-import CreditsSection from "../../ui/home/CreditsSection/CreditsSection.jsx";
+import TryTheToolBanner from "../../components/TryToolSection/TryTheToolBanner.jsx";
+import FeaturesSection from "../../components/FeaturesSection/FeaturesSection.jsx";
+import TechniquesSection from "../../components/TechniquesSection/TechniquesSection.jsx";
+import CreditsSection from "../../components/CreditsSection/CreditsSection.jsx";
 
 
 const Home = (props) => {
