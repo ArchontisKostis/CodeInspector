@@ -1,6 +1,7 @@
 import React from "react";
 
 import './CreditsSection.css';
+import Wave from "../../ui/Wave/Wave.jsx";
 
 const CreditsSection = () => {
     return (
@@ -13,11 +14,41 @@ const CreditsSection = () => {
             </article>
 
             <article>
-                We would like to acknowledge the contributions of the FastAPI, Python, React, and PyDriller communities,
-                whose efforts have played a crucial role in the development of CodeInspectorREST and CodeInspector.
-                Their contributions have enabled the creation of this tool that can help developers and promote repository mining analysis
-                in the software industry.
+                I would like to extend my heartfelt gratitude to all the individuals who have provided support and valuable advice
+                throughout the development of this Web App, which is an integral part of my bachelor's thesis. Their encouragement and
+                guidance have been instrumental in the successful completion of this project.
             </article>
+
+            <article>
+                This Web App was developed using several libraries and frameworks and tools, which have played a pivotal role in enhancing its functionality and performance.
+                I would like to express my gratitude to the creators and maintainers
+            </article>
+
+            <h3 className="made-with-header">Made With:</h3>
+
+            <div className="made-with-container">
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+                    className="made-with-logo"
+                    alt="React Logo"
+                />
+
+                <img
+                    src="https://fastapi.tiangolo.com/img/icon-white.svg"
+                    className="made-with-logo"
+                    alt="FastAPI Logo"
+                />
+
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Docker_%28container_engine%29_logo_%28cropped%29.png"
+                    className="made-with-logo wide"
+                    alt="React Logo"
+                />
+            </div>
+
+            <Wave
+                waveStyle="dark red-bg"
+            />
         </div>
     );
 }

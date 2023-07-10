@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     background-color: var(--secondary-red);
-    height: 70vh;
+    height: max-content;
 }
 
 .credits-section h2 {
@@ -16,4 +16,28 @@
     color: white;
     text-align: center;
     padding: 2em;
+    width: 50vw;
+}
+
+.made-with-header {
+    color: white;
+    padding-bottom: 1em;
+}
+
+.made-with-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1em 0 5em 0;
+}
+
+.made-with-container img {
+    width: 10vw;
+    height: auto;
+    margin: 0 1em;
+}
+
+.made-with-container .wide {
+    width: 15vw;
 }
