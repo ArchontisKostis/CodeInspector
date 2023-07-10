@@ -1,4 +1,5 @@
 import React from 'react';
+import { saveAs } from 'file-saver';
 
 import './FilesTable.css';
 
@@ -38,6 +39,34 @@ const FilesTable = (props) => {
         return priorityOrder[a.priority] - priorityOrder[b.priority];
     });
 
+    const exportToCSV = () => {
+        const csvRows = [];
+        const headers = ['Name', 'CC', 'NLOC', 'CHURN', 'Priority'];
+
+        // Prepare the data for CSV export
+        csvRows.push(headers.join(',')); // Add headers to the CSV rows
+
+        files.forEach((file) => {
+            const rowData = [
+                file.name,
+                file.metrics.CC,
+                file.metrics.NLOC,
+                file.metrics.CHURN,
+                file.priority,
+            ];
+            csvRows.push(rowData.join(','));
+        });
+
+        // Create the CSV content
+        const csvContent = csvRows.join('\n');
+
+        // Create a Blob object with the CSV content
+        const csvBlob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+
+        // Save the CSV file using FileSaver.js
+        saveAs(csvBlob, 'project-files.csv');
+    };
+
     return (
         <>
         <table>
@@ -69,7 +98,7 @@ const FilesTable = (props) => {
             </tbody>
         </table>
 
-        <button className="export-to-csv-btn">
+        <button className="export-to-csv-btn" onClick={exportToCSV}>
             <i className="bi bi-filetype-csv"></i>
             <p>Export to CSV</p>
         </button>
