@@ -3,6 +3,7 @@ import './AnalysisPage.css';
 import AnalysisForm from "../../components/AnalysisForm/AnalysisForm.jsx";
 import HotspotAnalysis from "../../components/HotspotAnalysis/HotspotAnalysis.jsx";
 import useFetch from "../../hooks/useFetch.js";
+import Wave from "../../ui/Wave/Wave.jsx";
 
 const defaultOptions = {
     method: 'GET',
@@ -42,7 +43,10 @@ const AnalysisPage = (props) => {
             <div className="analysis-container">
                 <div className="analysis-input-container">
                     <AnalysisForm formType="compact" />
-                    <div className="wave-light"></div>
+
+                    <Wave
+                        waveStyle="light"
+                    />
                 </div>
 
                 {isLoading ? (
@@ -71,7 +75,9 @@ const AnalysisPage = (props) => {
                     )
                 )}
 
-                <div className="wave-dark"></div>
+                <Wave
+                    waveStyle="dark"
+                />
             </div>
         </>
     );
