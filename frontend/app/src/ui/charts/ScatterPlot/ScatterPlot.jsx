@@ -1,11 +1,8 @@
 import React from 'react';
 import { Scatter } from 'react-chartjs-2';
-import { Chart, CategoryScale, LinearScale, PointElement, LineElement, Title } from 'chart.js';
+import { Chart, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip } from 'chart.js';
 
 import './ScatterPlot.css';
-
-// Register the required chart elements
-Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Title);
 
 const ScatterPlot = (props) => {
     const { data } = props;
@@ -17,6 +14,9 @@ const ScatterPlot = (props) => {
         label: item.name,
         priority: item.priority,
     }));
+
+    // Register the required chart elements
+    Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip); // Add Tooltip to the registered elements
 
     const chartOptions = {
         scales: {
@@ -41,15 +41,16 @@ const ScatterPlot = (props) => {
             tooltip: {
                 callbacks: {
                     label: function(context) {
-                        // Extract the label and priority from the data
-                        const label = context.dataset.data[context.dataIndex].label;
-                        const priority = context.dataset.data[context.dataIndex].priority;
+                        let text = [];
+                        text.push('File: ' + context.raw.label);
+                        text.push('CC: ' + context.parsed.x);
+                        text.push('CHURN: ' + context.parsed.y);
+                        text.push('Priority: ' + context.dataset.data[context.dataIndex].priority);
 
-                        // Return the label and priority as the tooltip
-                        console.log(label, priority);
-                    }
-                }
-            }
+                        return text;
+                    },
+                },
+            },
         },
     };
 
@@ -69,18 +70,16 @@ const ScatterPlot = (props) => {
                         return 'rgba(75, 192, 192, 1)'; // Default color for other priorities
                     }
                 }),
-                pointRadius: 6,
+                pointRadius: 4,
+                hoverRadius: 5,
+                hoverBackgroundColor: '#2E2A2A',
             },
         ],
     };
 
     return (
         <div className="scatter-plot-container">
-            <Scatter
-                className="scatter-plot"
-                data={chartDataConfig}
-                options={chartOptions}
-            />
+            <Scatter className="scatter-plot" data={chartDataConfig} options={chartOptions} />
         </div>
     );
 };
