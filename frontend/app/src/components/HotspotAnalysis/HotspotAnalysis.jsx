@@ -34,7 +34,7 @@ const HotspotAnalysis = (props) => {
     return (
         <>
             <div className="hotspot-analysis">
-                <h1>Hotspot Analysis</h1>
+                <h1 className="hotspot-analysis-header">Hotspot Analysis</h1>
 
                 <div className="analysis-boxes-container">
                     <section className="analysis-section-item">

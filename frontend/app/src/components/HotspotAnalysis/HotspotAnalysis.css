@@ -3,6 +3,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    z-index: 1;
+}
+
+.hotspot-analysis .hotspot-analysis-header {
+
 }
 
 .analysis-boxes-container {
