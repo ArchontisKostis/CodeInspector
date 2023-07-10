@@ -6,6 +6,7 @@ import useFetch from "../../hooks/useFetch.js";
 import Wave from "../../ui/Wave/Wave.jsx";
 import {useLocation} from "react-router-dom";
 import CommitAnalysis from "../../components/CommitAnalysis/CommitAnalysis.jsx";
+import LoadingBar from "../../ui/LoadingBar/LoadingBar.jsx";
 
 const defaultOptions = {
     method: 'GET',
@@ -78,7 +79,7 @@ const AnalysisPage = (props) => {
                         <h2>Analysing Repository</h2>
                         <p>This might take a while. Grab a coffee and relax!</p>
 
-                        <progress className="progress-bar" />
+                        <LoadingBar />
                     </div>
                 ) : error ? (
                     <div className="error-container">
