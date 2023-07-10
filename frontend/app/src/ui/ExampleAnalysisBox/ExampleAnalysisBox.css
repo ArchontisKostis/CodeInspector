@@ -4,6 +4,10 @@
     min-width: 25vw;
     border-radius: 25px;
     color: white;
+
+    box-shadow: 5px 6px 5px 0px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 5px 6px 5px 0px rgba(0,0,0,0.45);
+    -moz-box-shadow: 5px 6px 5px 0px rgba(0,0,0,0.4);
 }
 
 .example-analysis-box i {
@@ -38,6 +42,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+    padding-bottom: 10em;
 }
 
 .example-box {
