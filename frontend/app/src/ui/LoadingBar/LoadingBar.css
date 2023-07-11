@@ -8,7 +8,7 @@
 }
 .loader:before {
     content: '';
-    border: 0.25em solid var(--secondary-red);
+    border: 0.25em solid var(--primary-red);
     border-radius: 10px;
     position: absolute;
     top: -4px;
@@ -23,7 +23,7 @@
     right: 100%;
     bottom: 0;
     left: 0;
-    background: var(--secondary-red);
+    background: var(--primary-red);
     width: 0;
     animation: bar-anim 2s linear infinite;
     margin: 0.25em;
