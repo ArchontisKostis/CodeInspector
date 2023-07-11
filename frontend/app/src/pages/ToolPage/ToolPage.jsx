@@ -3,7 +3,7 @@ import React from "react";
 import logo from '../../assets/svg/logo_white.svg';
 import './ToolPage.css';
 import AnalysisForm from "../../components/AnalysisForm/AnalysisForm.jsx";
-import ExampleAnalysisBox from "../../ui/ExampleAnalysisBox/ExampleAnalysisBox.jsx";
+import ExampleAnalysisBox from "../../ui/boxes/ExampleAnalysisBox/ExampleAnalysisBox.jsx";
 import Wave from "../../ui/Wave/Wave.jsx";
 
 const ToolPage = () => {
