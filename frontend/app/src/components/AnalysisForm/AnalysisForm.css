@@ -37,7 +37,7 @@ input {
 }
 
 input:focus {
-    outline: var(--secondary-red) 2px solid;
+    outline: var(--primary-red) 2px solid;
 }
 
 input[type="date"] {
@@ -51,7 +51,7 @@ input[type="url"] {
 input[type="radio"] {
     height: min-content;
     outline: none;
-    accent-color: var(--secondary-red);
+    accent-color: var(--primary-red);
 }
 
 .analysis-form-group {
@@ -83,7 +83,7 @@ input[type="radio"] {
 }
 
 .analysis-form-submit-btn:hover {
-    background-color: var(--secondary-red);
+    background-color: var(--primary-red);
 }
 
 .analysis-form-submit-btn i { margin: 0 0.25em 0; }
