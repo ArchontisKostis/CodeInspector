@@ -10,7 +10,7 @@ const Wave = (props) => {
 
     return (
         <div className={"wave-container " + waveStyle} >
-            <img src="" className={"wave-svg " + waveStyle}></img>
+            <img src={wave} className={"wave-svg " + waveStyle}></img>
         </div>
     );
 }

@@ -17,7 +17,7 @@
 }
 
 .wave-container .red-bg {
-    background-color: var(--secondary-red);
+    background-color: var(--primary-red);
 }
 
 .wave-svg {
@@ -35,9 +35,3 @@
 .wave-svg.dark {
     content: url("../../assets/svg/waves/wave-dark-one.svg");
 }
-
-.wave-svg.light {
-
-    content: url("../../assets/svg/waves/wave-light-one.svg");
-}
-
