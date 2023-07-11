@@ -5,7 +5,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    background-color: var(--secondary-red);
+    background-color: var(--primary-red);
     padding: 2em;
     border-radius: 1em;
     margin: 1em;
