@@ -5,11 +5,11 @@ import React from 'react';
 
 import './HotspotAnalysis.css';
 import AnalysisSectionHeader from "../../ui/analysis/AnalysisSectionHeader/AnalysisSectionHeader.jsx";
-import AnalysisInfoBox from "../../ui/analysis/AnalysisInfoBox/AnalysisInfoBox.jsx";
-import AnalysisMetricsBox from "../../ui/analysis/AnalysisMetricsBox/AnalysisMetricsBox.jsx";
+import AnalysisMetricsBox from "../../ui/boxes/AnalysisMetricsBox/AnalysisMetricsBox.jsx";
 import ScatterPlot from "../../ui/charts/ScatterPlot/ScatterPlot.jsx";
-import AnalysisFileBox from "../../ui/analysis/AnalysisFileBox/AnalysisFileBox.jsx";
-import FilesTable from "../../ui/tables/FilesTable/FilesTable.jsx";
+import AnalysisFileBox from "../../ui/boxes/AnalysisFileBox/AnalysisFileBox.jsx";
+import PaginatedTable from "../../ui/PaginatedTable/PaginatedTable.jsx";
+import AnalysisInfoSection from "../../ui/analysis/sections/AnalysisInfoSection/AnalysisInfoSection.jsx";
 
 const HotspotAnalysis = (props) => {
     const { data } = props;
@@ -31,25 +31,28 @@ const HotspotAnalysis = (props) => {
         outliers,
     } = data;
 
+    const filesColumns = [
+        { key: 'name', label: 'Filename' },
+        { key: 'metrics.CC', label: 'CC', nested: true },
+        { key: 'metrics.NLOC', label: 'NLOC', nested: true },
+        { key: 'metrics.CHURN', label: 'CHURN', nested: true },
+        { key: 'priority', label: 'Priority' },
+    ];
+
+
     return (
         <>
             <div className="hotspot-analysis">
                 <h1 className="hotspot-analysis-header">Hotspot Analysis</h1>
 
                 <div className="analysis-boxes-container">
-                    <section className="analysis-section-item">
-                        <AnalysisSectionHeader
-                            title="Analysis Info"
-                            icon="bi bi-info-circle-fill" />
-
-                        <AnalysisInfoBox
-                            projectName={"Project Name"}
-                            totalCommits={"Total Commits"}
-                            fromDate={from_date}
-                            toDate={to_date}
-                            githubUrl={repo_url}
-                        />
-                    </section>
+                    <AnalysisInfoSection
+                        projectName={"Project Name"}
+                        totalCommits={"Total Commits"}
+                        fromDate={from_date}
+                        toDate={to_date}
+                        githubUrl={repo_url}
+                    />
 
                     <section className="analysis-section-item">
                         <AnalysisSectionHeader
@@ -104,7 +107,12 @@ const HotspotAnalysis = (props) => {
                     title="Modified Files"
                     icon="bi bi-file-earmark-binary" />
 
-                <FilesTable files={[...outliers, ...prioritized_files]} />
+                <PaginatedTable
+                    data={[...outliers, ...prioritized_files]}
+                    itemsPerPage={10}
+                    columns={filesColumns}
+                    exportFilename={`hotspot-analysis-code-inspector`}
+                />
 
             </div>
         </>
