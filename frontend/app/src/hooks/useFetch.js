@@ -5,10 +5,9 @@ const useFetch = (url) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    console.log("UseFetch: " + url);
-
-
     useEffect(() => {
+        let mounted = true;
+
         const fetchData = async () => {
             if (!url) return; // Return early if no URL is provided
 
@@ -21,8 +20,9 @@ const useFetch = (url) => {
                     },
                 });
                 const json = await res.json();
-                console.log("Response: " + json)
-                setResponse(json);
+                if (mounted) {
+                    setResponse(json);
+                }
             } catch (err) {
                 setError(err);
             }
@@ -31,9 +31,11 @@ const useFetch = (url) => {
         };
 
         fetchData();
-    }, [url]);
 
-    console.log("Response: " + response);
+        return () => {
+            mounted = false;
+        };
+    }, [url]);
 
     return { response, isLoading, error };
 };
