@@ -22,7 +22,7 @@
 }
 
 .footer-copyright a:hover {
-    color: var(--secondary-red);
+    color: var(--primary-red);
 }
 
 .footer-content {
@@ -30,7 +30,7 @@
     align-items: center;
     grid-template-areas:
     'link1 link5 image'
-    'link2 link2 image'
+    'link2 link6 image'
     'link3 link3 image'
     'link4 link4 image'
     ;
