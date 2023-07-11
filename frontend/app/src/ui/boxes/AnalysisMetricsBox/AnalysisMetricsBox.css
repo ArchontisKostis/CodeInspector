@@ -13,7 +13,7 @@
     color: white;
     min-width: calc(100% - 5em);
     min-height: 27vh;
-    background-color: var(--secondary-red);
+    background-color: var(--primary-red);
     padding: 1em;
     border-radius: 25px;
 }

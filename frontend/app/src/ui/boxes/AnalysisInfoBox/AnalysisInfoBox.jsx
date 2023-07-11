@@ -18,10 +18,13 @@ const AnalysisInfoBox = (props) => {
         <>
             <div className="analysis-info-box-container">
                 <div className="analysis-info-box">
-                    <h3>{projectName}</h3>
-                    <p>Total Commits: {totalCommits}</p>
-                    <p>From: {formatDate(fromDate)}</p>
-                    <p>To: {formatDate(toDate)}</p>
+                    <h3>
+                        <i className="bi bi-github"> </i>
+                        {projectName}
+                    </h3>
+                    <p><b>Total Commits:</b> {totalCommits}</p>
+                    <p><b>From:</b> {formatDate(fromDate)}</p>
+                    <p><b>To:</b> {formatDate(toDate)}</p>
                     <a href={githubUrl} target="_blank" rel="noopener noreferrer">GitHub Repository</a>
                 </div>
             </div>

@@ -7,7 +7,7 @@
 }
 
 .analysis-file-box {
-    background-color: var(--secondary-red);
+    background-color: var(--primary-red);
     color: white;
     min-width: calc(100% - 5em);
     padding: 1em;
