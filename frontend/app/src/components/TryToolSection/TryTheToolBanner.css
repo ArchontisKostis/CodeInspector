@@ -44,14 +44,14 @@
     text-decoration: none;
     padding: 1em;
     margin: 1em 0;
-    background-color: var(--secondary-red);
+    background-color: var(--primary-red);
     border-radius: 100px;
     transition: all 0.34s ease-in-out;
 }
 
 .tool-btn:hover {
     background-color: white;
-    color: var(--secondary-red);
+    color: var(--primary-red);
 }
 
 .tool-btn i {
