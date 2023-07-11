@@ -80,11 +80,17 @@ const AnalysisPage = (props) => {
         <>
             <div className="analysis-container">
                 <div className="analysis-input-container">
-                    <AnalysisForm formType="compact" />
+                    {/*<AnalysisForm formType="compact" />*/}
 
+                    <h2 className="analysis-results-header">Analysis Results</h2>
+                    <p className="analysis-results-subheader">
+                        Your analysis results will be displayed here. You can also download the results as a CSV file.
+                    </p>
                     <Wave
                         waveStyle="light"
                     />
+
+
                 </div>
 
                 {isLoading ? (
@@ -103,11 +109,14 @@ const AnalysisPage = (props) => {
                 ) : (
                     response && (
                         <>
-                            {analysisType === 'hotspot-prioritization' ? (
-                                <HotspotAnalysis data={analysis} />
-                            ) : (
-                                <CommitAnalysis />
-                            )}
+                            <>
+
+                                {analysisType === 'hotspot-prioritization' ? (
+                                    response && <HotspotAnalysis data={response.analysis} />
+                                ) : analysisType === 'commit-analysis' ? (
+                                    response && <CommitAnalysis data={response.commit_analysis} />
+                                ) : null}
+                            </>
                         </>
                     )
                 )}

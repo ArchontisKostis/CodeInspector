@@ -24,7 +24,7 @@ progress {
 
 .error-msg {
     font-size: 1.2em;
-    background-color: var(--secondary-red);
+    background-color: var(--primary-red);
     padding: 1em;
     border-radius: 10px;
     color: white;
@@ -45,12 +45,16 @@ progress {
     align-items: center;
     justify-content: space-between;
     width: 100vw;
-    height: 45vh;
+    height: max-content;
     background-color: var(--primary-dark);
     position: relative;
     padding: 2em 0 0 0;
 }
 
+.analysis-results-header, .analysis-results-subheader {
+    color: white;
+    text-align: center;
+}
 
 .export-to-csv-btn {
     margin: 3em 0 3em 0;
@@ -77,7 +81,7 @@ progress {
 }
 
 .export-to-csv-btn:hover {
-    background-color: var(--secondary-red);
+    background-color: var(--primary-red);
 
 }
 
