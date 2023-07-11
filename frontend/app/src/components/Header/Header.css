@@ -1,7 +1,7 @@
 .header {
     height: 10vh;
     width: 100vw;
-    background-color: var(--secondary-red);
+    background-color: var(--primary-red);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
