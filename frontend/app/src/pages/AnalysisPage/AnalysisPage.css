@@ -1,0 +1,92 @@
+.analysis-container {
+    width: 100vw;
+    min-height: 20vh;
+    height: max-content;
+    background-color: var(--bg-white-shade);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+progress {
+    min-width: 97vw;
+}
+
+.error-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20vh;
+    margin: 10em;
+
+}
+
+.error-msg {
+    font-size: 1.2em;
+    background-color: var(--primary-red);
+    padding: 1em;
+    border-radius: 10px;
+    color: white;
+}
+
+.progress-bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 20vh;
+    margin: 4em;
+}
+
+.analysis-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: max-content;
+    background-color: var(--primary-dark);
+    position: relative;
+    padding: 2em 0 0 0;
+}
+
+.analysis-results-header, .analysis-results-subheader {
+    color: white;
+    text-align: center;
+}
+
+.export-to-csv-btn {
+    margin: 3em 0 3em 0;
+    background-color: var(--primary-dark);
+    color: white;
+    border: none;
+    height: 10vh;
+    width: 20vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    justify-self: center;
+    border-radius: 50px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.export-to-csv-btn i {
+    margin-right: 0.25em;
+    font-size: 1.8em;
+}
+
+.export-to-csv-btn:hover {
+    background-color: var(--primary-red);
+
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

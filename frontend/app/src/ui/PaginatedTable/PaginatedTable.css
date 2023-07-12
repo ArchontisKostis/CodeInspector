@@ -1,0 +1,72 @@
+.paginated-table {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table {
+    width: 97%;
+    border-collapse: collapse;
+}
+
+table th {
+    padding: 1em 0.7em 1em 0.7em;
+    text-align: left;
+    background-color: var(--primary-dark);
+    color: white;
+}
+
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    word-break: break-word;
+}
+
+td {
+    background-color: white;
+}
+
+.table-item-filename {
+    font-family: 'Source Code Pro', monospace;
+}
+
+.pagination {
+    padding: 2em 0;
+}
+
+.pagination button {
+    background-color: var(--primary-dark);
+    color: var(--bg-white-shade);
+    border: none;
+    padding: 1em 1.5em;
+    margin: 0 4px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 4px;
+}
+
+.pagination button:hover {
+    scale: 1.15;
+}
+
+.pagination button.active {
+    border: 1px solid var(--primary-red);
+    background-color: var(--primary-red);
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

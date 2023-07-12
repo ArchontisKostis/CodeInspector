@@ -1,0 +1,19 @@
+.analysis-file-box-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1em 0 0 1em;
+    min-width: max-content;
+}
+
+.analysis-file-box {
+    background-color: var(--primary-red);
+    color: white;
+    min-width: calc(100% - 5em);
+    padding: 1em;
+    border-radius: 25px;
+}
+
+.analysis-file-box h3 {
+    color: white;
+}

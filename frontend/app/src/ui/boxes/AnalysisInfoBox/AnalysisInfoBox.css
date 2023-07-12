@@ -1,0 +1,20 @@
+.analysis-info-box-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: max-content;
+}
+
+.analysis-info-box {
+    color: white;
+    min-width: calc(100% - 5em);
+    min-height: 25vh;
+    background-color: var(--primary-red);
+    padding: 1em;
+    border-radius: 25px;
+}
+
+.analysis-info-box h3, .analysis-info-box a {
+    color: white;
+}
+

@@ -1,0 +1,61 @@
+.example-analysis-box {
+    background-color: var(--primary-red);
+    padding: 1em;
+    min-width: 25vw;
+    border-radius: 25px;
+    color: white;
+
+    box-shadow: 5px 6px 5px 0 rgba(0,0,0,0.45);
+    -webkit-box-shadow: 5px 6px 5px 0 rgba(0,0,0,0.45);
+    -moz-box-shadow: 5px 6px 5px 0 rgba(0,0,0,0.45);
+
+    transition: all 0.34s ease-in-out;
+}
+
+.example-analysis-box:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.example-analysis-box i {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.5em;
+    text-align: center;
+    display: block;
+    width: inherit;
+}
+
+.example-analysis-box h3 {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: white;
+    text-align: left;
+}
+
+.example-analysis-box p {
+    font-size: 1.1em;
+    color: white;
+    margin: 0.5em 0;
+}
+
+.example-analysis-box a {
+    color: white;
+    text-decoration: underline;
+    margin: 0.5em 0.5em 0.5em 0;
+}
+
+.tool-page-examples-container {
+    height: max-content;
+}
+
+.tool-page-examples {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding-bottom: 10em;
+}
+
+.example-box {
+    width: 100%;
+}

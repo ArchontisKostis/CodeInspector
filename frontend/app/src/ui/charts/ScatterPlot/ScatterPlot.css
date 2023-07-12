@@ -1,0 +1,12 @@
+.scatter-plot-container {
+    width: 100vw;
+    max-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scatter-plot-container:hover {
+    cursor: pointer;
+}
+

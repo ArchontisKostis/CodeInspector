@@ -1,0 +1,14 @@
+.analysis-section-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 3.2vh;
+    color: var(--primary-dark);
+    margin: 1em 0.3em 0.25em 1em;
+    align-self: flex-start;
+
+}
+
+.analysis-section-header i {
+    margin-right: 0.5em;
+}

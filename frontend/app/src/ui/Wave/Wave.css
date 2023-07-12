@@ -1,0 +1,37 @@
+.wave-container {
+    width: 100vw;
+    height: min-content;
+    max-height: 30vh;
+    background-color: green;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.wave-container.dark {
+    background-color: var(--bg-white-shade)
+}
+
+.wave-container.light {
+    background-color: var(--primary-dark)
+}
+
+.wave-container .red-bg {
+    background-color: var(--primary-red);
+}
+
+.wave-svg {
+    width: 100vw;
+    max-height: 45vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 0 solid black;
+    object-fit: cover;
+    position: static;
+    padding: 0;
+    margin: 0;
+}
+
+.wave-svg.dark {
+    content: url("../../assets/svg/waves/wave-dark-one.svg");
+}

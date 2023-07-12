@@ -1,0 +1,26 @@
+.techniques-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.techniques-section h2 {
+    color: white;
+    padding-bottom: 1em;
+}
+
+.techniques-section .techniques-section-desc {
+    color: white;
+    text-align: center;
+    padding-bottom: 2em;
+    max-width: 70vw;
+}
+
+.triangle-seperator {
+    bottom: 0;
+    background-image: url("../../assets/svg/triangle-seperator.svg");
+    height: 23vh;
+    width: 100%;
+    background-repeat: no-repeat;
+}

@@ -1,0 +1,66 @@
+.try-the-tool-container {
+    width: 100vw;
+    height: min-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1em 0;
+}
+
+.try-the-tool-img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.try-the-tool-img img{
+    width: 40vw;
+    height: auto;
+}
+
+.try-the-tool-container a, .try-the-tool-container p {
+    text-decoration: none;
+    color: white;
+    padding-left: 1em;
+}
+
+.try-the-tool-text article {
+    width: 40vw;
+}
+
+.try-the-tool-text article, .try-the-tool-text h2 {
+    color: white;
+    text-align: left;
+}
+
+.try-the-tool-text {
+    padding: 1em;
+}
+
+.tool-btn {
+    color: white;
+    text-decoration: none;
+    padding: 1em;
+    margin: 1em 0;
+    background-color: var(--primary-red);
+    border-radius: 100px;
+    transition: all 0.34s ease-in-out;
+}
+
+.tool-btn:hover {
+    background-color: white;
+    color: var(--primary-red);
+}
+
+.tool-btn i {
+    font-weight: bold;
+    font-style: normal
+}
+
+.home-wave-light {
+    height: 25vh;
+    background-image: url("../../assets/svg/waves/wave-light-one.svg");
+    background-repeat: no-repeat;
+}

@@ -1,0 +1,22 @@
+.technique-box {
+    background-color: var(--bg-white-shade);
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 50vw;
+}
+
+.technique-box .technique-title {
+    color: var(--primary-dark);
+    padding-bottom: 1em;
+}
+
+.technique-box .technique-desc {
+    color: var(--primary-dark);
+    text-align: center;
+    padding-bottom: 2em;
+}
