@@ -20,6 +20,7 @@ class PriorityAnalysis(Analysis):
 
     def to_dict(self):
         return {
+            'project_name': self.project_name,
             'repo_url': self.repo_url,
             'from_date': self.from_date,
             'to_date': self.to_date,
