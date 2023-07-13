@@ -3,7 +3,7 @@ import React from 'react';
 import './AnalysisInfoBox.css';
 
 const AnalysisInfoBox = (props) => {
-    const { projectName, totalCommits, fromDate, toDate, githubUrl } = props;
+    const { projectName, fromDate, toDate, githubUrl } = props;
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -22,7 +22,6 @@ const AnalysisInfoBox = (props) => {
                         <i className="bi bi-github"> </i>
                         {projectName}
                     </h3>
-                    {totalCommits === null ? <p><b>Total Commits:</b> Not Calculated</p> : <p><b>Total Commits:</b> {totalCommits}</p>}
                     <p><b>From:</b> {formatDate(fromDate)}</p>
                     <p><b>To:</b> {formatDate(toDate)}</p>
 

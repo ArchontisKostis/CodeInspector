@@ -3,6 +3,9 @@
     align-items: center;
     justify-content: center;
     min-width: max-content;
+    align-self: center;
+    width: inherit;
+    height: inherit;
 }
 
 .analysis-info-box {
