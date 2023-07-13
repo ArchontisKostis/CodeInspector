@@ -46,7 +46,6 @@ const HotspotAnalysis = (props) => {
             <div className="hotspot-analysis">
                 <h1 className="hotspot-analysis-header">Hotspot Analysis</h1>
 
-                {console.log("Repo URL: " + repo_url)}
                 <div className="analysis-boxes-container">
                     <AnalysisInfoSection
                         projectName={project_name}
@@ -111,7 +110,7 @@ const HotspotAnalysis = (props) => {
 
                 <PaginatedTable
                     data={[...outliers, ...prioritized_files]}
-                    itemsPerPage={10}
+                    itemsPerPage={50}
                     columns={filesColumns}
                     exportFilename={`hotspot-analysis-code-inspector`}
                 />
