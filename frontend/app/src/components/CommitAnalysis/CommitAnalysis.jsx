@@ -51,7 +51,7 @@ const CommitAnalysis = (props) => {
 
                     <PaginatedTable
                         data={commits}
-                        itemsPerPage={10}
+                        itemsPerPage={50}
                         columns={commitsColumns}
                         exportFilename={`commit-analysis-code-inspector`}
                     />

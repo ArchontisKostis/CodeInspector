@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './AnalysisPage.css';
 import AnalysisForm from "../../components/AnalysisForm/AnalysisForm.jsx";
 import HotspotAnalysis from "../../components/HotspotAnalysis/HotspotAnalysis.jsx";
 import useFetch from "../../hooks/useFetch.js";
 import Wave from "../../ui/Wave/Wave.jsx";
-import {useLocation} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import CommitAnalysis from "../../components/CommitAnalysis/CommitAnalysis.jsx";
 import LoadingBar from "../../ui/LoadingBar/LoadingBar.jsx";
 
@@ -21,6 +21,7 @@ const AnalysisPage = (props) => {
     const analysisType = queryParams.get('analysisType');
 
     const [apiUrl, setApiUrl] = useState('');
+    const [elapsedTime, setElapsedTime] = useState(0);
 
     useEffect(() => {
         let constructedApiUrl = '';
@@ -76,6 +77,20 @@ const AnalysisPage = (props) => {
         outliers,
     } = analysis || {};
 
+    useEffect(() => {
+        let timer = null;
+
+        if (isLoading) {
+            timer = setInterval(() => {
+                setElapsedTime((prevElapsedTime) => prevElapsedTime + 1);
+            }, 1000);
+        }
+
+        return () => {
+            clearInterval(timer);
+        };
+    }, [isLoading]);
+
     return (
         <>
             <div className="analysis-container">
@@ -89,28 +104,25 @@ const AnalysisPage = (props) => {
                     <Wave
                         waveStyle="light"
                     />
-
-
                 </div>
 
                 {isLoading ? (
                     <div className="progress-bar-container">
                         <h2>Analysing Repository</h2>
                         <p>This might take a while. Grab a coffee and relax!</p>
-
+                        <p>Elapsed Time: {elapsedTime} seconds</p> {/* Display elapsed time */}
                         <LoadingBar />
                     </div>
                 ) : error ? (
                     <div className="error-container">
-                        <span className="error-msg">
-                            <i className="bi bi-exclamation-circle"> Error: {error.message}</i>
-                        </span>
+            <span className="error-msg">
+              <i className="bi bi-exclamation-circle"> Error: {error.message}</i>
+            </span>
                     </div>
                 ) : (
                     response && (
                         <>
                             <>
-
                                 {analysisType === 'hotspot-prioritization' ? (
                                     response && <HotspotAnalysis data={response.analysis} />
                                 ) : analysisType === 'commit-analysis' ? (

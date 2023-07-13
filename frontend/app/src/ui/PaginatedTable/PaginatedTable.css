@@ -89,6 +89,9 @@ td {
 
 .pagination {
     padding: 2em 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .pagination button {
@@ -96,7 +99,7 @@ td {
     color: var(--bg-white-shade);
     border: none;
     padding: 1em 1.5em;
-    margin: 0 4px;
+    margin: 0.5em;
     cursor: pointer;
     transition: 0.3s;
     border-radius: 4px;

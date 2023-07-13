@@ -13,6 +13,7 @@ const ScatterPlot = (props) => {
         y: item.metrics.CC,
         label: item.name,
         priority: item.priority,
+        nloc: item.metrics.NLOC,
     }));
 
     // Register the required chart elements
@@ -25,7 +26,7 @@ const ScatterPlot = (props) => {
                 position: 'bottom',
                 title: {
                     display: true,
-                    text: 'CC (Cyclomatic Complexity)',
+                    text: 'CHURN',
                 },
             },
             y: {
@@ -33,7 +34,7 @@ const ScatterPlot = (props) => {
                 position: 'left',
                 title: {
                     display: true,
-                    text: 'CHURN',
+                    text: 'CC (Cyclomatic Complexity)',
                 },
             },
         },
@@ -45,6 +46,7 @@ const ScatterPlot = (props) => {
                         text.push('File: ' + context.raw.label);
                         text.push('CC: ' + context.parsed.x);
                         text.push('CHURN: ' + context.parsed.y);
+                        text.push('NLOC: ' + context.dataset.data[context.dataIndex].nloc);
                         text.push('Priority: ' + context.dataset.data[context.dataIndex].priority);
 
                         return text;
