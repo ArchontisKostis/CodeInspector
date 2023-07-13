@@ -8,7 +8,7 @@ class CommitProcessor:
         self.project = project
 
     def process_commit(self, commit: Commit):
-        if self.project.project_name is None:
+        if self.project.project_name == "Undefined Project Name":
             self.project.project_name = commit.project_name
 
         for modified_file in commit.modified_files:

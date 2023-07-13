@@ -25,9 +25,6 @@ class AnalysisService:
         project_name = "Undefined Project Name"
 
         for commit in reps.traverse_commits():
-            if project_name == "Undefined Project Name":
-                project_name = commit.project_name
-
             commit_processor.process_commit(commit)
 
         analyzer = Analyser(project, repo_url, from_date, to_date)

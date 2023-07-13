@@ -14,8 +14,9 @@ class Analyser:
     def __init__(self, project: Project, repo_url: str, from_date: str, to_date: str):
         self.project = project
         self.project_analysis = PriorityAnalysis(repo_url, from_date, to_date)
-        self.project_analysis.total_files = len(self.project.files)
+        self.project_analysis.project_name = project.project_name
 
+        self.project_analysis.total_files = len(self.project.files)
 
     def find_max_metric_file(self, metric_key: str):
         max_metric_file = None
