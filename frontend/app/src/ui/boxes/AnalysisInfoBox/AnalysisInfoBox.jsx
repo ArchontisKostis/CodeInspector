@@ -22,10 +22,14 @@ const AnalysisInfoBox = (props) => {
                         <i className="bi bi-github"> </i>
                         {projectName}
                     </h3>
-                    <p><b>Total Commits:</b> {totalCommits}</p>
+                    {totalCommits === null ? <p><b>Total Commits:</b> Not Calculated</p> : <p><b>Total Commits:</b> {totalCommits}</p>}
                     <p><b>From:</b> {formatDate(fromDate)}</p>
                     <p><b>To:</b> {formatDate(toDate)}</p>
-                    <a href={githubUrl} target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+
+                    <a href={githubUrl} >
+                        <i className="bi bi-globe2"> </i>
+                        GitHub Repository
+                    </a>
                 </div>
             </div>
         </>

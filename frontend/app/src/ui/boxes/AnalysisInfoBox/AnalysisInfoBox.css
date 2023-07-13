@@ -16,5 +16,9 @@
 
 .analysis-info-box h3, .analysis-info-box a {
     color: white;
+    text-align: start;
 }
 
+.analysis-info-box a {
+    text-decoration: underline;
+}
