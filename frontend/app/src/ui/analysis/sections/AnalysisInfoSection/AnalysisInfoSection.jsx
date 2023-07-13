@@ -5,7 +5,7 @@ import AnalysisSectionHeader from "../../AnalysisSectionHeader/AnalysisSectionHe
 import AnalysisInfoBox from "../../../boxes/AnalysisInfoBox/AnalysisInfoBox.jsx";
 
 const AnalysisInfoSection = (props) => {
-    const { projectName, totalCommits, fromDate, toDate, repoUrl } = props;
+    const { projectName, fromDate, toDate, githubUrl } = props;
 
     return (
         <>
@@ -16,10 +16,9 @@ const AnalysisInfoSection = (props) => {
 
                 <AnalysisInfoBox
                     projectName={projectName}
-                    totalCommits={totalCommits}
                     fromDate={fromDate}
                     toDate={toDate}
-                    githubUrl={repoUrl}
+                    githubUrl={githubUrl}
                 />
             </section>
 

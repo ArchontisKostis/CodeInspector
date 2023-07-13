@@ -15,6 +15,7 @@ const HotspotAnalysis = (props) => {
     const { data } = props;
 
     const {
+        project_name,
         repo_url,
         from_date,
         to_date,
@@ -45,10 +46,11 @@ const HotspotAnalysis = (props) => {
             <div className="hotspot-analysis">
                 <h1 className="hotspot-analysis-header">Hotspot Analysis</h1>
 
+                {console.log("Repo URL: " + repo_url)}
                 <div className="analysis-boxes-container">
                     <AnalysisInfoSection
-                        projectName={"Project Name"}
-                        totalCommits={"Total Commits"}
+                        projectName={project_name}
+                        totalCommits={null}
                         fromDate={from_date}
                         toDate={to_date}
                         githubUrl={repo_url}

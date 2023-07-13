@@ -35,7 +35,6 @@ const CommitAnalysis = (props) => {
         <>
             <div className="commit-analysis-container">
                 <h1 className="commit-analysis-header">Commit Analysis</h1>
-                {/*<CommitsTable data={commits} itemsPerPage={10}/>*/}
 
                 <AnalysisInfoSection
                     projectName={project_name}

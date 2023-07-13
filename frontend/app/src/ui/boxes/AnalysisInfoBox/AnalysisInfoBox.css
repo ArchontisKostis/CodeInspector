@@ -3,6 +3,9 @@
     align-items: center;
     justify-content: center;
     min-width: max-content;
+    align-self: center;
+    width: inherit;
+    height: inherit;
 }
 
 .analysis-info-box {
@@ -16,5 +19,9 @@
 
 .analysis-info-box h3, .analysis-info-box a {
     color: white;
+    text-align: start;
 }
 
+.analysis-info-box a {
+    text-decoration: underline;
+}
