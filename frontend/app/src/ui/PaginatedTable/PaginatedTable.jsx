@@ -4,8 +4,9 @@ import { saveAs } from 'file-saver';
 import './PaginatedTable.css';
 
 const PaginatedTable = (props) => {
-    const { data, columns, itemsPerPage, exportFileName } = props;
+    const { data, columns, itemsPerPage: initialItemsPerPage, exportFileName } = props;
     const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage, setItemsPerPage] = useState(initialItemsPerPage);
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -14,6 +15,11 @@ const PaginatedTable = (props) => {
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
+    };
+
+    const handleItemsPerPageChange = (event) => {
+        setItemsPerPage(Number(event.target.value));
+        setCurrentPage(1);
     };
 
     const exportToCSV = () => {
@@ -47,7 +53,32 @@ const PaginatedTable = (props) => {
     return (
         <>
             <div className="paginated-table">
+                <div className="items-per-page-container">
+                    <label htmlFor="itemsPerPage">Items per page:</label>
+
+                    <div className="select-dropdown">
+                        <select
+                            id="itemsPerPage"
+                            value={itemsPerPage}
+                            onChange={handleItemsPerPageChange}
+                            className="items-per-page-dropdown"
+                        >
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="25">25</option>
+                            <option value="30">30</option>
+                            <option value="35">35</option>
+                            <option value="40">40</option>
+                            <option value="45">45</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
+                </div>
+
                 <table>
+                    {/* Table header */}
                     <thead>
                     <tr>
                         {columns.map((column) => (
@@ -55,6 +86,7 @@ const PaginatedTable = (props) => {
                         ))}
                     </tr>
                     </thead>
+                    {/* Table body */}
                     <tbody>
                     {currentItems.map((item, index) => (
                         <tr key={index}>
@@ -74,6 +106,7 @@ const PaginatedTable = (props) => {
                     </tbody>
                 </table>
 
+                {/* Pagination */}
                 <div className="pagination">
                     {Array.from({ length: totalPages }, (_, index) => (
                         <button
@@ -86,12 +119,12 @@ const PaginatedTable = (props) => {
                     ))}
                 </div>
 
+                {/* Export to CSV button */}
                 <button className="export-to-csv-btn" onClick={exportToCSV}>
                     <i className="bi bi-filetype-csv"></i>
                     <p>Export to CSV</p>
                 </button>
             </div>
-
         </>
     );
 };
