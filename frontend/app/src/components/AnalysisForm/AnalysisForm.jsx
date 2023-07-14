@@ -48,6 +48,8 @@ const AnalysisForm = (props) => {
                             value={formData.repoUrl}
                             onChange={handleChange}
                             required={true}
+                            pattern="^(https?:\/\/)?(www\.)?github\.com\/[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+$"
+                            title="Enter a valid GitHub repository URL. (e.g. https://github.com/ArchontisKostis/CodeInspector)"
                         />
                     </div>
 
