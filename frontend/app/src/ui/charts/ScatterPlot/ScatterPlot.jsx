@@ -26,7 +26,7 @@ const ScatterPlot = (props) => {
                 position: 'bottom',
                 title: {
                     display: true,
-                    text: 'CHURN',
+                    text: 'CHURN (Number of changes)',
                 },
             },
             y: {
@@ -43,9 +43,10 @@ const ScatterPlot = (props) => {
                 callbacks: {
                     label: function(context) {
                         let text = [];
+
                         text.push('File: ' + context.raw.label);
-                        text.push('CC: ' + context.parsed.x);
-                        text.push('CHURN: ' + context.parsed.y);
+                        text.push('CHURN: ' + context.parsed.x);
+                        text.push('CC: ' + context.parsed.y);
                         text.push('NLOC: ' + context.dataset.data[context.dataIndex].nloc);
                         text.push('Priority: ' + context.dataset.data[context.dataIndex].priority);
 
