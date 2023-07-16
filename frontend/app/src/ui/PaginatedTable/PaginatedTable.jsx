@@ -28,14 +28,16 @@ const PaginatedTable = (props) => {
 
         csvRows.push(headers.join(','));
 
-        currentItems.forEach((item) => {
+        data.forEach((item) => {
             const rowData = columns.map((column) => {
                 if (column.nested) {
                     const nestedKeys = column.key.split('.');
                     let value = item;
+
                     nestedKeys.forEach((nestedKey) => {
                         value = value[nestedKey];
                     });
+
                     return value;
                 } else {
                     return item[column.key];
@@ -97,7 +99,7 @@ const PaginatedTable = (props) => {
                                             .split('.')
                                             .reduce((obj, key) => obj?.[key], item)
                                     ) : (
-                                        item[column.key]
+                                        item[column.key] || '-'
                                     )}
                                 </td>
                             ))}
