@@ -12,8 +12,6 @@
   <img src="https://img.shields.io/badge/REACT-gray?style=for-the-badge&logo=react" alt="REACT" />
   <img src="https://img.shields.io/badge/FASTAPI-gray?style=for-the-badge&logo=fastapi&logoColor=02bfae" alt="FASTAPI" />
   <img src="https://img.shields.io/badge/DOCKER-gray?style=for-the-badge&logo=docker&logoColor=02bfae" alt="DOCKER" />
-  <img src="https://img.shields.io/badge/PYCHARM-gray?style=for-the-badge&logo=pycharm" alt="PYCHARM" />
-  <img src="https://img.shields.io/badge/WEBSTORM-gray?style=for-the-badge&logo=webstorm" alt="WEBSTORM" />
 </p>
 
 ## 🚀 Overview
