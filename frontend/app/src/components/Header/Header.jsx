@@ -21,7 +21,7 @@ const Header = () => {
                 <nav className="navbar">
                     <Link to="/" className="nav-item hover-border">Home</Link>
                     <Link to="/about" className="nav-item hover-border">How It Works</Link>
-                    <Link to="/api" className="nav-item hover-border">API</Link>
+                    <Link to="http://localhost:8000/redoc" className="nav-item hover-border">API</Link>
                     <Link to="/tool" className="nav-item hover-border">The Tool</Link>
                 </nav>
             </header>
