@@ -26,3 +26,9 @@
 .error-btn:hover {
     color: white;
 }
+
+.freepik-img-error {
+    color: white;
+    font-size: 0.7rem;
+    text-decoration: none;
+}
