@@ -5,6 +5,7 @@ import Home from "./pages/Home/Home.jsx";
 import AnalysisPage from "./pages/AnalysisPage/AnalysisPage.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import ToolPage from "./pages/ToolPage/ToolPage.jsx";
+import ErrorPage from "./pages/ErrorPage/ErrorPage.jsx";
 import About from "./pages/About/About.jsx";
 function App() {
 
@@ -20,6 +21,8 @@ function App() {
                     <Route exact path='/tool' element={<ToolPage />} />
                     <Route exact path='/about' element={<About />} />
                     <Route path='*' element={<h1>404 Not Found</h1>} />
+                    {/* Error Page */}
+                    <Route path='*' element={<ErrorPage />} />
                 </Routes>
 
                 <Footer />
