@@ -20,7 +20,7 @@ function App() {
                     <Route path='/analysis/*' element={<AnalysisPage />} />
                     <Route exact path='/tool' element={<ToolPage />} />
                     <Route exact path='/about' element={<About />} />
-                    <Route path='*' element={<h1>404 Not Found</h1>} />
+                    <Route path='*' element={<ErrorPage />} />
                     {/* Error Page */}
                     <Route path='*' element={<ErrorPage />} />
                 </Routes>
