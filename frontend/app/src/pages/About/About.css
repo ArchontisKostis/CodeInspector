@@ -1,0 +1,19 @@
+/* About Page CSS */
+.about-container {
+    background-color: var(--primary-dark);
+    height: 20vw;
+    padding-top: 2em;
+}
+
+.about-container h2, .about-container p {
+    color: white;
+}
+
+.about-container p {
+    text-align: center;
+    padding: 0 5em;
+}
+
+/* Hotspot Container */
+
+
