@@ -1,0 +1,28 @@
+.error-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: min-content;
+    background-color: var(--primary-dark);
+}
+
+.error-svg {
+    width: 40%;
+    height: auto;
+}
+
+.error-404-msg {
+    font-size: 2rem;
+    color: white;
+    margin: 1rem 0;
+}
+
+.error-btn {
+    color: var(--primary-red);
+    transition: color 0.25s ease-in-out;
+}
+
+.error-btn:hover {
+    color: white;
+}
