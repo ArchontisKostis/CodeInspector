@@ -112,7 +112,6 @@ const HotspotAnalysis = (props) => {
                     data={[...outliers, ...prioritized_files]}
                     itemsPerPage={50}
                     columns={filesColumns}
-                    exportFilename={`hotspot-analysis-code-inspector`}
                 />
 
             </div>

@@ -53,7 +53,6 @@ const CommitAnalysis = (props) => {
                         data={commits}
                         itemsPerPage={50}
                         columns={commitsColumns}
-                        exportFilename={`commit-analysis-code-inspector`}
                     />
                 </div>
 

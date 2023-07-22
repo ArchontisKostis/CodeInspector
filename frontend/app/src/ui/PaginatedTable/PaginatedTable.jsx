@@ -22,6 +22,8 @@ const PaginatedTable = (props) => {
         setCurrentPage(1);
     };
 
+    {
+        console.log(exportFileName)}
     const exportToCSV = () => {
         const csvRows = [];
         const headers = columns.map((column) => column.label);
@@ -49,7 +51,7 @@ const PaginatedTable = (props) => {
         const csvContent = csvRows.join('\n');
         const csvBlob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
 
-        saveAs(csvBlob, exportFileName);
+        saveAs(csvBlob, "code-inspector-export.csv");
     };
 
     return (
