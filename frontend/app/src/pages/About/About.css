@@ -1,19 +1,58 @@
-/* About Page CSS */
-.about-container {
+.about-header {
     background-color: var(--primary-dark);
-    height: 20vw;
     padding-top: 2em;
 }
 
-.about-container h2, .about-container p {
+.about-header h2, p {
+    color: white;
+}
+.about-container p {
+    padding: 1em 2em;
+    text-align: center;
+}
+
+.hotspot-about-container, .commit-about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hotspot-about-container {
+    background-color: var(--bg-white-shade);
+}
+
+.commit-about-container {
+    background-color: var(--primary-dark);
+}
+
+.hotspot-about-container p {
+    color: var(--primary-dark);
+    font-size: 1.1em;
+}
+
+.commit-about-container h2 {
     color: white;
 }
 
-.about-container p {
-    text-align: center;
-    padding: 0 5em;
+.simple-info-box {
+    background-color: var(--primary-red);
+    width: 40vw;
+    margin: 1em;
+    border-radius: 1.25em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Hotspot Container */
+.simple-info-box p {
+    color: white;
+    margin: 0;
+    padding: 0 1em 1em 1em;
+}
 
-
+.simple-info-box h3 {
+    color: white;
+    margin: 0;
+    padding: 1em 0.5em;
+}
