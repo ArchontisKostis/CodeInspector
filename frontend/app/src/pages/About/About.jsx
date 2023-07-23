@@ -9,7 +9,7 @@ const About = () => {
             <div className="about-header">
                 <h2>How it works</h2>
 
-                <p>
+                <p className="about-content-light">
                     This page provides an overview of the analysis techniques
                     and tools employed in our project to assess quality
                     and maintainability. We utilize  approaches and tools
@@ -25,7 +25,7 @@ const About = () => {
             <div className="hotspot-about-container" >
 
                 <h2>Hotspot Prioritization</h2>
-                <p>
+                <p className="about-content-dark">
                     Hotspot prioritization enables us to identify critical areas in a
                     codebase that require immediate attention. By following the steps outlined
                     in this section, we can effectively prioritize code and focus on files
@@ -56,7 +56,7 @@ const About = () => {
 
             <div className="commit-about-container" >
                 <h2>Commit Analysis using DMM</h2>
-                <p>
+                <p className="about-content-light">
                     The commit analysis utilizes the Delta Maintainability Model (DMM)
                     and allows us to evaluate the impact of individual commits on the overall
                     maintainability of the software system. By following the steps outlined in this

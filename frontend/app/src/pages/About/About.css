@@ -3,7 +3,7 @@
     padding-top: 2em;
 }
 
-.about-header h2, p {
+.about-header h2, .about-content-light {
     color: white;
 }
 .about-container p {
@@ -25,7 +25,7 @@
     background-color: var(--primary-dark);
 }
 
-.hotspot-about-container p {
+.about-content-dark {
     color: var(--primary-dark);
     font-size: 1.1em;
 }
