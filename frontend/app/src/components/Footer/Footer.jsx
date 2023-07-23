@@ -5,11 +5,11 @@ const Footer = () => {
     return (
         <footer className="footer-container">
             <div className="footer-content">
-                <a href="#" className="footer-link" id="link-1">
+                <a href="/" className="footer-link" id="link-1">
                     <i className="bi bi-house-door-fill hover-border"> Home</i>
                 </a>
 
-                <a href="#" className="footer-link" id="link-2">
+                <a href="/about" className="footer-link" id="link-2">
                     <i className="bi bi-info-circle-fill hover-border"> How it works</i>
                 </a>
 
@@ -17,11 +17,11 @@ const Footer = () => {
                     <i className="bi bi-plugin hover-border"> API Redoc</i>
                 </a>
 
-                <a href="#" className="footer-link" id="link-4">
+                <a href="https://github.com/ArchontisKostis/CodeInspector" className="footer-link" id="link-4">
                     <i className="bi bi-github hover-border"> Github Repository</i>
                 </a>
 
-                <a href="#" className="footer-link" id="link-5">
+                <a href="/credits" className="footer-link" id="link-5">
                     <i className="bi bi-stars hover-border"> Credits & Acknowledgements</i>
                 </a>
 
