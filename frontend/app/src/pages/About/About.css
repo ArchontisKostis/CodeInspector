@@ -3,7 +3,7 @@
     padding-top: 2em;
 }
 
-.about-header h2, p {
+.about-header h2, .about-content-light {
     color: white;
 }
 .about-container p {
@@ -25,7 +25,7 @@
     background-color: var(--primary-dark);
 }
 
-.hotspot-about-container p {
+.about-content-dark {
     color: var(--primary-dark);
     font-size: 1.1em;
 }
@@ -34,25 +34,3 @@
     color: white;
 }
 
-.simple-info-box {
-    background-color: var(--primary-red);
-    width: 40vw;
-    margin: 1em;
-    border-radius: 1.25em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.simple-info-box p {
-    color: white;
-    margin: 0;
-    padding: 0 1em 1em 1em;
-}
-
-.simple-info-box h3 {
-    color: white;
-    margin: 0;
-    padding: 1em 0.5em;
-}
