@@ -42,7 +42,7 @@ CodeInspector provides a Docker configuration for easy deployment. Make sure you
 <div style="display: flex; align-items: center; flex-direction: row-reverse;">
   <p>
     CodeInspector was created by me (Archontis E. Kostis), as part of my bachelor thesis, with the support and guidance of Mr. <a href="https://users.uom.gr/~achat/">Alexander Hatzigeorgiou</a>, 
-    Dean of the <a href="https://www.uom.gr/dai">Department of Applied Informatics</a> at University of Macedonia. 
+    Vice Chancellor of <a href="https://www.uom.gr">University of Macedonia</a>. 
     The project was inspired by a shared passion for improving software quality through data-driven and mining software repositories analysis. 
     The development of this tool would not have been possible without the open-source contributions of the FastAPI, Python, React and PyDriller communities. 
     We are grateful for their efforts in making high-quality software accessible to everyone.
