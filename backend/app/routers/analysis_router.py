@@ -4,7 +4,6 @@ from app import logger
 from app.routers import validate_repo_url, start_timer, end_timer, \
     handle_exception_on_endpoint
 from app.services.AnalysisService import AnalysisService
-from git import GitCommandError
 
 router = APIRouter()
 filetypes = ['.java']
@@ -17,6 +16,7 @@ async def prioritize_hotspots(repo_url: str, from_date: str = None, to_date: str
 
     try:
         validate_repo_url(repo_url)
+
 
         logger.info(f"Performing analysis on {repo_url}")
 
