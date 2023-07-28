@@ -4,6 +4,7 @@ from app import logger
 from app.routers import validate_repo_url, start_timer, end_timer, \
     handle_exception_on_endpoint
 from app.services.AnalysisService import AnalysisService
+from git import GitCommandError
 
 router = APIRouter()
 filetypes = ['.java']
