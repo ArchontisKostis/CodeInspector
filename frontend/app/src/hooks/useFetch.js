@@ -1,43 +1,51 @@
 import { useState, useEffect } from 'react';
 
 const useFetch = (url) => {
-    const [response, setResponse] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
+  const [response, setResponse] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-    useEffect(() => {
-        let mounted = true;
+  useEffect(() => {
+    let mounted = true;
 
-        const fetchData = async () => {
-            if (!url) return; // Return early if no URL is provided
+    const fetchData = async () => {
+      if (!url) return; // Return early if no URL is provided
 
-            setIsLoading(true);
+      setIsLoading(true);
 
-            try {
-                const res = await fetch(url, {
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                });
-                const json = await res.json();
-                if (mounted) {
-                    setResponse(json);
-                }
-            } catch (err) {
-                setError(err);
+      try {
+            const res = await fetch(url, {
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+            });
+
+            if (!res.ok) {
+                const errorResponse = await res.json();
+                console.log(errorResponse.detail)
+                throw new Error(errorResponse.detail);
             }
 
-            setIsLoading(false);
-        };
+            const json = await res.json();
+            if (mounted) {
+                setResponse(json);
+            }
+      } catch (err) {
+            console.log(err)
+            setError(err);
+      }
 
-        fetchData();
+      setIsLoading(false);
+    };
 
-        return () => {
-            mounted = false;
-        };
-    }, [url]);
+    fetchData();
 
-    return { response, isLoading, error };
+    return () => {
+      mounted = false;
+    };
+  }, [url]);
+
+  return { response, isLoading, error };
 };
 
 export default useFetch;

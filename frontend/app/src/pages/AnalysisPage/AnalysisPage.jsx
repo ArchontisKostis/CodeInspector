@@ -115,9 +115,9 @@ const AnalysisPage = (props) => {
                     </div>
                 ) : error ? (
                     <div className="error-container">
-            <span className="error-msg">
-              <i className="bi bi-exclamation-circle"> Error: {error.message}</i>
-            </span>
+                        <span className="error-msg">
+                            <i className="bi bi-exclamation-circle"> <b>Error:</b> {error.message}</i>
+                        </span>
                     </div>
                 ) : (
                     response && (

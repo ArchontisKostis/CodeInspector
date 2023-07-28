@@ -9,6 +9,8 @@ from app.models.analysis.CommitAnalysis import CommitAnalysis
 from app.models.project_commit.ProjectCommitBuilder import ProjectCommitBuilder
 from app.services import calculate_past_year_date_range, try_to_parse_date
 
+from app.exceptions.NoCommitsException import NoCommitsException
+
 
 class AnalysisService:
     def __init__(self):
@@ -23,9 +25,14 @@ class AnalysisService:
 
         commit_processor = CommitProcessor(project)
         project_name = "Undefined Project Name"
+        project_has_commits = False
 
         for commit in reps.traverse_commits():
+            project_has_commits = True
             commit_processor.process_commit(commit)
+
+        if not project_has_commits:
+            raise NoCommitsException("No commits found in the specified date range. Try using a different date range.")
 
         analyzer = Analyser(project, repo_url, from_date, to_date)
 

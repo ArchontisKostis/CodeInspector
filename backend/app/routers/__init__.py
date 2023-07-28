@@ -5,6 +5,8 @@ from datetime import datetime, timedelta
 
 from fastapi import HTTPException
 
+from app.exceptions.NoCommitsException import NoCommitsException
+
 
 def is_github_url(url):
     github_url_pattern = r"^https://github\.com/.*$"
@@ -32,7 +34,7 @@ def handle_exception_on_endpoint(exception):
     # if we have an HTTPException, we want to return the status code and the detail
     if isinstance(exception, HTTPException):
         raise HTTPException(status_code=exception.status_code, detail=exception.detail)
-    elif isinstance(exception, ValueError):
+    elif isinstance(exception, NoCommitsException):
         raise HTTPException(status_code=400, detail=exception.args[0])
 
     traceback.print_exc()
