@@ -1,4 +1,4 @@
-from app.analyzers.OutlierEliminator import OutlierEliminator
+from app.analyzers.HotspotFinder import HotspotFinder
 from app.models.project_file.PriorityType import PriorityType
 from app.models.Project import Project
 from app.models.analysis.PriorityAnalysis import PriorityAnalysis
@@ -57,7 +57,7 @@ class HotspotPriorityCalculator:
             return PriorityType.UNKNOWN
 
     def eliminate_outliers(self):
-        outlier_eliminator = OutlierEliminator(
+        outlier_eliminator = HotspotFinder(
             self.all_files,
             self.analysis.avg_complexity,
             self.analysis.avg_churn
