@@ -20,7 +20,7 @@ class AnalysisService:
     def analyze_hotspots(self, repo_url: str, from_date: str, to_date: str):
         from_date, to_date = self.validate_date(from_date, to_date)
 
-        reps = Repository(repo_url, since=from_date, to=to_date, only_modifications_with_file_types=self.filetypes)
+        reps = Repository(repo_url, since=from_date, to=to_date)
         project = Project(repo_url)
 
         commit_processor = CommitProcessor(project)
