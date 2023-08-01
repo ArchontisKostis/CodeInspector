@@ -11,7 +11,7 @@ class HotspotPriorityCalculator:
         self.files_to_prioritize = []
 
     def calculate_hotspot_priority(self):
-        self.eliminate_outliers()
+        self.find_hotspots()
 
         for file in self.files_to_prioritize:
             cc = file.get_metric('CC')
@@ -56,19 +56,11 @@ class HotspotPriorityCalculator:
         else:
             return PriorityType.UNKNOWN
 
-    def eliminate_outliers(self):
-        outlier_eliminator = HotspotFinder(
+    def find_hotspots(self):
+        hotspot_finder = HotspotFinder(
             self.all_files,
             self.analysis.avg_complexity,
             self.analysis.avg_churn
         )
 
-        self.files_to_prioritize, self.analysis.outliers = outlier_eliminator.eliminate_outliers()
-        self.analysis.total_outliers = len(self.all_files) - len(self.files_to_prioritize)
-
-        outliers_list = []
-        for file in self.all_files:
-            if file not in self.files_to_prioritize:
-                outliers_list.append(file)
-
-        self.analysis.outliers = outliers_list
+        self.files_to_prioritize, self.analysis.outliers = hotspot_finder.find_hotspots()

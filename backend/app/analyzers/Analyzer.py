@@ -9,7 +9,7 @@ class Analyser:
 
     project_analysis: PriorityAnalysis
     average_metric_finder: AverageMetricFinder
-    hotspot_prioritizer: HotspotPriorityCalculator
+    hotspot_priority_calculator: HotspotPriorityCalculator
 
     def __init__(self, project: Project, repo_url: str, from_date: str, to_date: str):
         self.project = project
@@ -36,10 +36,8 @@ class Analyser:
     def find_max_complexity_file(self):
         self.project_analysis.max_complexity_file = self.find_max_metric_file('cc')
 
-
     def find_max_churn_file(self):
         self.project_analysis.max_churn_file = self.find_max_metric_file('churn')
-
 
     def calculate_average_metrics(self):
         self.average_metric_finder = AverageMetricFinder(self.project)
@@ -47,7 +45,6 @@ class Analyser:
         self.project_analysis.avg_complexity = self.average_metric_finder.calculate_avg_cc()
         self.project_analysis.avg_nloc = self.average_metric_finder.calculate_avg_nloc()
         self.project_analysis.avg_churn = self.average_metric_finder.calculate_avg_churn()
-
 
     def calculate_total_lines_of_code(self):
         total_loc = 0
@@ -59,5 +56,5 @@ class Analyser:
         self.project_analysis.total_nloc = total_loc
 
     def prioritize_hotspots(self):
-        self.hotspot_prioritizer = HotspotPriorityCalculator(self.project, self.project_analysis)
-        self.hotspot_prioritizer.calculate_hotspot_priority()
+        self.hotspot_priority_calculator = HotspotPriorityCalculator(self.project, self.project_analysis)
+        self.hotspot_priority_calculator.calculate_hotspot_priority()

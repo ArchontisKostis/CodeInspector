@@ -7,7 +7,7 @@ class HotspotFinder:
         self.avg_cc = avg_cc
         self.avg_churn = avg_churn
 
-    def eliminate_outliers(self):
+    def find_hotspots(self):
         hotspot_files = []
         not_hotspot_files = []
 
