@@ -4,6 +4,7 @@ import './CommitAnalysis.css';
 import PaginatedTable from "../../ui/PaginatedTable/PaginatedTable.jsx";
 import AnalysisInfoSection from "../../ui/analysis/sections/AnalysisInfoSection/AnalysisInfoSection.jsx";
 import AnalysisSectionHeader from "../../ui/analysis/AnalysisSectionHeader/AnalysisSectionHeader.jsx";
+import BarChart from "../../ui/charts/BarChart/BarChart.jsx";
 
 const CommitAnalysis = (props) => {
     const { data } = props;
@@ -43,6 +44,15 @@ const CommitAnalysis = (props) => {
                     toDate={to_date}
                     repoUrl={repo_url}
                 />
+
+                <div className="commits-bar-chart">
+                    <AnalysisSectionHeader
+                        title="Commits Chart"
+                        icon="bi bi-clipboard-data-fill" />
+
+                    <BarChart data={commits}/>
+
+                </div>
 
                 <div className="commit-table">
                     <AnalysisSectionHeader
