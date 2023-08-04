@@ -9,14 +9,32 @@ Chart.register(LinearScale, CategoryScale, BarElement);
 
 
 const BarChart = ({ data }) => {
-    // Extract the change categories from the data
-    const changeCategories = data.map((entry) => entry.change_category);
+    // Filter out the "UNKNOWN" category from the data
+    const filteredData = data.filter((entry) => entry.change_category !== 'UNKNOWN');
 
-    // Count the occurrences of each change category
-    const categoryCounts = changeCategories.reduce((acc, category) => {
-        acc[category] = (acc[category] || 0) + 1;
-        return acc;
-    }, {});
+    // Define all possible change categories
+    const allCategories = ['EXCELLENT', 'GOOD', 'FAIR', 'POOR'];
+
+    // Initialize the categoryCounts object with all possible categories and their count set to zero
+    let categoryCounts = {};
+    allCategories.forEach((category) => {
+        categoryCounts[category] = 0;
+    });
+
+    // Extract the change categories from the data and update the categoryCounts
+    const changeCategories = filteredData.map((entry) => {
+        categoryCounts[entry.change_category]++;
+        return entry.change_category;
+    });
+
+    // Specific colors for each category
+    const categoryColors = {
+        EXCELLENT: '#2DFA3A99',
+        GOOD: '#309CEA99',
+        FAIR: '#FFF000DD',
+        POOR: '#F6003399',
+        UNKNOWN: '#C230EA99',
+    };
 
     // Prepare data for the bar chart
     const chartData = {
@@ -25,12 +43,7 @@ const BarChart = ({ data }) => {
             {
                 label: 'Change Category Counts',
                 data: Object.values(categoryCounts),
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.6)', // POOR
-                    'rgba(54, 162, 235, 0.6)', // UNKNOWN
-                    'rgba(75, 192, 192, 0.6)', // EXCELLENT
-                    // Add more colors here for other change categories
-                ],
+                backgroundColor: Object.keys(categoryCounts).map(category => categoryColors[category]),
             },
         ],
     };

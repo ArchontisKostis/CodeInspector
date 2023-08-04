@@ -1,13 +1,9 @@
 .bar-chart {
     width: 100vw;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-}
-
-.bar-chart canvas {
-    width: 100%;
-    height: 100%;
+    align-self: center;
 }
