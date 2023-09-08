@@ -10,7 +10,7 @@ class HotspotPriorityCalculator:
         self.analysis = analysis
         self.files_to_prioritize = []
 
-    def calculate_hotspot_priority(self):
+    def calculate_hotspots_priority(self):
         self.find_hotspots()
 
         for file in self.files_to_prioritize:
@@ -32,23 +32,19 @@ class HotspotPriorityCalculator:
         cc_middle_point = max_cc / 2
         churn_middle_point = max_churn / 2
 
-        # if the cc is higher that the middle point and the churn is higher than the middle point
-        # the priority is high
+        # if the cc is higher that the middle point and the churn is higher than the middle point the priority is high
         if cc > cc_middle_point and churn > churn_middle_point:
             return PriorityType.HIGH
 
-        # if the cc is higher that the middle point and the churn is lower than the middle point
-        # the priority is normal
+        # if the cc is higher that the middle point and the churn is lower than the middle point the priority is normal
         elif cc > cc_middle_point and churn < churn_middle_point:
             return PriorityType.NORMAL
 
-        # if the cc is lower that the middle point and the churn is higher than the middle point
-        # the priority is medium
+        # if the cc is lower that the middle point and the churn is higher than the middle point the priority is medium
         elif cc < cc_middle_point and churn > churn_middle_point:
             return PriorityType.MEDIUM
 
-        # if the cc is lower that the middle point and the churn is lower than the middle point
-        # the priority is low
+        # if the cc is lower that the middle point and the churn is lower than the middle point the priority is low
         elif cc < cc_middle_point and churn < churn_middle_point:
             return PriorityType.LOW
 

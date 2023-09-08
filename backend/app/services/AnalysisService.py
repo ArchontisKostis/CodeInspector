@@ -7,7 +7,7 @@ from app.analyzers.CommitProcessor import CommitProcessor
 from app.models.Project import Project
 from app.models.analysis.CommitAnalysis import CommitAnalysis
 from app.models.project_commit.ProjectCommitBuilder import ProjectCommitBuilder
-from app.services import calculate_past_year_date_range, try_to_parse_date
+from app.services import calculate_past_year_date_range, try_to_parse_date, validate_date
 
 from app.exceptions.NoCommitsException import NoCommitsException
 
@@ -18,13 +18,12 @@ class AnalysisService:
 
 
     def analyze_hotspots(self, repo_url: str, from_date: str, to_date: str):
-        from_date, to_date = self.validate_date(from_date, to_date)
+        from_date, to_date = validate_date(from_date, to_date)
 
         reps = Repository(repo_url, since=from_date, to=to_date)
         project = Project(repo_url)
 
         commit_processor = CommitProcessor(project)
-        project_name = "Undefined Project Name"
         project_has_commits = False
 
         for commit in reps.traverse_commits():
@@ -45,7 +44,7 @@ class AnalysisService:
         return analyzer.project_analysis
 
     def analyze_commits(self, repo_url: str, from_date: str, to_date: str):
-        from_date, to_date = self.validate_date(from_date, to_date)
+        from_date, to_date = validate_date(from_date, to_date)
 
         reps = Repository(repo_url, since=from_date, to=to_date)
 
@@ -78,15 +77,5 @@ class AnalysisService:
             commit_analysis.add_commit(project_commit)
 
         return commit_analysis
-
-    def validate_date(self, from_date: str, to_date: str):
-        # If from_date or to_date is None, calculate past year date range
-        if from_date is None or to_date is None:
-            from_date, to_date = calculate_past_year_date_range(from_date, to_date)
-        else:
-            from_date = try_to_parse_date(from_date)
-            to_date = try_to_parse_date(to_date)
-
-        return from_date, to_date
 
 

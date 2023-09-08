@@ -1,5 +1,5 @@
 from app.analyzers.AverageMetricFinder import AverageMetricFinder
-from app.analyzers.HotspotPrioritizer import HotspotPriorityCalculator
+from app.analyzers.HotspotPriorityCalculator import HotspotPriorityCalculator
 from app.models.Project import Project
 from app.models.analysis.PriorityAnalysis import PriorityAnalysis
 
@@ -24,8 +24,6 @@ class Analyser:
         for file in self.project.files:
             if max_metric_file is None:
                 max_metric_file = file
-
-            print(max_metric_file.to_dict())
 
             if file.get_metric(metric_key) is not None and max_metric_file.get_metric(metric_key) is not None:
                 if file.get_metric(metric_key) > max_metric_file.get_metric(metric_key):
@@ -57,4 +55,4 @@ class Analyser:
 
     def prioritize_hotspots(self):
         self.hotspot_priority_calculator = HotspotPriorityCalculator(self.project, self.project_analysis)
-        self.hotspot_priority_calculator.calculate_hotspot_priority()
+        self.hotspot_priority_calculator.calculate_hotspots_priority()
