@@ -29,7 +29,7 @@ const Footer = () => {
                     <i className="bi bi-arrow-up-circle-fill hover-border"> Back to top</i>
                 </a>
 
-                <img src="https://www.uom.gr/site/images/logos/UOMLOGOEN.jpg" className="footer-image" alt="UOM Logo" />
+                <img src="https://www.uom.gr/site/images/logos/UOMLOGOEN.png" className="footer-image" alt="UOM Logo" />
             </div>
             <div className="footer-copyright">
                 &copy; {new Date().getFullYear()}

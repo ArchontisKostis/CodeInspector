@@ -1,6 +1,6 @@
 import React from 'react';
 import { Scatter } from 'react-chartjs-2';
-import { Chart, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip } from 'chart.js';
+import { Chart, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, registerables } from 'chart.js';
 
 import './ScatterPlot.css';
 
@@ -17,7 +17,7 @@ const ScatterPlot = (props) => {
     }));
 
     // Register the required chart elements
-    Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip); // Add Tooltip to the registered elements
+    Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, ...registerables); // Add Tooltip to the registered elements
 
     const chartOptions = {
         scales: {
