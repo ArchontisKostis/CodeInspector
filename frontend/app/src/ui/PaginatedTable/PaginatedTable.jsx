@@ -4,14 +4,27 @@ import { saveAs } from 'file-saver';
 import './PaginatedTable.css';
 
 const PaginatedTable = (props) => {
-    const { data, columns, itemsPerPage: initialItemsPerPage, exportFileName } = props;
+    const { data, columns, itemsPerPage: initialItemsPerPage, exportFilename, searchColumn } = props;
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(initialItemsPerPage);
+    const [searchQuery, setSearchQuery] = useState(''); // New state for search query
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
-    const totalPages = Math.ceil(data.length / itemsPerPage);
+
+    // Filter the data based on the search query
+    const filteredData = data.filter((item) => {
+        if (searchQuery === '') {
+            return true; // If no search query, show all data
+        } else {
+            // Search only in the specified column
+            const value = item[searchColumn];
+            return value && value.toLowerCase().includes(searchQuery.toLowerCase());
+        }
+    });
+
+    const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
+    const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -22,15 +35,22 @@ const PaginatedTable = (props) => {
         setCurrentPage(1);
     };
 
-    {
-        console.log(exportFileName)}
+    const handleSearchChange = (event) => {
+        setSearchQuery(event.target.value);
+        setCurrentPage(1); // Reset to the first page when searching
+    };
+
+    const resetSearch = () => {
+        setSearchQuery('');
+    };
+
     const exportToCSV = () => {
         const csvRows = [];
         const headers = columns.map((column) => column.label);
 
         csvRows.push(headers.join(','));
 
-        data.forEach((item) => {
+        filteredData.forEach((item) => {
             const rowData = columns.map((column) => {
                 if (column.nested) {
                     const nestedKeys = column.key.split('.');
@@ -51,33 +71,57 @@ const PaginatedTable = (props) => {
         const csvContent = csvRows.join('\n');
         const csvBlob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
 
-        saveAs(csvBlob, "code-inspector-export.csv");
+        const filename = exportFilename ? exportFilename : 'code-inspector-export.csv';
+
+        saveAs(csvBlob, filename);
     };
 
     return (
         <>
             <div className="paginated-table">
-                <div className="items-per-page-container">
-                    <label htmlFor="itemsPerPage">Items per page:</label>
 
-                    <div className="select-dropdown">
-                        <select
-                            id="itemsPerPage"
-                            value={itemsPerPage}
-                            onChange={handleItemsPerPageChange}
-                            className="items-per-page-dropdown"
-                        >
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                            <option value="15">15</option>
-                            <option value="20">20</option>
-                            <option value="25">25</option>
-                            <option value="30">30</option>
-                            <option value="35">35</option>
-                            <option value="40">40</option>
-                            <option value="45">45</option>
-                            <option value="50">50</option>
-                        </select>
+
+                <div className="items-per-page-container">
+                    <div className='select-container-table'>
+                        <label htmlFor="itemsPerPage">Items per page:</label>
+                        <div className="select-dropdown">
+                            <select
+                                id="itemsPerPage"
+                                value={itemsPerPage}
+                                onChange={handleItemsPerPageChange}
+                                className="items-per-page-dropdown"
+                            >
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                                <option value="20">20</option>
+                                <option value="25">25</option>
+                                <option value="30">30</option>
+                                <option value="35">35</option>
+                                <option value="40">40</option>
+                                <option value="45">45</option>
+                                <option value="50">50</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    {/* Search input field */}
+                    <div className="search-container">
+                        <label className='search-label' htmlFor="search">
+                           <i className='bi bi-search'></i>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="search"
+                            value={searchQuery}
+                            onChange={handleSearchChange}
+                            className="search-input"
+                        />
+
+                        <button className='search-btn' onClick={resetSearch}>
+                            <i className='bi bi-x-circle'></i>
+                        </button>
                     </div>
                 </div>
 

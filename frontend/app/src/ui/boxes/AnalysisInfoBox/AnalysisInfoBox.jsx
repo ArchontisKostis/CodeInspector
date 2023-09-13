@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './AnalysisInfoBox.css';
+import {Link} from "react-router-dom";
 
 const AnalysisInfoBox = (props) => {
     const { projectName, fromDate, toDate, githubUrl } = props;
@@ -25,10 +26,10 @@ const AnalysisInfoBox = (props) => {
                     <p><b>From:</b> {formatDate(fromDate)}</p>
                     <p><b>To:</b> {formatDate(toDate)}</p>
 
-                    <a href={githubUrl} >
+                    <Link to={githubUrl} >
                         <i className="bi bi-globe2"> </i>
                         GitHub Repository
-                    </a>
+                    </Link>
                 </div>
             </div>
         </>
