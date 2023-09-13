@@ -40,6 +40,8 @@ const HotspotAnalysis = (props) => {
         { key: 'priority', label: 'Priority' },
     ];
 
+    const searchColumns = ['name', 'priority'];
+
 
     return (
         <>
@@ -110,8 +112,11 @@ const HotspotAnalysis = (props) => {
 
                 <PaginatedTable
                     data={[...outliers, ...prioritized_files]}
+                    searchColumns={searchColumns}
                     itemsPerPage={50}
                     columns={filesColumns}
+                    searchColumn={'name'}
+                    exportFilename={'hotspot_analysis_' + project_name + '_modified_files_CodeInspector.csv'}
                 />
 
             </div>

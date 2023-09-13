@@ -41,7 +41,7 @@ const CommitAnalysis = (props) => {
                     totalCommits={total_commits}
                     fromDate={from_date}
                     toDate={to_date}
-                    repoUrl={repo_url}
+                    githubUrl={repo_url}
                 />
 
                 <div className="commit-table">
@@ -53,6 +53,8 @@ const CommitAnalysis = (props) => {
                         data={commits}
                         itemsPerPage={50}
                         columns={commitsColumns}
+                        searchColumn={'hash'}
+                        exportFilename={'commit_analysis_' + project_name + '_commits_CodeInspector.csv'}
                     />
                 </div>
 
