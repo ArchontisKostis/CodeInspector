@@ -7,25 +7,41 @@ import Footer from "./components/Footer/Footer.jsx";
 import ToolPage from "./pages/ToolPage/ToolPage.jsx";
 import ErrorPage from "./pages/ErrorPage/ErrorPage.jsx";
 import About from "./pages/About/About.jsx";
+import {useEffect, useState} from "react";
+import LoadingBar from "./ui/LoadingBar/LoadingBar.jsx";
+import LoadingPage from "./ui/LoadingPage/LoadingPage.jsx";
 function App() {
+    const [isLoading, setIsLoading] = useState(true);
 
-  return (
+    // Simulate loading for a few seconds
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 3000); // Adjust the duration as needed
+    }, []);
+
+
+    return (
     <>
         <Router>
             <div className="App">
-                <Header />
 
-                <Routes>
-                    <Route exact path='/' element={<Home />} />
-                    <Route path='/analysis/*' element={<AnalysisPage />} />
-                    <Route exact path='/tool' element={<ToolPage />} />
-                    <Route exact path='/about' element={<About />} />
-                    <Route path='*' element={<ErrorPage />} />
-                    {/* Error Page */}
-                    <Route path='*' element={<ErrorPage />} />
-                </Routes>
 
-                <Footer />
+                {isLoading ? (
+                    <LoadingPage />
+                ) : (
+                    <>
+                        <Header />
+                        <Routes>
+                            <Route exact path='/' element={<Home />} />
+                            <Route path='/analysis/*' element={<AnalysisPage />} />
+                            <Route exact path='/tool' element={<ToolPage />} />
+                            <Route exact path='/about' element={<About />} />
+                            <Route path='*' element={<ErrorPage />} />
+                        </Routes>
+                        <Footer />
+                    </>
+                )}
             </div>
         </Router>
     </>
