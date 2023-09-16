@@ -7,7 +7,9 @@ const PaginatedTable = (props) => {
     const { data, columns, itemsPerPage: initialItemsPerPage, exportFilename, searchColumn } = props;
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(initialItemsPerPage);
-    const [searchQuery, setSearchQuery] = useState(''); // New state for search query
+    const [searchQuery, setSearchQuery] = useState('');
+    const [sortColumn, setSortColumn] = useState(''); // Track the sorting column
+    const [sortOrder, setSortOrder] = useState('asc'); // Track the sorting order
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -15,16 +17,32 @@ const PaginatedTable = (props) => {
     // Filter the data based on the search query
     const filteredData = data.filter((item) => {
         if (searchQuery === '') {
-            return true; // If no search query, show all data
+            return true;
         } else {
-            // Search only in the specified column
             const value = item[searchColumn];
             return value && value.toLowerCase().includes(searchQuery.toLowerCase());
         }
     });
 
-    const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
-    const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+    // Sort the data based on the selected column and order
+    const sortedData = [...filteredData];
+    if (sortColumn) {
+        sortedData.sort((a, b) => {
+            const aValue = a[sortColumn];
+            const bValue = b[sortColumn];
+
+            if (aValue < bValue) {
+                return sortOrder === 'asc' ? -1 : 1;
+            } else if (aValue > bValue) {
+                return sortOrder === 'asc' ? 1 : -1;
+            } else {
+                return 0;
+            }
+        });
+    }
+
+    const currentItems = sortedData.slice(indexOfFirstItem, indexOfLastItem);
+    const totalPages = Math.ceil(sortedData.length / itemsPerPage);
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -37,7 +55,19 @@ const PaginatedTable = (props) => {
 
     const handleSearchChange = (event) => {
         setSearchQuery(event.target.value);
-        setCurrentPage(1); // Reset to the first page when searching
+        setCurrentPage(1);
+    };
+
+    const handleSortChange = (event) => {
+        const selectedColumn = event.target.value;
+        setSortColumn(selectedColumn);
+
+        // Toggle sorting order if the same column is clicked again
+        if (selectedColumn === sortColumn) {
+            setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+        } else {
+            setSortOrder('asc');
+        }
     };
 
     const resetSearch = () => {
@@ -47,19 +77,15 @@ const PaginatedTable = (props) => {
     const exportToCSV = () => {
         const csvRows = [];
         const headers = columns.map((column) => column.label);
-
         csvRows.push(headers.join(','));
-
         filteredData.forEach((item) => {
             const rowData = columns.map((column) => {
                 if (column.nested) {
                     const nestedKeys = column.key.split('.');
                     let value = item;
-
                     nestedKeys.forEach((nestedKey) => {
                         value = value[nestedKey];
                     });
-
                     return value;
                 } else {
                     return item[column.key];
@@ -67,48 +93,68 @@ const PaginatedTable = (props) => {
             });
             csvRows.push(rowData.join(','));
         });
-
         const csvContent = csvRows.join('\n');
         const csvBlob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
-
         const filename = exportFilename ? exportFilename : 'code-inspector-export.csv';
-
         saveAs(csvBlob, filename);
     };
 
     return (
         <>
             <div className="paginated-table">
-
-
                 <div className="items-per-page-container">
-                    <div className='select-container-table'>
-                        <label htmlFor="itemsPerPage">Items per page:</label>
-                        <div className="select-dropdown">
-                            <select
-                                id="itemsPerPage"
-                                value={itemsPerPage}
-                                onChange={handleItemsPerPageChange}
-                                className="items-per-page-dropdown"
-                            >
-                                <option value="5">5</option>
-                                <option value="10">10</option>
-                                <option value="15">15</option>
-                                <option value="20">20</option>
-                                <option value="25">25</option>
-                                <option value="30">30</option>
-                                <option value="35">35</option>
-                                <option value="40">40</option>
-                                <option value="45">45</option>
-                                <option value="50">50</option>
-                            </select>
+
+                    <div className='dropdowns'>
+                        <div className='select-container-table'>
+                            <label htmlFor="itemsPerPage">Items per page:</label>
+                            <div className="select-dropdown">
+                                <select
+                                    id="itemsPerPage"
+                                    value={itemsPerPage}
+                                    onChange={handleItemsPerPageChange}
+                                    className="items-per-page-dropdown"
+                                >
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+                                    <option value="25">25</option>
+                                    <option value="30">30</option>
+                                    <option value="35">35</option>
+                                    <option value="40">40</option>
+                                    <option value="45">45</option>
+                                    <option value="50">50</option>
+                                </select>
+                            </div>
                         </div>
+
+                        <div className="sort-container">
+                                <label htmlFor="sort">Sort by:</label>
+
+                                <div className="select-dropdown">
+                                    <select
+                                        id="sort"
+                                        value={sortColumn}
+                                        onChange={handleSortChange}
+                                        className="sort-dropdown"
+                                    >
+                                        <option value="">None</option>
+                                        {columns.map((column) => (
+                                            <option key={column.key} value={column.key}>
+                                                {column.label}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                            </div>
                     </div>
+
+
 
                     {/* Search input field */}
                     <div className="search-container">
                         <label className='search-label' htmlFor="search">
-                           <i className='bi bi-search'></i>
+                            <i className='bi bi-search'></i>
                         </label>
 
                         <input
@@ -130,7 +176,12 @@ const PaginatedTable = (props) => {
                     <thead>
                     <tr>
                         {columns.map((column) => (
-                            <th key={column.key}>{column.label}</th>
+                            <th key={column.key}>
+                                {column.label}
+                                {sortColumn === column.key && (
+                                    <i className={`bi bi-arrow-${sortOrder === 'asc' ? 'up' : 'down'}`}></i>
+                                )}
+                            </th>
                         ))}
                     </tr>
                     </thead>
