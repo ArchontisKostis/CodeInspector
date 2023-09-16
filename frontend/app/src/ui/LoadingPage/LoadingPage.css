@@ -1,0 +1,47 @@
+.loading-page, .loading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-page {
+    background-color: var(--primary-dark);
+    height: 100vh;
+    width: 100vw;
+}
+
+.loading-page-icon {
+    width: 5em;
+    height: 5em;
+    animation: spinner 1s linear infinite;
+    transform-style: preserve-3d;
+    object-fit: contain;
+    padding-bottom: 1em;
+    flex-grow: 2;
+}
+
+.loading-page h3, .loading-page p {
+    color: white;
+    font-weight: 400;
+}
+
+.loading-page p { opacity: 0.7; }
+
+.loading-page p a {
+    color: var(--secondary-red);
+    transition: all 0.3s ease-in-out;
+}
+
+.loading-page p a:hover {
+    color: var(--bg-white-shade);
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotateX(0deg) rotateY(360deg) rotateZ(0deg);
+    }
+}
