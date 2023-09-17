@@ -20,3 +20,10 @@
     margin: 0;
     padding: 1em 0.5em;
 }
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .simple-info-box {
+        width: 80vw;
+    }
+}

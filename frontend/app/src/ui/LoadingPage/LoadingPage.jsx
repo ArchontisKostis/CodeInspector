@@ -16,7 +16,7 @@ const LoadingPage = () => {
 
 
             <p className='report-a-problem'>
-                Is this taking too long? Report it <a href=''>HERE</a>
+                Is this taking too long? Report it <a href='https://github.com/ArchontisKostis/CodeInspector/issues'>HERE</a>
             </p>
         </div>
     </>)

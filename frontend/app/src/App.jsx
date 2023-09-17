@@ -17,7 +17,7 @@ function App() {
     useEffect(() => {
         setTimeout(() => {
             setIsLoading(false);
-        }, 3000); // Adjust the duration as needed
+        }, 3000); // Adjust the duration as needed 3000
     }, []);
 
 
@@ -25,8 +25,6 @@ function App() {
     <>
         <Router>
             <div className="App">
-
-
                 {isLoading ? (
                     <LoadingPage />
                 ) : (

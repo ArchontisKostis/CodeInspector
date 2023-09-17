@@ -34,3 +34,26 @@
 .feature-box-container p {
     text-align: center;
 }
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .feature-box-container {
+        min-height: 20vh;
+        width: auto;
+    }
+
+    .feature-box-container i {
+        font-size: 2em;
+        margin: 0;
+    }
+
+    .feature-box-container h2 {
+        font-size: 1em;
+        margin: 0;
+    }
+
+    .feature-box-container p {
+        font-size: 0.9em;
+        margin: 0;
+    }
+}
