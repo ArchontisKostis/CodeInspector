@@ -35,3 +35,13 @@
 .wave-svg.dark {
     content: url("../../assets/svg/waves/wave-dark-one.svg");
 }
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .wave-container {
+        max-height: 20vh;
+    }
+    .wave-svg {
+        max-height: 25vh;
+    }
+}

@@ -15,7 +15,7 @@
 
 form {
     color: var(--primary-dark);
-    width: 55vw;
+    min-width: 55vw;
     height: max-content;
     margin: 0 1.5em 0 1.5em;
     display: flex;
@@ -73,8 +73,8 @@ input[type="radio"] {
     background-color: var(--primary-dark);
     border: none;
     border-radius: 50px;
-    width: 25vw;
-    height: 5vh;
+    min-width: 25vw;
+    min-height: 5vh;
     font-size: 1em;
     transition: background-color 0.25s ease-in-out;
     cursor: pointer;
@@ -104,11 +104,38 @@ input[type="radio"] {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    width: 100%;
+    min-width: 80vw;
 }
 
 .compact button {
     width: calc(100% + 1em);
     height: min-content;
     padding: 0.5em;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .analysis-form-container {
+        width: 90vw;
+        margin-bottom: 1em;
+    }
+
+    .analysis-form-container h2 {
+        font-size: 1.3rem;
+    }
+
+    .analysis-form-radio-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    form {
+        min-width: 80vw;
+        margin: 0;
+        padding-top: 0;
+    }
+
+    .analysis-form-submit-btn {
+        min-width: 80vw;
+    }
 }

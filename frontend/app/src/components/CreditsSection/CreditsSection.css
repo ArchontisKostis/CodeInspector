@@ -41,3 +41,10 @@
 .made-with-container .wide {
     width: 15vw;
 }
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .credits-section article {
+        width: 80vw;
+    }
+}

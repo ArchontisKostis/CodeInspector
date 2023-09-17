@@ -1,5 +1,5 @@
 .header {
-    height: 10vh;
+    min-height: 7vh;
     width: 100vw;
     background-color: var(--primary-red);
     display: flex;
@@ -20,15 +20,16 @@
 .header-logo h1 {
     color: white;
     font-weight: normal;
+    font-size: 1.5em;
 }
 
 .header-logo img{
-    height: 6vh;
+    height: 4vh;
     width: auto;
 }
 
 nav {
-    width: 20vw;
+    min-width: 20vw;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -45,6 +46,7 @@ nav .nav-item {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    padding: 0 0.5em;
 }
 
 .hover-border {
@@ -67,4 +69,30 @@ nav .nav-item {
 .hover-border:hover::after {
     width: 100%; /* Expand width to 100% when hovered */
     transform: scaleX(1); /* Scale to full width */
+}
+
+.nav-item.tool-header-btn {
+    background-color: white;
+    border: none;
+    border-radius: 0.8em;
+    color: var(--primary-dark);
+    padding: 0.6em;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    cursor: pointer;
+    outline: none;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+}
+
+.nav-item.tool-header-btn:hover {
+    background-color: var(--primary-dark);
+    color: white;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .header-logo h1 {
+        display: none;
+    }
 }
