@@ -50,6 +50,7 @@ const CommitAnalysis = (props) => {
                         icon="bi bi-git" />
 
                     <PaginatedTable
+                        type={'commits'}
                         data={commits}
                         itemsPerPage={50}
                         columns={commitsColumns}

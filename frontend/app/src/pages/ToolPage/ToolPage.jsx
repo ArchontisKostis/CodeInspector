@@ -51,7 +51,7 @@ const ToolPage = () => {
                             repo_url="https://github.com/GeorgeApos/pyassess"
                             analysis_from_date="2010-10-10"
                             analysis_to_date="2023-10-10"
-                            analysis_type="hotspot-prioritization"
+                            analysis_type="commit-analysis"
                         />
                     </div>
                     <div className="example-box">
@@ -60,7 +60,7 @@ const ToolPage = () => {
                             repo_url="https://github.com/GeorgeApos/pyassess"
                             analysis_from_date="2010-10-10"
                             analysis_to_date="2023-10-10"
-                            analysis_type="hotspot-prioritization"
+                            analysis_type="commit-analysis"
                         />
                     </div>
                 </div>

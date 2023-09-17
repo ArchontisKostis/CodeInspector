@@ -4,7 +4,7 @@ import { saveAs } from 'file-saver';
 import './PaginatedTable.css';
 
 const PaginatedTable = (props) => {
-    const { data, columns, itemsPerPage: initialItemsPerPage, exportFilename, searchColumn } = props;
+    const { data, columns, itemsPerPage: initialItemsPerPage, exportFilename, searchColumn, type } = props;
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(initialItemsPerPage);
     const [searchQuery, setSearchQuery] = useState('');
@@ -31,13 +31,17 @@ const PaginatedTable = (props) => {
             const aValue = a[sortColumn];
             const bValue = b[sortColumn];
 
-            if (aValue < bValue) {
-                return sortOrder === 'asc' ? -1 : 1;
-            } else if (aValue > bValue) {
-                return sortOrder === 'asc' ? 1 : -1;
-            } else {
-                return 0;
+            if (type === 'files') {
+                if (sortColumn === 'metrics.CC') return sortOrder === 'asc' ? a.metrics.CC- b.metrics.CC : b.metrics.CC - a.metrics.CC;
+
+                else if (sortColumn === 'metrics.CHURN') return sortOrder === 'asc' ? a.metrics.CHURN - b.metrics.CHURN : b.metrics.CHURN - a.metrics.CHURN;
+
+                else if (sortColumn === 'metrics.NLOC') return sortOrder === 'asc' ? a.metrics.NLOC - b.metrics.NLOC : b.metrics.NLOC - a.metrics.NLOC;
             }
+
+            if (aValue < bValue) return sortOrder === 'asc' ? -1 : 1;
+            else if (aValue > bValue) return sortOrder === 'asc' ? 1 : -1;
+            else return 0;
         });
     }
 
@@ -102,7 +106,7 @@ const PaginatedTable = (props) => {
     return (
         <>
             <div className="paginated-table">
-                <div className="items-per-page-container">
+                <div className="table-settings-container">
 
                     <div className='dropdowns'>
                         <div className='select-container-table'>

@@ -7,8 +7,6 @@ const ExampleAnalysisBox = (props) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        console.log("Clicked");
-
         let params = { repoUrl: repo_url, fromDate: analysis_from_date, toDate: analysis_to_date, analysisType: analysis_type };
 
         const queryParams = new URLSearchParams(params);

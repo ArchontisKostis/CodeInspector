@@ -111,6 +111,7 @@ const HotspotAnalysis = (props) => {
                     icon="bi bi-file-earmark-binary" />
 
                 <PaginatedTable
+                    type={'files'}
                     data={[...outliers, ...prioritized_files]}
                     searchColumns={searchColumns}
                     itemsPerPage={50}

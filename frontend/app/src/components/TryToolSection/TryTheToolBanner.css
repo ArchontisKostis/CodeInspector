@@ -1,6 +1,6 @@
 .try-the-tool-container {
     width: 100vw;
-    height: min-content;
+    min-height: min-content;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -63,4 +63,20 @@
     height: 25vh;
     background-image: url("../../assets/svg/waves/wave-light-one.svg");
     background-repeat: no-repeat;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .try-the-tool-container {
+        flex-direction: column;
+    }
+
+    .try-the-tool-img img{
+        height: 30vh;
+        width: auto;
+    }
+
+    .try-the-tool-text article {
+        width: 80vw;
+    }
 }

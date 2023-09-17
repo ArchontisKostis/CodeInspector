@@ -59,3 +59,14 @@
 .example-box {
     width: 100%;
 }
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .example-analysis-box {
+        min-width: 80vw;
+    }
+
+    .tool-page-examples {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

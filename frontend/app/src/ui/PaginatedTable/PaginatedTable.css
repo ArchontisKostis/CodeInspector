@@ -5,7 +5,7 @@
     align-items: center;
 }
 
-.items-per-page-container {
+.table-settings-container {
     width: 97vw;
     padding: 0.5em 2em 1em 2em;
     display: flex;
@@ -13,7 +13,7 @@
     justify-content: space-between;
 }
 
-.items-per-page-container label {
+.table-settings-container label {
     padding: 0.5em;
 }
 
@@ -104,6 +104,7 @@ select:hover {
 }
 
 .search-container {
+    width: 20em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -117,7 +118,7 @@ select:hover {
 }
 
 #search {
-    width: 10vw;
+    width: 100%;
 }
 
 #search:focus { outline: none }

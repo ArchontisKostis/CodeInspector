@@ -39,3 +39,19 @@
     height: 110vh;
     background-color: var(--bg-white-shade);
 }
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .tool-page-form-container .logo {
+        display: none;
+    }
+
+    .tool-page-form-container h1 {
+        font-size: 1.2rem;
+        margin: 1em ;
+    }
+
+    .tool-page-examples-container p {
+        text-align: center;
+    }
+}

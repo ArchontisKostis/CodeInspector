@@ -34,7 +34,7 @@
     'link3 link3 image'
     'link4 link4 image'
     ;
-    grid-template-columns: 1.25fr 2.3fr 1fr;
+    grid-template-columns: 1fr 4fr 1fr;
     padding: 0 1.5em 1em 1.5em;
 }
 

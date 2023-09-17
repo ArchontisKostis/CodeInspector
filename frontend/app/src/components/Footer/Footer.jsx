@@ -21,10 +21,6 @@ const Footer = () => {
                     <i className="bi bi-github hover-border"> Github Repository</i>
                 </a>
 
-                <a href="/credits" className="footer-link" id="link-5">
-                    <i className="bi bi-stars hover-border"> Credits & Acknowledgements</i>
-                </a>
-
                 <a href="#top" className="footer-link" id="link-6">
                     <i className="bi bi-arrow-up-circle-fill hover-border"> Back to top</i>
                 </a>
