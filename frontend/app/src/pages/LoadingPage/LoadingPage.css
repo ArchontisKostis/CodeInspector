@@ -37,15 +37,6 @@
     color: var(--bg-white-shade);
 }
 
-@keyframes spinner {
-    0% {
-        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-    }
-    100% {
-        transform: rotateX(0deg) rotateY(360deg) rotateZ(0deg);
-    }
-}
-
 @keyframes load-anim {
     0% {
         transform: scale3d(1, 1, 1);

@@ -43,6 +43,10 @@ const About = () => {
                     content="To calculate the priority of hotspots, we adopt an approach similar to the Eisenhower Matrix. In our context, we adapt the matrix to prioritize hotspots based on their complexity and code churn. By considering both complexity and churn metrics, we assess the significance and impact of each hotspot on software quality and maintainability. The priority calculation takes into account the relative position of a hotspot's metrics compared to the maximum CC and churn values observed in the project."
                 />
 
+                {/*<object data="http://africau.edu/images/default/sample.pdf" type="application/pdf" width="100%" height="100%">*/}
+                {/*    <p>Alternative text - include a link <a href="http://africau.edu/images/default/sample.pdf">to the PDF!</a></p>*/}
+                {/*</object>*/}
+
                 <Wave waveStyle="dark" />
             </div>
 

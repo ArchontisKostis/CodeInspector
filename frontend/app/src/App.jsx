@@ -9,7 +9,7 @@ import ErrorPage from "./pages/ErrorPage/ErrorPage.jsx";
 import About from "./pages/About/About.jsx";
 import {useEffect, useState} from "react";
 import LoadingBar from "./ui/LoadingBar/LoadingBar.jsx";
-import LoadingPage from "./ui/LoadingPage/LoadingPage.jsx";
+import LoadingPage from "./pages/LoadingPage/LoadingPage.jsx";
 function App() {
     const [isLoading, setIsLoading] = useState(true);
 
