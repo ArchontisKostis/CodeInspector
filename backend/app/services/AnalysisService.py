@@ -4,6 +4,7 @@ from pydriller import Repository
 
 from app.analyzers.Analyzer import Analyser
 from app.analyzers.CommitProcessor import CommitProcessor
+from app.analyzers.DmmAnalyzer import DmmAnalyzer
 from app.models.Project import Project
 from app.models.analysis.CommitAnalysis import CommitAnalysis
 from app.models.project_commit.ProjectCommitBuilder import ProjectCommitBuilder
@@ -15,7 +16,6 @@ from app.exceptions.NoCommitsException import NoCommitsException
 class AnalysisService:
     def __init__(self):
         self.filetypes = ['.java']
-
 
     def analyze_hotspots(self, repo_url: str, from_date: str, to_date: str):
         from_date, to_date = validate_date(from_date, to_date)
@@ -72,10 +72,10 @@ class AnalysisService:
                 .set_dmm_unit_size(commit.dmm_unit_size) \
                 .build()
 
-            project_commit.categorize()
+            dmm_analyzer = DmmAnalyzer()
+            project_commit.dmm_score = dmm_analyzer.calculate_dmm_score(project_commit)
+            project_commit.change_category = dmm_analyzer.find_commit_rating(project_commit)
 
             commit_analysis.add_commit(project_commit)
 
         return commit_analysis
-
-

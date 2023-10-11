@@ -18,20 +18,14 @@ class ProjectCommit:
         self.dmm_unit_size = None
         self.dmm_unit_complexity = None
         self.dmm_unit_interfacing = None
+        self.dmm_score = None
         self.change_category = CommitRating.UNKNOWN
 
-    def categorize(self):
-        if self.dmm_unit_complexity is not None:
-            if MIN_THRESHOLD_EXCELLENT <= self.dmm_unit_complexity <= MAX_THRESHOLD_EXCELLENT:
-                self.change_category = CommitRating.EXCELLENT
-            elif MIN_THRESHOLD_GOOD <= self.dmm_unit_complexity <= MAX_THRESHOLD_GOOD:
-                self.change_category = CommitRating.GOOD
-            elif MIN_THRESHOLD_FAIR <= self.dmm_unit_complexity <= MAX_THRESHOLD_FAIR:
-                self.change_category = CommitRating.FAIR
-            elif MIN_THRESHOLD_POOR <= self.dmm_unit_complexity <= MAX_THRESHOLD_POOR:
-                self.change_category = CommitRating.POOR
-            else:
-                self.change_category = CommitRating.UNKNOWN
+
+    def dmm_metrics_exist(self):
+        return (self.dmm_unit_size is not None and
+                self.dmm_unit_complexity is not None and
+                self.dmm_unit_interfacing is not None)
 
     def to_dict(self):
         return {

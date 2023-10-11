@@ -16,8 +16,6 @@ async def prioritize_hotspots(repo_url: str, from_date: str = None, to_date: str
 
     try:
         validate_repo_url(repo_url)
-
-
         logger.info(f"Performing analysis on {repo_url}")
 
         analysis = analysis_service.analyze_hotspots(repo_url, from_date, to_date)
