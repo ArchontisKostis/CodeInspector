@@ -5,6 +5,8 @@ import {Link} from "react-router-dom";
 import './TryTheToolBanner.css';
 import Wave from "../../ui/Wave/Wave.jsx";
 
+import data from "../../data/pages/home.json";
+
 export default function TryTheToolBanner() {
     return (
         <>
@@ -12,21 +14,22 @@ export default function TryTheToolBanner() {
                 <section className="try-the-tool-img">
                     <img src={homeImg} alt="Try the tool" />
                     <p>
-                        <a href="https://www.freepik.com/free-vector/bug-fixing-concept-illustration_7769294.htm#query=Software%20tester%20illustration&position=5&from_view=search&track=ais">Image by storyset</a> on Freepik
+                        <a href={data.tryTheToolSection.image.src}>
+                            {data.tryTheToolSection.image.freepikAttribution}
+                        </a>
                     </p>
                 </section>
 
                 <section className="try-the-tool-text">
-                    <h2>Elevate your Codebase Analysis</h2>
+                    <h2></h2>
                     <article>
-                        Take your codebase analysis to the next level with CodeInspector.
-                        Our cutting-edge API provides comprehensive hotspot prioritization and commit analysis,
-                        helping you make informed decisions to improve software quality. Dive deep into your code,
-                        detect issues, and streamline development. Try our powerful web app today!
+                        {data.tryTheToolSection.text.article}
                     </article>
                     <br/>
                     <Link to="/tool" className="tool-btn">
-                        <i className="bi bi-arrow-right-circle-fill"> Try the Tool! </i>
+                        <i className={data.tryTheToolSection.text.buttonIcon}>
+                            {data.tryTheToolSection.text.buttonTxt}
+                        </i>
                     </Link>
                 </section>
             </div>

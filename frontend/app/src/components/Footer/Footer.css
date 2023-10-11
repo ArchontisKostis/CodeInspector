@@ -61,4 +61,6 @@ a.footer-link i {
     justify-content: center;
     align-items: center;
     grid-area: image;
+    background-color: var(--bg-white-shade);
+    border-radius: 0.5em;
 }

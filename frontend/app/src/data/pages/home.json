@@ -1,0 +1,82 @@
+{
+  "tryTheToolSection": {
+    "image": {
+      "src": "https://www.freepik.com/free-vector/bug-fixing-concept-illustration_7769294.htm#query=Software%20tester%20illustration&position=5&from_view=search&track=ais",
+      "alt": "Illustaton of a person in a red shirt using a magnifying glass to inspect a website displayed on a computer monitor.",
+      "freepikAttribution": "Image by storyset on Freepik"
+    },
+
+    "text": {
+      "header": "Elevate your Codebase Analysis",
+      "article": "Take your codebase analysis to the next level with CodeInspector.\n                        Our cutting-edge API provides comprehensive hotspot prioritization and commit analysis,\n                        helping you make informed decisions to improve software quality. Dive deep into your code,\n                        detect issues, and streamline development. Try our powerful web app today!",
+      "buttonTxt": "Try the Tool!",
+      "buttonIcon": "bi bi-arrow-right-circle-fill"
+    }
+  },
+
+  "featuresSection": {
+    "header": "Features",
+    "features": [
+      {
+        "icon": "bi bi-graph-up",
+        "title": "Hotspot Prioritization",
+        "description": "Identify critical areas in your codebase that require attention. Prioritize files based on complexity and code churn. Focus on improving software quality and maintainability."
+      },
+
+      {
+        "icon": "bi bi-git",
+        "title": "Commit Analysis with DMM",
+        "description": "Assess the impact of individual commits on maintainability. Using the Delta Maintainability Model, gain insights on the quality of each commit."
+      },
+
+      {
+        "icon": "bi bi-calendar2-week",
+        "title": "Customizable Date Range",
+        "description": "Deepen your understanding with our tool to thoroughly examine the contents and activities of your repositories, by focusing on a specific date range."
+      }
+    ]
+  },
+
+  "techniquesSection": {
+    "header": "Analysis Techniques",
+    "article": "At CodeInspector, we employ sophisticated analysis techniques to deliver comprehensive insights into your codebase. Our app leverages the Delta Maintainability Model (DMM) and the Eisenhower Matrix to help you make informed decisions and drive impactful improvements.",
+    "techniques": [
+      {
+        "title": "Delta Maintainability Model",
+        "description": "Our tool utilizes the Delta Maintainability Model (DMM) to evaluate the maintainability implications of code changes. By categorizing commits based on DMM complexity, we provide insights into the quality of each change, empowering you to make informed decisions during code reviews and further enhancements."
+      },
+
+      {
+        "title": "Eisenhower Matrix",
+        "description": "Our hotspot prioritization technique draws inspiration from the renowned Eisenhower Matrix. By considering complexity and code churn, we identify critical areas that require immediate attention, helping you streamline your efforts and focus on areas that will yield the greatest impact."
+      }
+    ]
+  },
+
+  "creditsSection": {
+    "header": "Credits",
+    "articles": [
+      "CodeInspector - CodeInspectorREST was created as part of Archontis E. Kostis' Bachelor Thesis at the University of Macedonia, under the guidance and support of Dr. Alexander Hatzigeorgiou, Dean of the Department of Applied Informatics.",
+      "I would like to extend my heartfelt gratitude to all the individuals who have provided support and valuable advice throughout the development of this Web App, which is an integral part of my bachelor's thesis. Their encouragement and guidance have been instrumental in the successful completion of this project.",
+      "This Web App was developed using several libraries and frameworks and tools, which have played a pivotal role in enhancing its functionality and performance. I would like to express my gratitude to the creators and maintainers"
+    ],
+    "madeWithTxt": "Made With:",
+    "madeWithTechImages": [
+      {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+        "alt": "React logo"
+      },
+
+      {
+        "src": "https://fastapi.tiangolo.com/img/icon-white.svg",
+        "alt": "FastAPI Logo"
+      },
+
+      {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Docker_%28container_engine%29_logo_%28cropped%29.png",
+        "alt": "Docker Logo"
+      }
+
+    ]
+  }
+}
