@@ -43,7 +43,7 @@ class DmmAnalyzer:
 
             elif self.MIN_THRESHOLD_POOR <= project_commit.dmm_score <= self.MAX_THRESHOLD_POOR:
                 return CommitRating.POOR
-        
+
         else:
             return CommitRating.UNKNOWN
 
