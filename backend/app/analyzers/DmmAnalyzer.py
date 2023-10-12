@@ -5,7 +5,7 @@ from app.models.project_commit.ProjectCommit import ProjectCommit
 class DmmAnalyzer:
     def __init__(self):
         # These are the thresholds for the project commit rating categories.
-        # DMM Score is the sum of the 3 DMM metrics and has a value between 0.0 and 3.0.
+        # Rating Score is the sum of the 3 DMM metrics and has a value between 0.0 and 3.0.
         # In order to categorize the project commit rating based on the dmm score, we break the range into 4 categories.
         self.MIN_THRESHOLD_EXCELLENT = 0.0
         self.MAX_THRESHOLD_EXCELLENT = 0.75
