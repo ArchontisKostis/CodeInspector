@@ -8,6 +8,8 @@ import { useLocation } from "react-router-dom";
 import CommitAnalysis from "../../components/CommitAnalysis/CommitAnalysis.jsx";
 import LoadingBar from "../../ui/LoadingBar/LoadingBar.jsx";
 
+import data from "../../data/pages/analysisPage.json";
+
 const defaultOptions = {
     method: 'GET',
 };
@@ -95,11 +97,11 @@ const AnalysisPage = (props) => {
         <>
             <div className="analysis-container">
                 <div className="analysis-input-container">
-                    {/*<AnalysisForm formType="compact" />*/}
-
-                    <h2 className="analysis-results-header">Analysis Results</h2>
+                    <h2 className="analysis-results-header">
+                        {data.pageHeader.title}
+                    </h2>
                     <p className="analysis-results-subheader">
-                        Your analysis results will be displayed here. You can also download the results as a CSV file.
+                        {data.pageHeader.subTitle}
                     </p>
                     <Wave
                         waveStyle="light"
@@ -108,15 +110,22 @@ const AnalysisPage = (props) => {
 
                 {isLoading ? (
                     <div className="progress-bar-container">
-                        <h2>Analysing Repository</h2>
-                        <p>This might take a while. Grab a coffee and relax!</p>
-                        <p>Elapsed Time: {elapsedTime} seconds</p> {/* Display elapsed time */}
+                        <h2>{data.progressBar.header}</h2>
+                        <p>{data.progressBar.sub}</p>
+                        <p>
+                            {data.progressBar.elapsedTime.prefix + elapsedTime + data.progressBar.elapsedTime.suffix}
+                        </p>
                         <LoadingBar />
                     </div>
                 ) : error ? (
                     <div className="error-container">
                         <span className="error-msg">
-                            <i className="bi bi-exclamation-circle"> <b>Error:</b> {error.message}</i>
+                            <i className={data.errorContainer.icon}>
+                                <b>
+                                    {data.errorContainer.title}
+                                </b>
+                                {error.message}
+                            </i>
                         </span>
                     </div>
                 ) : (

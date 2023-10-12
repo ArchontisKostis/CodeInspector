@@ -1,0 +1,20 @@
+{
+  "pageHeader": {
+    "title": "Analysis Results",
+    "subTitle": "Your analysis results will be displayed here. You can also download the results as a CSV file."
+  },
+
+  "progressBar": {
+    "header": "Analysing Repository",
+    "sub": "This might take a while. Grab a coffee and relax!",
+    "elapsedTime": {
+      "prefix": "Elapsed Time: ",
+      "suffix": " seconds"
+    }
+  },
+
+  "errorContainer": {
+    "icon": "bi bi-exclamation-circle",
+    "title": "Error: "
+  }
+}

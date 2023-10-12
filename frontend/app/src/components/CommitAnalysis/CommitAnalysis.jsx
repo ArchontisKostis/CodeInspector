@@ -50,7 +50,9 @@ const CommitAnalysis = (props) => {
                         title="Commits Chart"
                         icon="bi bi-clipboard-data-fill" />
 
-                    <BarChart data={commits}/>
+                    <div className="bar-chart-container">
+                        <BarChart data={commits}/>
+                    </div>
                 </div>
 
                 <div className="commit-table">

@@ -1,0 +1,75 @@
+{
+  "brandName": "CodeInspector",
+
+  "header": {
+    "home": {
+      "title": "Home",
+      "url": "/"
+    },
+
+    "about": {
+      "title": "How It Works",
+      "url": "/about"
+    },
+
+    "apiDocs": {
+      "title": "API",
+      "url": {
+        "dev": "http://localhost:8000/redoc",
+        "prod": ""
+      }
+    },
+
+    "tool": {
+      "title": "The Tool",
+      "url": "/tool"
+    }
+  },
+
+  "footer": {
+    "home": {
+      "url": "/",
+      "icon": "bi bi-house-door-fill",
+      "title": " Home"
+    },
+
+    "about": {
+      "url": "/about",
+      "icon": "bi bi-info-circle-fill",
+      "title": " How it works"
+    },
+
+    "apiDocs": {
+      "url": "http://localhost:8000/redoc",
+      "icon": "bi bi-plugin",
+      "title": " API Docs"
+    },
+
+    "repo": {
+      "url": "https://github.com/ArchontisKostis/CodeInspector",
+      "icon": "bi bi-github",
+      "title": " Github Repository"
+    },
+
+    "backToTop": {
+        "url": "#",
+        "icon": "bi bi-arrow-up-circle-fill",
+        "title": " Back to top"
+    },
+
+    "uomImage": {
+      "src": "https://www.uom.gr/site/images/logos/UOMLOGOEN.png",
+      "alt": "University of Macedonia Logo"
+    },
+
+    "footerCopyright": {
+      "icon": "© ",
+      "myLink": "https://www.linkedin.com/in/archontis-e-kostis-202384223/",
+      "myName": "Archontis E. Kostis",
+      "uom": {
+        "text": "University of Macedonia, Department of Applied Informatics",
+        "url": "https://www.uom.gr/dai"
+      }
+    }
+  }
+}

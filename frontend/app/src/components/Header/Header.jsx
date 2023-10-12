@@ -4,6 +4,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/svg/logo_white.svg';
+import {brandName, header} from "../../data/general.json"
 
 import './Header.css';
 
@@ -13,16 +14,27 @@ const Header = () => {
             <header className="header">
 
                 <Link to="/" className="header-logo">
-                    <img src={logo} alt="CodeInspector Logo"/>
-                    <h1>CodeInspector</h1>
+                    <img src={logo} alt={brandName + " Logo"}/>
+                    <h1>{brandName}</h1>
                 </Link>
 
 
                 <nav className="navbar">
-                    <Link to="/" className="nav-item hover-border">Home</Link>
-                    <Link to="/about" className="nav-item hover-border">How It Works</Link>
-                    <Link to="http://localhost:8000/redoc" className="nav-item hover-border">API</Link>
-                    <Link to="/tool" className="nav-item tool-header-btn">The Tool</Link>
+                    <Link to={header.home.url} className="nav-item hover-border">
+                        {header.home.title}
+                    </Link>
+
+                    <Link to={header.about.url} className="nav-item hover-border">
+                        {header.about.title}
+                    </Link>
+
+                    <Link to={header.apiDocs.url.dev} className="nav-item hover-border">
+                        {header.apiDocs.title}
+                    </Link>
+
+                    <Link to={header.tool.url} className="nav-item tool-header-btn">
+                        {header.tool.title}
+                    </Link>
                 </nav>
             </header>
         </>
