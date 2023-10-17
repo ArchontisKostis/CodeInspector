@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../../assets/svg/logo_white.svg";
 
 import "./LoadingPage.css";
+import data from "../../data/pages/loading.json"
 
 const LoadingPage = () => {
 
@@ -10,13 +11,20 @@ const LoadingPage = () => {
         <div className="loading-page">
 
             <div className='loading-content'>
-                <img src={logo} className='loading-page-icon spinner' alt='Loading...'/>
-                <h3>Loading application...</h3>
+                <img
+                    src={logo}
+                    className='loading-page-icon spinner'
+                    alt={data.headerText}
+                />
+                <h3>{data.headerText}</h3>
             </div>
 
 
             <p className='report-a-problem'>
-                Is this taking too long? Report it <a href='https://github.com/ArchontisKostis/CodeInspector/issues'>HERE</a>
+                {data.subText}
+                <a href={data.reportIt.url}>
+                    {data.reportIt.text}
+                </a>
             </p>
         </div>
     </>)

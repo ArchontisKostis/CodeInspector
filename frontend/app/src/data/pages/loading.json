@@ -1,0 +1,8 @@
+{
+  "headerText": "Loading application...",
+  "subText": "Is this taking too long? Report it ",
+  "reportIt": {
+    "text": "HERE",
+    "url": "https://github.com/ArchontisKostis/CodeInspector/issues"
+  }
+}

@@ -4,6 +4,8 @@ import "./FeaturesSection.css";
 import FeatureBox from "../../ui/home/FeatureBox/FeatureBox.jsx";
 import Wave from "../../ui/Wave/Wave.jsx";
 
+import data from "../../data/pages/home.json";
+
 const FeaturesSection = (props) => {
     return (
         <>
@@ -12,35 +14,19 @@ const FeaturesSection = (props) => {
 
             <h2 className="features-section-title">Features</h2>
 
-            <FeatureBox
-                title="Hotspot Prioritization"
-                icon="bi bi-graph-up"
-                description={
-                    "Identify critical areas in your codebase that require attention. " +
-                    "Prioritize files based on complexity and code churn. Focus on improving software quality and maintainability."
-                }
-            />
-
-            <FeatureBox
-                title="Commit Analysis with DMM"
-                icon="bi bi-git"
-                description={
-                    "Assess the impact of individual commits on maintainability. " +
-                    "Using the Delta Maintainability Model, gain insights on the quality of each commit."
-                }
-            />
-
-            <FeatureBox
-                title="Customizable Date Range"
-                icon="bi bi-calendar2-week"
-                description={
-                    "Deepen your understanding with our tool to thoroughly examine the " +
-                    "contents and activities of your repositories, by focusing on a specific date range."
-                }
-            />
-
-
-
+            {
+                data.featuresSection.features
+                    .map((feature, index) => {
+                        return (
+                            <FeatureBox
+                                key={index}
+                                title={feature.title}
+                                icon={feature.icon}
+                                description={feature.description}
+                            />
+                        );
+                    })
+            }
         </div>
         </>
     );
