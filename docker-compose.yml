@@ -6,6 +6,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
+    depends_on:
+      - database
 
   frontend:
     build:
@@ -15,3 +17,12 @@ services:
       - "3000:3000"
     depends_on:
       - backend
+  
+  database:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: code_inspector_db
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
