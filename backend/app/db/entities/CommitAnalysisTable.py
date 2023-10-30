@@ -14,10 +14,8 @@ class CommitAnalysisTable(Base):
 
     def to_dict(self):
         return {
-            'project_name': self.project_name,
-            'repo_url': self.repo_url,
+            'project_id': self.project_id,
             'from_date': self.from_date,
             'to_date': self.to_date,
-            'commits': [commit.to_dict() for commit in self.commits],
             'total_commits': self.total_commits
         }
