@@ -1,4 +1,4 @@
 uvicorn~=0.22.0
 fastapi~=0.100.0
 PyDriller~=2.5
-SQLAlchemy~=1.4.41
+SQLAlchemy~=2.0.22
