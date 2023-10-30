@@ -1,14 +1,24 @@
 from fastapi import APIRouter
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
 from app import logger
+from app.db import DB_URL
+from app.db.entities import Base, CommitAnalysisTable, ProjectTable, ProjectCommitTable, ProjectFileTable, FileMetricsTable
 from app.routers import validate_repo_url, start_timer, end_timer, \
     handle_exception_on_endpoint
 from app.services.AnalysisService import AnalysisService
 
 router = APIRouter()
-filetypes = ['.java']
 
-analysis_service = AnalysisService()
+db_engine = create_engine(DB_URL, echo=True)
+Session = sessionmaker(bind=db_engine)
+db_connection = db_engine.connect()
+session = Session()
+
+Base.metadata.create_all(db_engine)
+
+analysis_service = AnalysisService(session)
 
 @router.get("/api/analysis/prioritize_hotspots")
 async def prioritize_hotspots(repo_url: str, from_date: str = None, to_date: str = None):
