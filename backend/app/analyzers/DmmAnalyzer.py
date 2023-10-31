@@ -7,17 +7,17 @@ class DmmAnalyzer:
         # These are the thresholds for the project commit rating categories.
         # Rating Score is the sum of the 3 DMM metrics and has a value between 0.0 and 3.0.
         # In order to categorize the project commit rating based on the dmm score, we break the range into 4 categories.
-        self.MIN_THRESHOLD_EXCELLENT = 0.0
-        self.MAX_THRESHOLD_EXCELLENT = 0.75
+        self.MIN_THRESHOLD_POOR = 0.0
+        self.MAX_THRESHOLD_POOR = 0.75
 
-        self.MIN_THRESHOLD_GOOD = 0.76
-        self.MAX_THRESHOLD_GOOD = 1.50
+        self.MIN_THRESHOLD_FAIR = 0.76
+        self.MAX_THRESHOLD_FAIR = 1.50
 
-        self.MIN_THRESHOLD_FAIR = 1.51
-        self.MAX_THRESHOLD_FAIR = 2.25
+        self.MIN_THRESHOLD_GOOD = 1.51
+        self.MAX_THRESHOLD_GOOD = 2.25
 
-        self.MIN_THRESHOLD_POOR = 2.26
-        self.MAX_THRESHOLD_POOR = 3.0
+        self.MIN_THRESHOLD_EXCELLENT = 2.26
+        self.MAX_THRESHOLD_EXCELLENT = 3.0
 
     # We use the 3 DMM metrics to calculate the DMM score, which is then used to categorize the project commit.
     # The metrics are: dmm_unit_size, dmm_unit_complexity, dmm_unit_interfacing
