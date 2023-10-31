@@ -53,13 +53,26 @@ class AnalysisService:
         analyzer.prioritize_hotspots()
 
         # Now save everything to the database
-        db_project = ProjectTable()
+        # Check if the project already exists (by checking the repository url)
+        db_project = self.session.query(ProjectTable).filter(
+            ProjectTable.repository_url == repo_url
+        ).first()
+
+        if db_project is None:
+            db_project = ProjectTable()
+
         db_project.project_name = project.project_name
         db_project.repository_url = project.repository_url
 
         self.session.add(db_project)
         self.session.commit()
         self.session.refresh(db_project)
+
+        db_analysis = HotspotAnalysisTable()
+        db_analysis.project_id = db_project.id
+        self.session.add(db_analysis)
+        self.session.commit()
+        self.session.refresh(db_analysis)
 
         project_files = project.files
 
@@ -72,6 +85,7 @@ class AnalysisService:
             db_file.project_id = db_project.id
             db_file.name = file.name
             db_file.priority = file.priority
+            db_file.hotspot_analysis_id = db_analysis.id
 
             self.session.add(db_file)
             self.session.commit()
@@ -93,7 +107,7 @@ class AnalysisService:
             self.session.commit()
             self.session.refresh(metrics_table)
 
-        db_analysis = HotspotAnalysisTable()
+
         db_analysis.project_id = db_project.id
         db_analysis.from_date = from_date
         db_analysis.to_date = to_date
@@ -101,6 +115,7 @@ class AnalysisService:
         db_analysis.max_churn_file_id = max_churn_file.id
         db_analysis.max_complexity_file_id = max_cc_file.id
         db_analysis.average_churn = analyzer.project_analysis.avg_churn
+        db_analysis.average_nloc = analyzer.project_analysis.avg_nloc
         db_analysis.average_complexity = analyzer.project_analysis.avg_complexity
         db_analysis.total_lines_of_code = analyzer.project_analysis.total_nloc
         db_analysis.total_files = analyzer.project_analysis.total_files
