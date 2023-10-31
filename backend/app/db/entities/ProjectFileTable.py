@@ -9,11 +9,13 @@ class ProjectFileTable(Base):
     name = Column(String(255), default='Undefined File Name')
     priority = Column(String(255), default='NOT_SET')
     project_id = Column(Integer, nullable=False)
+    hotspot_analysis_id = Column(Integer, nullable=False)
 
     def to_dict(self):
         return {
             'id': self.id,
             'name': self.name,
             'priority': self.priority,
-            'project_id': self.project_id
+            'project_id': self.project_id,
+            'hotspot_analysis_id': self.hotspot_analysis_id
         }
