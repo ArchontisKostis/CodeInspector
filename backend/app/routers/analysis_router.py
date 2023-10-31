@@ -4,7 +4,8 @@ from sqlalchemy.orm import sessionmaker
 
 from app import logger
 from app.db import DB_URL
-from app.db.entities import Base, CommitAnalysisTable, ProjectTable, ProjectCommitTable, ProjectFileTable, FileMetricsTable
+from app.db.entities import Base, CommitAnalysisTable, ProjectTable, ProjectCommitTable, ProjectFileTable, \
+    FileMetricsTable
 from app.routers import validate_repo_url, start_timer, end_timer, \
     handle_exception_on_endpoint
 from app.services.AnalysisService import AnalysisService
@@ -17,8 +18,8 @@ db_connection = db_engine.connect()
 session = Session()
 
 Base.metadata.create_all(db_engine)
-
 analysis_service = AnalysisService(session)
+
 
 @router.get("/api/analysis/prioritize_hotspots")
 async def prioritize_hotspots(repo_url: str, from_date: str = None, to_date: str = None):
@@ -75,6 +76,7 @@ def get_commit_analysis_by_project_id(project_id: int):
     except Exception as e:
         end_timer(start_time)
         handle_exception_on_endpoint(e)
+
 
 # Get hotspots analysis by project id
 @router.get("/api/analysis/prioritize_hotspots/{project_id}")
