@@ -14,6 +14,35 @@ const PaginatedTable = (props) => {
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
+    // Function to format a date string
+    const formatDateString = (dateString) => {
+        // Regular expression to match the desired format
+        const dateFormatRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\+\d{2}:\d{2}$/;
+
+        if (dateFormatRegex.test(dateString)) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+
+            dateString = new Date(dateString).toLocaleDateString(undefined, options);
+        }
+
+        return dateString;
+    };
+
+    // Function to format a commit hash
+    const formatHashString = (hashString) => {
+        if (hashString.length === '-') {
+           return hashString;
+        }
+
+        return (
+            <>
+                <a href="">
+                    {hashString}
+                </a>
+            </>
+        )
+    }
+
     // Filter the data based on the search query
     const filteredData = data.filter((item) => {
         if (searchQuery === '') {
@@ -193,14 +222,20 @@ const PaginatedTable = (props) => {
                     <tbody>
                     {currentItems.map((item, index) => (
                         <tr key={index}>
-                            {columns.map((column) => (
+                            {columns.map((column, index) => (
                                 <td key={column.key}>
                                     {column.nested ? (
                                         column.key
                                             .split('.')
                                             .reduce((obj, key) => obj?.[key], item)
                                     ) : (
-                                        item[column.key] || '-'
+                                        (type === 'commits' && index === 0) ? (
+                                            <a href={props.commitsUrl + '/' + item[column.key]}>
+                                                {item[column.key]}
+                                            </a>
+                                        ) : (
+                                            formatDateString(item[column.key] || '-')
+                                        )
                                     )}
                                 </td>
                             ))}
