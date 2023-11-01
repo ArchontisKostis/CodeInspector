@@ -18,6 +18,8 @@ const CommitAnalysis = (props) => {
         total_commits
     } = data;
 
+    const commitsUrl = repo_url + '/commit';
+
     const commitsColumns = [
         { key: 'hash', label: 'Hash' },
         { key: 'author', label: 'Author' },
@@ -67,6 +69,7 @@ const CommitAnalysis = (props) => {
                         columns={commitsColumns}
                         searchColumn={'hash'}
                         exportFilename={'commit_analysis_' + project_name + '_commits_CodeInspector.csv'}
+                        commitsUrl={commitsUrl}
                     />
                 </div>
 
