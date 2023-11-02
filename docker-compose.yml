@@ -4,6 +4,7 @@ services:
     image: mysql:latest
     environment:
       MYSQL_DATABASE: code_inspector_db
+      MYSQL_ROOT_PASSWORD: root
     ports:
       - "3306:3306"
 
