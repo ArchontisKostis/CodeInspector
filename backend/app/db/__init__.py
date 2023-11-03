@@ -13,4 +13,4 @@ DB_NAME_DEV = "code_inspector_db"
 DB_URL_DEV = f"mysql+pymysql://{DB_USER_DEV}:{DB_PASS_DEV}@{DB_HOST_DEV}:{DB_PORT_DEV}/{DB_NAME_DEV}"
 
 # This is the actual DB_URL that will be used by the application
-DB_URL = os.getenv("DB_URL")
+DB_URL = os.getenv("DB_URL") or DB_URL_DEV
