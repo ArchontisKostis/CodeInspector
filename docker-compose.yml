@@ -1,5 +1,6 @@
 version: "3.8"
 services:
+  # DATABASE SERVICE CONFIGURATION
   database:
     image: mysql:latest
     environment:
@@ -7,7 +8,16 @@ services:
       MYSQL_ROOT_PASSWORD: root
     ports:
       - "3306:3306"
+    # Checks if MySQL server is healthy by running 'mysqladmin ping' every 10 seconds.
+    # Considers the service unhealthy if the check fails to complete within 5 seconds or fails 3 times in a row.
+    # Read more: https://docs.docker.com/compose/compose-file
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
+  # BACKEND SERVICE CONFIGURATION
   backend:
     build:
       context: ./backend
@@ -17,8 +27,13 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - database
+      database:
+        # Warning: depends_on does not wait for db to be ready. Read more: https://docs.docker.com/compose/startup-order/
+        # Conditionally start this service only if the database service is healthy.
+        # The database service is considered healthy if the healthcheck command exits with a code > 0.
+        condition: service_healthy
 
+  # FRONTEND SERVICE CONFIGURATION
   frontend:
     build:
       context: ./frontend/app
