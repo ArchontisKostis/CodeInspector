@@ -19,9 +19,8 @@ services:
 
   # BACKEND SERVICE CONFIGURATION
   backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+    image:
+      archontisk/codeinspector
     environment: 
       - DB_URL=mysql+pymysql://root:root@database:3306/code_inspector_db
     ports:
@@ -37,7 +36,7 @@ services:
   frontend:
     build:
       context: ./frontend/app
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     depends_on:
