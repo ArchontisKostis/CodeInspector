@@ -211,13 +211,16 @@ class AnalysisService:
 
         return commit_analysis
 
-    def get_commit_analysis_by_project_id(self, project_id: int):
-        commit_analysis_table = self.session.query(CommitAnalysisTable).filter(
-            CommitAnalysisTable.project_id == project_id
+    def get_commit_analysis_by_project_url(self, project_url: str):
+        # Get the project
+        project_table = self.session.query(ProjectTable).filter(
+            ProjectTable.repository_url == project_url
         ).first()
 
-        project_table = self.session.query(ProjectTable).filter(
-            ProjectTable.id == project_id
+        project_id = project_table.id  # get the project id
+
+        commit_analysis_table = self.session.query(CommitAnalysisTable).filter(
+            CommitAnalysisTable.project_id == project_id
         ).first()
 
         db_commits = self.session.query(ProjectCommitTable).filter(
@@ -260,13 +263,16 @@ class AnalysisService:
 
         return commit_analysis
 
-    def get_hotspot_analysis_by_project_id(self, project_id: int):
-        db_hotspot_analysis = self.session.query(HotspotAnalysisTable).filter(
-            HotspotAnalysisTable.project_id == project_id
+    def get_hotspot_analysis_by_project_url(self, project_url: str):
+        # Find the Project
+        project_table = self.session.query(ProjectTable).filter(
+            ProjectTable.repository_url == project_url
         ).first()
 
-        project_table = self.session.query(ProjectTable).filter(
-            ProjectTable.id == project_id
+        project_id = project_table.id  # get the project id
+
+        db_hotspot_analysis = self.session.query(HotspotAnalysisTable).filter(
+            HotspotAnalysisTable.project_id == project_id
         ).first()
 
         db_project_files = self.session.query(ProjectFileTable).filter(
@@ -337,6 +343,7 @@ class AnalysisService:
             db_hotspot_analysis.to_date
         )
 
+        hotspot_analysis.project_name = project_table.project_name
         hotspot_analysis.prioritized_files = hotspots
         hotspot_analysis.outliers= outlier_files
         hotspot_analysis.max_complexity_file = max_cc_file

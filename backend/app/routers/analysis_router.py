@@ -60,13 +60,13 @@ def analyze_commits(repo_url: str, from_date: str = None, to_date: str = None):
 
 
 # Get commit analysis by project id
-@router.get("/api/analysis/commits/{project_id}")
-def get_commit_analysis_by_project_id(project_id: int):
+@router.get("/api/analysis/search/commits")
+def get_commit_analysis_by_project_url(project_url: str):
     start_time = start_timer()
 
     try:
-        logger.info(f"Getting commit analysis for project id {project_id}")
-        commit_analysis = analysis_service.get_commit_analysis_by_project_id(project_id)
+        logger.info(f"Getting commit analysis for project id {project_url}")
+        commit_analysis = analysis_service.get_commit_analysis_by_project_url(project_url)
 
         end_timer(start_time)
 
@@ -79,13 +79,13 @@ def get_commit_analysis_by_project_id(project_id: int):
 
 
 # Get hotspots analysis by project id
-@router.get("/api/analysis/prioritize_hotspots/{project_id}")
-def get_hotspots_analysis_by_project_id(project_id: int):
+@router.get("/api/analysis/search/hotspots")
+def get_hotspots_analysis_by_project_url(project_url: str):
     start_time = start_timer()
 
     try:
-        logger.info(f"Getting hotspots analysis for project id {project_id}")
-        hotspots_analysis = analysis_service.get_hotspot_analysis_by_project_id(project_id)
+        logger.info(f"Getting hotspots analysis for project url {project_url}")
+        hotspots_analysis = analysis_service.get_hotspot_analysis_by_project_url(project_url)
 
         end_timer(start_time)
 
