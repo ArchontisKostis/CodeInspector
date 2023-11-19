@@ -80,12 +80,12 @@ def get_commit_analysis_by_project_url(project_url: str):
 
 # Get hotspots analysis by project id
 @router.get("/api/analysis/search/hotspots")
-def get_hotspots_analysis_by_project_url(project_url: str):
+def get_hotspots_analysis_by_project_url(repo_url: str):
     start_time = start_timer()
 
     try:
-        logger.info(f"Getting hotspots analysis for project url {project_url}")
-        hotspots_analysis = analysis_service.get_hotspot_analysis_by_project_url(project_url)
+        logger.info(f"Getting hotspots analysis for project url {repo_url}")
+        hotspots_analysis = analysis_service.get_hotspot_analysis_by_project_url(repo_url)
 
         end_timer(start_time)
 

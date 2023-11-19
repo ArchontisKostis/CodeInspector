@@ -276,7 +276,7 @@ class AnalysisService:
         ).first()
 
         db_project_files = self.session.query(ProjectFileTable).filter(
-            ProjectFileTable.project_id == project_id
+            ProjectFileTable.hotspot_analysis_id == db_hotspot_analysis.id
         ).all()
 
         max_cc_file_metrics_db = self.session.query(FileMetricsTable).filter(
