@@ -41,3 +41,12 @@ services:
       - "3000:3000"
     depends_on:
       - backend
+
+  # ADMINER SERVICE CONFIGURATION (For database management - localhost:8080)
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
