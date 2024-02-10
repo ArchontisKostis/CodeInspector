@@ -42,7 +42,7 @@ services:
     depends_on:
       - backend
 
-  # ADMINER SERVICE CONFIGURATION (For database management - localhost:8080)
+  # ADMINER SERVICE CONFIGURATION (For database management | localhost:8080 - server: database)
   adminer:
     image: adminer
     restart: always
