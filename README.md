@@ -38,9 +38,9 @@ CodeInspector provides a Docker configuration for easy deployment. Make sure you
    ```
 4. The backend and frontend containers will be built and started. You can access the web-app by visiting `http://localhost:3000` in your web browser.
 
-## 🐳 Docker Compose Services Overview
+### Docker Compose Services Overview
 
-### 📊 database Service
+#### 📊 database Service
 
 The `database` service in this Docker Compose configuration utilizes the MySQL image. It represents the MySQL database server for the Code Inspector application.
 
@@ -51,7 +51,7 @@ The `database` service in this Docker Compose configuration utilizes the MySQL i
 - **Ports:** Exposes port `3306` for MySQL connections.
 - **Health Check:** Verifies MySQL server health using `mysqladmin ping`.
 
-### 🚀 backend Service
+#### 🚀 backend Service
 
 The `backend` service is responsible for running the Code Inspector backend application.
 
@@ -61,7 +61,7 @@ The `backend` service is responsible for running the Code Inspector backend appl
 - **Ports:** Exposes port `8000` for the backend application.
 - **Dependencies:** Depends on the `database` service and starts conditionally after the database service is healthy.
 
-### 🌐 frontend Service
+#### 🌐 frontend Service
 
 The `frontend` service builds and runs the Code Inspector frontend application.
 
@@ -70,7 +70,7 @@ The `frontend` service builds and runs the Code Inspector frontend application.
 - **Ports:** Exposes port `3000` for the frontend application.
 - **Dependencies:** Depends on the `backend` service.
 
-### 📈 adminer Service
+#### 📈 adminer Service
 
 The `adminer` service includes Adminer, a lightweight database management tool, to facilitate web-based management of the MySQL database.
 
